@@ -1,0 +1,10 @@
+-- From before to 02/05/2022 --
+* Published index.html;
+* Fixed alert box bugs;
+* Fixed graphics errors;
+* Started to work on locales;
+* Added different types of graphics;
+* Sound parameter;
+
+-- ToDo --
+[Empty] - Private file.
