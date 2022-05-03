@@ -42,3 +42,10 @@ function Del(Custom_Id) {
         document.getElementById(Custom_Id).remove();
     } else alert('Error. Please report this to the developer.\nError type: unknown Custom Id to delete.')
 }
+
+
+/*
+Minified:
+function New(e=String,t=String,r=String,o,n=String,a,l){if(o)if("add"==r){if("add"==r.toLowerCase()){var i=document.createElement(e.toLowerCase());i.id=t,i.style=n,a&&("div"==e.toLowerCase()?i.textContent=a:i.innerHTML=a),"button"!=e.toLowerCase()&&"input"!=e.toLowerCase()||(i.type=l[1],i.name=t+"_",""!=l[2]&&(i.onclick=l[2]),"color"==l[1].toLowerCase("")&&(i.value=l[0][0])),l[0].length>1&&Draw(i,l[0]),o.appendChild(i)}}else alert("Error. Please report this to the developer.\nError type: Allowed{}.");else alert('Error. Please report this to the developer.\nError type: unknown "BodyPlace" element.')}
+
+*/
