@@ -54,7 +54,6 @@
                                 content_copy
                                 </span>
                         </div>
-    
                     </div>
                 </div>
             </div>
@@ -175,6 +174,7 @@
                 Time = (Number(WantedTime[0]) * 60 * 60 + Number(WantedTime[1] * 60) + Number(WantedTime[2])) - 1;
             }
         }
+        var audio;
         let x = setInterval(function() {
             if (Time >= 0 && !Pause && !StopClock) {
                 let h = Math.floor(Time / 60 / 60);
@@ -185,7 +185,8 @@
                 document.getElementById('S1').innerHTML = `${s>9?"":"0"}${s}`;
                 Time--;
             } else if (Time <= 0 && !Play && Start) {
-                var audio = new Audio('ThundLoop2.mp3');
+                audio.stop()
+                audio = new Audio('ThundLoop2.mp3');
                 audio.play();
                 Play=true;
                 Start = false;
