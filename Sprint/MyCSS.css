@@ -1,0 +1,266 @@
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: url("aaron-burden-y02jEX_B0O0-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: 2296px 1724px;
+    font-family: 'Roboto', sans-serif;
+
+
+}
+.Main {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.TimeComp {
+    border-radius: 10px;
+}
+.Header {
+    height: 1%;
+    background-color: rgba(209, 209, 209, 0.7);
+    width: 100%;
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    color :rgb(255, 255, 255);
+}
+.Title {
+    margin-right: auto;
+    margin-left: 10px;
+    font-family: 'Bebas Neue', cursive;
+    padding: 5px;
+}
+
+.Head {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Bebas Neue', cursive;
+}
+.Head {
+    font-size: 30px;
+    font-weight: 100;
+    color : rgb(255, 255, 255);
+}
+
+.Desc {
+    width: 70%;
+    overflow: hidden;
+    font-size: 15px;
+    margin-right: auto;
+}
+.inputs {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap : 10px;
+    font-size: 25px;
+    font-family: 'Bebas Neue', cursive;
+    text-align:start;
+    color : rgb(255, 255, 255);
+}
+.inputs input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    border: solid rgba(255, 167, 0, 0.8);
+    border-radius: 5px;
+    color : black;
+    outline: none;
+    transition: 0.5s;
+    cursor : pointer;
+}
+.Time {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 5px;
+    margin-top: 30px;
+}
+.inputs input:hover, .inputs input:focus {
+    border : solid rgba(255, 167, 0, 1);
+    transition: 0.5s;
+
+}
+
+.Start button {
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Bebas Neue', cursive;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+#awesome {
+    opacity: 0;
+
+}
+
+.Button:hover #awesome {
+    opacity: 1;
+    transition: 1s;
+    
+}
+.Main, .Header, .Start {
+    width: 100%;
+}
+
+
+.Header {
+    flex-direction: row;
+    display: flex;
+}
+
+.Clock {
+    margin-top: 10%;
+    width: 90%;
+    border:none;
+    background-color: rgba(255, 255, 255,0.3);
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.Buttons {
+    height: 95%;
+    width: 200px;
+    padding: 15px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Buttons button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Bebas Neue', cursive;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    gap: 5px;
+    font-size: 25px;
+}
+
+.TimeClock {
+    background-color: rgba(255, 255, 255,0.7);
+    width: 75%;
+    height: 140px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.TimeHC, .TimeMC, .TimeSC {
+    width: 20%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+
+}
+
+.H1, .H2, .M1, .M2, .S1, .S2 {
+    width: 50px;
+    height: 100px;
+    font-size: 80px;
+    text-align: center;
+}
+
+.HP, .MP, .SP {
+    font-family: 'Bebas Neue', cursive;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 145px;
+}
+
+.Com {
+    color : rgb(255, 0, 0);
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
+    text-align: center;
+    font-family: 'Bebas Neue';
+    font-size: 20px;
+    position: absolute;
+}
+
+.LinksInfos {
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255,0.7);
+    position: absolute;
+    left: 0; 
+    right: 10; 
+    margin-left: auto; 
+    top:42;
+    font-size: 15px;
+    padding-left:5px;
+    padding-top: 5px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.LinksInfos .Instagram {
+    margin-top: 15px;
+    background: -webkit-linear-gradient(#C13584,#5851DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.Instagram, .Discord {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+.Discord {
+    background: -webkit-linear-gradient(#5851DB,#5851DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#PublicEarth:hover  + .LinksInfos {
+    visibility: visible;
+}
+.LinksInfos:hover {
+    visibility: visible;
+
+}
