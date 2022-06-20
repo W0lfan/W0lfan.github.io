@@ -61,5 +61,5 @@ function Stop(a,v) {
     t.innerHTML = v;
     StopClock = true;
 };
-function Add5(){Time+=300}
+function Add5(){if (Time>0)Time+=300}
 function Copy(){/*Naf#7792*/navigator.clipboard.writeText("Naf#7792")}
