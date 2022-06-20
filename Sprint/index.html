@@ -185,7 +185,8 @@
                 document.getElementById('S1').innerHTML = `${s>9?"":"0"}${s}`;
                 Time--;
             } else if (Time <= 0 && !Play && Start) {
-                audio.stop()
+                audio.pause();
+                audio.currentTime = 0;
                 audio = new Audio('ThundLoop2.mp3');
                 audio.play();
                 Play=true;
