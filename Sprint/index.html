@@ -21,7 +21,6 @@
     <body>
         <div class="Main">
             <div class="Header">
-
                 <div class="Title">
                     SPRINT
                 </div>
@@ -32,13 +31,35 @@
                     </p>
                 </div>
                 <div class="HeaderICONS">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined" id="Credits">
                         info
                     </span>
+                    <div class="Credits">
+                        <div class="Code">
+                            <span class="material-symbols-outlined">
+                                data_object
+                            </span> Naflouille
+                        </div>
+                        <div class="Design">
+                            <span class="material-symbols-outlined">
+                                preview
+                                </span> Naflouille
+                        </div>
+                        <div class="Music">
+                            <span class="material-symbols-outlined">
+                                music_note
+                            </span>  Xevaltan#5057
+                        </div>
+                        <div class="Background">
+                            <span class="material-symbols-outlined">
+                                image
+                                </span> Unknown
+                        </div>
+                    </div>
                     <span class="material-symbols-outlined">
                         edit
                     </span>
-                    <span id="PublicEarth"class="material-symbols-outlined" style="padding-right: 15px;margin-top: 10px; color:rgba(1, 96, 235, 1) ">
+                    <span id="PublicEarth" class="material-symbols-outlined" style="padding-right: 15px;margin-top: 10px; color:rgba(1, 96, 235, 1) ">
                         public
                     </span>
                     <div class="LinksInfos" id="LinksInfos">
@@ -83,14 +104,14 @@
                 </div>
 
                 <div class="Start">
-                    <button type="button" class="Button" onclick="StartClock()">
-                        <span class="material-symbols-outlined">
+                    <button type="button" class="Button" id="StartClock" onclick="StartClock()">
+                        <span class="material-symbols-outlined" id="StartClockS">
                             drive_file_rename_outline
-                        </span> <p>LET'S BE PRODUCTIVE</p>
+                        </span> <p id = "StartClockP">LET'S BE PRODUCTIVE</p>
                         <span id="awesome" class="material-symbols-outlined" style="margin-left: 190px; position:absolute; margin-bottom: 40px;color:rgba(235, 1, 218, 1); flex:none;transition: 1s;">
-                            auto_awesome
+                            magic_button
                         </span>
-                        <span id="awesome" class="material-symbols-outlined"  style="margin-left: -190px;margin-top: 40px; position:absolute;color:rgb(216, 1, 235); flex:none;transition: 1s;">
+                        <span id="awesome1" class="material-symbols-outlined"  style="margin-left: -190px;margin-top: 40px; position:absolute;color:rgb(216, 1, 235); flex:none;transition: 1s;">
                             magic_button
                         </span>
                     </button>
@@ -101,19 +122,19 @@
         <div class="Clock">
             <div class="Buttons">
                 <button type="button" onclick="PauseOrResume()">
-                    <span class="material-symbols-outlined"  id="Pause">
+                    <span class="material-symbols-outlined"  id="Pause" style="color:rgba(98, 98, 98, 1)">
                         pause
                     </span>
                     <div id="PauseOrResumeDiv">PAUSE</div>
                 </button>
                 <button type="button" onclick = 'Stop("thumb_up","STOPPED!")'>
-                    <span class="material-symbols-outlined" id="Stop">
+                    <span class="material-symbols-outlined" id="Stop" style="color:rgba(98, 98, 98, 1)">
                         timer_off
                     </span>
-                    <div id="StopDiv">STOP</div>
+                    <div id="StopDiv"> STOP </div>
                 </button>
                 <button type="button"  onclick="Add5()">
-                    <span class="material-symbols-outlined">
+                    <span class="material-symbols-outlined" style="color:rgba(98, 98, 98, 1)">
                         more_time
                     </span>ADD 5min
                 </button>
@@ -136,7 +157,7 @@
                     </div>
                 </div>
                 <div class="TimeSC">
-                    <div class="S1"id="S1">
+                    <div class="S1" id="S1">
                         00
                     </div>
                     <div class="SP">
@@ -152,6 +173,13 @@
         let StopClock = false;
         let Play = false;
         let Start = false;
+        let m = ["H1", "M1", "S1"];
+        let Button = [
+            document.getElementById('StartClockS'),
+            document.getElementById('StartClockP'),
+            document.getElementById('awesome'),
+            document.getElementById('awesome1')
+        ];
         function StartClock() {
             WantedTime = [];
             ["TimeH", "TimeM", "TimeS"].forEach(i => {
@@ -159,8 +187,7 @@
                     WantedTime.push(document.getElementById(i).value);
                 }
             })
-            if (WantedTime.length === 3) {
-                let m = ["H1", "M1", "S1"];
+            if (WantedTime.length === 3 && !Play && !Start) {
                 for (let i = 0; i < m.length; i++) {
                     document.getElementById(m[i]).innerHTML = `${`${WantedTime[i]}`.length <= 1 ? (`${WantedTime[i]}`.length === 1 ? "0" : "00") : "" }${WantedTime[i]}`;
                 }
@@ -172,8 +199,12 @@
                 Pause = false;
                 document.getElementById('PauseOrResumeDiv').innerHTML = "PAUSE";
                 Time = (Number(WantedTime[0]) * 60 * 60 + Number(WantedTime[1] * 60) + Number(WantedTime[2])) - 1;
+                Button[0].innerHTML = "block", Button[1].innerHTML = "CLOCK RUNNING";
+                Button[2].innerHTML = "alarm_on", Button[2].style.color = "rgba(232, 0, 0, 1)";
+                Button[3].innerHTML = "";
             }
         }
+        var audio;
         let x = setInterval(function() {
             if (Time >= 0 && !Pause && !StopClock) {
                 let h = Math.floor(Time / 60 / 60);
@@ -184,11 +215,32 @@
                 document.getElementById('S1').innerHTML = `${s>9?"":"0"}${s}`;
                 Time--;
             } else if (Time <= 0 && !Play && Start) {
-                var audio = new Audio('ThundLoop2.mp3');
+                if (audio) {
+                    /// CREDITER Xevaltan#5057
+
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+                audio = new Audio('ThundLoop2.mp3');
                 audio.play();
                 Play=true;
                 Start = false;
             }
-        }, 1000)
+        }, 1000);
+        function NewBackground() {
+            let Backgrounds = ["purple","red"];
+            const random = Math.floor(Math.random() * Backgrounds.length);
+            document.body.style.backgroundImage = `url(${Backgrounds[random]}.jpg)`;
+        };
+        NewBackground();
+        function SetTime() {
+            let Time = JSON.parse(localStorage.getItem('Parameters'));
+            let Vals = HMS(Time.Optimal_Time);
+            let M = ["TimeH","TimeM","TimeS"];
+            for (let i = 0; i < Vals.length; i++) {
+                document.getElementById(M[i]).value = `${Vals[i]>9?"":"0"}${Vals[i]}`;
+            }
+        };
+        SetTime();
     </script>
 </html>
