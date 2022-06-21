@@ -5,17 +5,13 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-image: url("aaron-burden-y02jEX_B0O0-unsplash.jpg");
-    background-repeat: no-repeat;
-    background-size: 2296px 1724px;
     font-family: 'Roboto', sans-serif;
-
-
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .Main {
     display: flex;
     flex-direction: column;
-    
 }
 
 
@@ -111,7 +107,7 @@ body {
     cursor: pointer;
 
 }
-#awesome {
+#awesome, #awesome1 {
     opacity: 0;
 
 }
@@ -119,7 +115,10 @@ body {
 .Button:hover #awesome {
     opacity: 1;
     transition: 1s;
-    
+}
+.Button:hover #awesome1 {
+    opacity: 1;
+    transition: 1s;
 }
 .Main, .Header, .Start {
     width: 100%;
@@ -213,11 +212,12 @@ body {
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    width: 100px;
+    width: 400px;
     text-align: center;
     font-family: 'Bebas Neue';
     font-size: 20px;
     position: absolute;
+
 }
 
 .LinksInfos {
@@ -237,7 +237,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-
 }
 
 .LinksInfos .Instagram {
@@ -259,8 +258,54 @@ body {
 }
 #PublicEarth:hover  + .LinksInfos {
     visibility: visible;
+    transition: 10s;
 }
 .LinksInfos:hover {
     visibility: visible;
+}
+
+.Credits {
+    width: 150px;
+    height: 120px;
+    background-color: rgba(255, 255, 255,0.9);
+    position: absolute;
+    border-radius: 10px;
+    left: 0; 
+    right: 120; 
+    margin-left: auto; 
+    top:20;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    padding-top: 5px;
+    visibility: hidden;
+}
+#Credits:hover  + .Credits {
+    visibility: visible;
+}
+
+.Code, .Design {
+    background: -webkit-linear-gradient(rgb(214, 114, 0),rgb(145, 77, 0));
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+.Music {
+    background: -webkit-linear-gradient(rgb(0, 118, 214),rgb(0, 94, 145));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.Background {
+    background: -webkit-linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.Credits div {
+    padding-left: 5px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 
 }
