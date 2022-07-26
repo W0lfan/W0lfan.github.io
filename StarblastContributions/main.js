@@ -145,12 +145,6 @@ let users = {
         ],
         star : "sUCP Holder",
     },
-    "Thuliux" : {
-        roles : [
-            "Youtube","Mod creator","Ship creator"
-        ],
-        star : "sUCP Holder",
-    },
     "Kirito Kun" : {
         roles : [
             "Mod creator",
@@ -210,6 +204,12 @@ let users = {
     "Badger" : {
         roles : [
             "Discord contributor"
+        ],
+        star : "",
+    },
+    "MK" : {
+        roles : [
+            "Ship creator","Mod creator"
         ],
         star : "",
     },
@@ -273,6 +273,12 @@ let users = {
         ],
         star : "",
     },
+    "Thuliux" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
     "Ayaka Aram" : {
         roles : [
             "Youtube","Youtube+"
@@ -282,6 +288,24 @@ let users = {
     "Trollbaba" : {
         roles : [
             "Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Neo Space" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
+    "Codicia" : {
+        roles : [
+            "Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Susky" : {
+        roles : [
+            "Youtube"
         ],
         star : "",
     },
