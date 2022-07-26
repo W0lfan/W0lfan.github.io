@@ -19,7 +19,7 @@ let contributions = {
     "Youtube+":"rgba(183, 0, 0, 1)",
     "Bot developer" : "rgba(54, 54, 54, 1)",
 };
- 
+
 let users = {
     "Gilles" : {
         roles : [
@@ -69,7 +69,7 @@ let users = {
     "Bhpsngum" : {
         roles : [
             "Mod creator","Discord contributor",
-            "Codes creator", "Tool creator","Mod creator","Discord staff",
+            "Codes creator", "Tool creator","Discord staff",
             "Wiki"
         ],
         star : "UCP Holder",
@@ -94,7 +94,7 @@ let users = {
     },
     "Notus" : {
         roles : [
-            "Mod creator",
+           
             "Codes creator", "Mod creator","Discord contributor","Discord staff",
             "Wiki","Reddit mod"
         ],
@@ -127,6 +127,14 @@ let users = {
     "Supernova" : {
         roles : [
             "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Kirito Kun" : {
+        roles : [
+            "Mod creator",
+            "Codes creator","Discord contributor",
+            "Wiki", "Ship creator"
         ],
         star : "sUCP Holder",
     },
@@ -245,6 +253,12 @@ let users = {
         star : "",
     },
     "Thuliux" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
+    "Duschi" : {
         roles : [
             "Youtube"
         ],
