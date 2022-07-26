@@ -145,6 +145,12 @@ let users = {
         ],
         star : "sUCP Holder",
     },
+    "Thuliux" : {
+        roles : [
+            "Youtube","Mod creator","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
     "Kirito Kun" : {
         roles : [
             "Mod creator",
@@ -264,12 +270,6 @@ let users = {
     "Twidash" : {
         roles : [
             "Discord contributor","Youtube"
-        ],
-        star : "",
-    },
-    "Thuliux" : {
-        roles : [
-            "Youtube"
         ],
         star : "",
     },
