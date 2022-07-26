@@ -29,6 +29,36 @@ let users = {
         ],
         star : "UCP Holder",
     },
+    "X-27" : {
+        roles : [
+            "Discord contributor","Discord staff","Youtube","Youtube+"
+        ],
+        star : "UCP Holder (1st)",
+    },
+    "Tournebulle" : {
+        roles : [
+            "Graphisms"
+        ],
+        star : "UCP Holder",
+    },
+    "Oh_" : {
+        roles : [
+            "Discord contributor","Discord staff","Bot developer"
+        ],
+        star : "UCP Holder",
+    },
+    "Dimed" : {
+        roles : [
+            "Discord contributor","Discord staff","Wiki","Reddit mod"
+        ],
+        star : "UCP Holder",
+    },
+    "Finalizer" : {
+        roles : [
+            "Discord contributor","Discord staff","Ship creator","Mod creator","Codes creator","Wiki","Reddit mod"
+        ],
+        star : "UCP Holder",
+    },
     "ChickenMan" : {
         roles : [
             "Mod creator","Discord contributor",
@@ -44,6 +74,24 @@ let users = {
         ],
         star : "UCP Holder",
     },
+    "Carme" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "UCP Holder",
+    },
+    "Dmitron" : {
+        roles : [
+            "Discord contributor","Tool creator","Mod creator","Wiki"
+        ],
+        star : "UCP Holder",
+    },
+    "Acarii" : {
+        roles : [
+            "Discord contributor", "Discord staff",
+        ],
+        star : "UCP Holder",
+    },
     "Notus" : {
         roles : [
             "Mod creator","Discord contributor",
@@ -51,6 +99,54 @@ let users = {
             "Wiki","Reddit mod"
         ],
         star : "UCP Holder",
+    },
+    "Megalodon" : {
+        roles : [
+            "Discord contributor","Youtube"
+        ],
+        star : "sUCP Holder",
+    },
+    "Partytime" : {
+        roles : [
+            "Discord contributor","Discord staff"
+        ],
+        star : "sUCP Holder",
+    },
+    "xys!" : {
+        roles : [
+            "Discord contributor","Youtube","Ship creator","Wiki"
+        ],
+        star : "sUCP Holder",
+    },
+    "Serendibite" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Supernova" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Endersult" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "201x Captain" : {
+        roles : [
+            "Discord contributor","Translator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Admiral" : {
+        roles : [
+            "Discord contributor", "Discord staff","Ship creator","Wiki"
+        ],
+        star : "sUCP Holder"
     },
     "Kaleo" : {
         roles : [
@@ -76,39 +172,15 @@ let users = {
         ],
         star : "",
     },
-    "Acarii" : {
+    "DSE" : {
         roles : [
-            "Discord contributor", "Discord staff",
+            "Discord contributor", "Discord staff"
         ],
-        star : "UCP Holder",
-    },
-    "Admiral" : {
-        roles : [
-            "Discord contributor", "Discord staff","Ship creator","Wiki"
-        ],
-        star : "sUCP Holder"
+        star : "",
     },
     "Badger" : {
         roles : [
             "Discord contributor"
-        ],
-        star : "",
-    },
-    "Carme" : {
-        roles : [
-            "Discord contributor"
-        ],
-        star : "UCP Holder",
-    },
-    "Dmitron" : {
-        roles : [
-            "Discord contributor","Tool creator","Mod creator","Wiki"
-        ],
-        star : "UCP Holder",
-    },
-    "DSE" : {
-        roles : [
-            "Discord contributor", "Discord staff"
         ],
         star : "",
     },
@@ -117,12 +189,6 @@ let users = {
             "Discord contributor", "Discord staff","Youtube"
         ],
         star : "",
-    },
-    "Megalodon" : {
-        roles : [
-            "Discord contributor","Youtube"
-        ],
-        star : "sUCP Holder",
     },
     "Emperor" : {
         roles : [
@@ -154,12 +220,6 @@ let users = {
         ],
         star : "",
     },
-    "Oh_" : {
-        roles : [
-            "Discord contributor","Discord staff","Bot developer"
-        ],
-        star : "UCP Holder",
-    },
     "Orio" : {
         roles : [
             "Discord contributor"
@@ -172,65 +232,17 @@ let users = {
         ],
         star : "",
     },
-    "Partytime" : {
-        roles : [
-            "Discord contributor","Discord staff"
-        ],
-        star : "sUCP Holder",
-    },
-    "xys!" : {
-        roles : [
-            "Discord contributor","Youtube","Ship creator","Wiki"
-        ],
-        star : "sUCP Holder",
-    },
-    "Serendibite" : {
-        roles : [
-            "Discord contributor","Ship creator"
-        ],
-        star : "sUCP Holder",
-    },
-    "Supernova" : {
-        roles : [
-            "Discord contributor","Ship creator"
-        ],
-        star : "sUCP Holder",
-    },
     "Tsukii^^" : {
         roles : [
             "Discord contributor"
         ],
         star : "",
     },
-    "X-27" : {
-        roles : [
-            "Discord contributor","Discord staff","Youtube","Youtube+"
-        ],
-        star : "UCP Holder (1st)",
-    },
-    "Endersult" : {
-        roles : [
-            "Discord contributor","Ship creator"
-        ],
-        star : "sUCP Holder",
-    },
-    "201x Captain" : {
-        roles : [
-            "Discord contributor","Translator"
-        ],
-        star : "sUCP",
-    },
     "Twidash" : {
         roles : [
             "Discord contributor","Youtube"
         ],
         star : "",
-    },
-    "Tournebulle" : {
-        roles : [
-            "Graphisms"
-        ],
-        star : "UCP Holder",
     },
     "Thuliux" : {
         roles : [
@@ -244,18 +256,6 @@ let users = {
         ],
         star : "",
     },
-    "Dimed" : {
-        roles : [
-            "Discord contributor","Discord staff","Wiki","Reddit mod"
-        ],
-        star : "UCP Holder",
-    },
-    "Finalizer" : {
-        roles : [
-            "Discord contributor","Discord staff","Ship creator","Mod creator","Codes creator","Wiki","Reddit mod"
-        ],
-        star : "UCP Holder",
-    },
     "Trollbaba" : {
         roles : [
             "Youtube","Youtube+"
@@ -263,6 +263,7 @@ let users = {
         star : "",
     },
 };
+
 
 
 let search = function() {
