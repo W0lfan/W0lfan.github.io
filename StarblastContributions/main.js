@@ -20,7 +20,7 @@ let contributions = {
     "Bot developer" : "rgba(54, 54, 54, 1)",
 };
 
-let users = {
+let users = { 
     "Gilles" : {
         roles : [
             "Game developer","Team mode coder","Survival coder","Racing coder",
