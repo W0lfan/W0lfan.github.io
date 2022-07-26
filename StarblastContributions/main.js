@@ -19,7 +19,7 @@ let contributions = {
     "Youtube+":"rgba(183, 0, 0, 1)",
     "Bot developer" : "rgba(54, 54, 54, 1)",
 };
-
+ 
 let users = {
     "Gilles" : {
         roles : [
