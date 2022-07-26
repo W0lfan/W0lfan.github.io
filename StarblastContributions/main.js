@@ -75,6 +75,14 @@ let users = {
         ],
         star : "UCP Holder",
     },
+    "45Rfew" : {
+        roles : [
+            "Mod creator","Discord contributor",
+            "Codes creator", "Mod creator",
+            "Wiki"
+        ],
+        star : "UCP Holder",
+    },
     "Carme" : {
         roles : [
             "Discord contributor"
@@ -110,6 +118,12 @@ let users = {
     "Partytime" : {
         roles : [
             "Discord contributor","Discord staff"
+        ],
+        star : "sUCP Holder",
+    },
+    "Senko" : {
+        roles : [
+            "Ship creator","Mod creator","Codes creator"
         ],
         star : "sUCP Holder",
     },
@@ -190,6 +204,12 @@ let users = {
     "Badger" : {
         roles : [
             "Discord contributor"
+        ],
+        star : "",
+    },
+    "MK" : {
+        roles : [
+            "Ship creator","Mod creator"
         ],
         star : "",
     },
