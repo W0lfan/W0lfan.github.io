@@ -1,4 +1,5 @@
 let contributions = {
+    "":"",
     "Game developer" : "rgba(181, 0, 0, 0.4)",
     "Team mode coder" : "rgba(79, 79, 79, 1)",
     "Survival coder" : "rgba(79, 79, 79, 1)",
@@ -258,12 +259,6 @@ let users = {
         ],
         star : "",
     },
-    "Duschi" : {
-        roles : [
-            "Youtube"
-        ],
-        star : "",
-    },
     "Ayaka Aram" : {
         roles : [
             "Youtube","Youtube+"
@@ -278,32 +273,56 @@ let users = {
     },
 };
 
-
+function Del() {
+    let area = document.getElementById('results');
+    let v = document.getElementById('searchBy');
+    let txtarea = document.getElementById('research_textarea');
+    v.value = "";
+    txtarea.value = "";
+    area.innerHTML="";
+    let u = []
+    for (let i of Object.keys(users)) {
+        u.push(i)
+    }
+    Draw(u)
+}
 let search = function() {
     let area = document.getElementById('results');
     let v = document.getElementById('searchBy');
     let txtarea = document.getElementById('research_textarea');
     area.innerHTML="";
-    let roles = [];
-    console.log(v.value)
+    let roles = [];    
     function getTextAreaValue() {
         for (let i of Object.keys(contributions)) {
             let n = i.toLowerCase();
             if (n.includes(txtarea.value.toLowerCase()) && txtarea.value != "") {
                 roles.push(i);
-                console.log(i)
+            }
+        }
+        for (let i of Object.keys(users)) {
+            let n = i.toLowerCase();
+            if (n.includes(txtarea.value.toLowerCase()) && txtarea.value != "") {
+                roles.push(i);
             }
         }
     }
     getTextAreaValue();
     if (roles.length === 0) {
-        roles.push(v.value);
+        if (v.value != "") {
+            roles.push(v.value);
+        } else {
+            let u = []
+            for (let i of Object.keys(users)) {
+                u.push(i)
+            }
+            Draw(u)
+        }
     }
     function returnUsers() {
         let u = [];
         for (let i of Object.keys(users)) {
             for (let j of roles) {
-                if (users[`${i}`].roles.includes(`${j}`) && u.includes(i) != true) {
+                if ((users[`${i}`].roles.includes(`${j}`) || i === j) && u.includes(i) != true) {
                     u.push(i);
                 }
             }
