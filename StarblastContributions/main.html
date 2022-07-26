@@ -1,70 +1,429 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Starblast Contributions</title>
-        <link rel="stylesheet" href="main.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@500&family=Encode+Sans+SC:wght@600&family=Fira+Sans:wght@500&family=Heebo&family=Josefin+Sans:wght@600&family=Kanit:wght@300&family=Lato:wght@700&family=Poppins&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-        <script src="main.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <meta content="Starblast Contributions" property="og:title" />
-        <meta content="Discover the people who contributed to Starblast.io and its community." property="og:description" />
-        <meta content="https://embed.com/this-is-the-site-url" property="og:url" />
-        <meta content="#0061A8" data-react-helmet="true" name="theme-color" />
-    </head>
-    <body>
-        <div class="header">
-            <div class="header-logo-and-title">
-                <div class="loading">
-                    <img src="starblast-ships/101.png">
-                </div>
-                <div class="header-title"><a href="https://starblast.io/" style="color:rgba(255,255,255)" target="_blank">Starblast</a> contributions</div>
-            </div>
-            <a href="infos.html">
-                <div class="more">
-                    <span class="material-symbols-outlined">
-                        info
-                    </span>
-                    Informations
-                </div>
-            </a>
-        </div>
-        <div class="main-body">
-            <div class="research">
-                <select name="searchBy" id="searchBy" class="input">
-        
-                </select>
-                <h4 style="color:rgba(255,255,255);padding-right: 5px;">OR</h1>
-                <div class="searchArea">
-                    <input type="textarea" placeholder="Research..." id="research_textarea">
-                    <span class="material-symbols-outlined" onclick="Del()">
-                        delete
-                    </span>
-                </div>
-                <button onclick="search()">
-                    <span class="material-symbols-outlined">
-                        search
-                        </span>
-                    Search
-                </button>
-            </div>
-            <div class="results" id="results">
+let contributions = {
+    "":"",
+    "Game developer" : "rgba(181, 0, 0, 0.4)",
+    "Team mode coder" : "rgba(79, 79, 79, 1)",
+    "Survival coder" : "rgba(79, 79, 79, 1)",
+    "Racing coder" : "rgba(79, 79, 79, 1)",
+    "Deathmatch coder" : "rgba(79, 79, 79, 1)",
+    "Event creator" : "rgb(8, 117, 0)",
+    "Graphisms" : "rgba(210, 217, 0, 1)",
+    "Mod creator" : "rgba(217, 165, 0, 1)",
+    "Discord contributor" : "rgba(170, 0, 196, 1)",
+    "Discord staff" : "rgba(144, 144, 144, 1)",
+    "Tool creator" : "rgba(216, 106, 0, 1)",
+    "Translator" : "rgba(216, 106, 0, 1)",
+    "Ship creator" : "rgba(216, 106, 0, 1)",
+    "Codes creator" : "rgba(216, 106, 0, 1)",
+    "Wiki" : "rgba(216, 0, 128, 1)",
+    "Reddit mod" : "rgba(204, 83, 0, 1)",
+    "Youtube":"rgba(183, 0, 0, 1)",
+    "Youtube+":"rgba(183, 0, 0, 1)",
+    "Bot developer" : "rgba(54, 54, 54, 1)",
+};
 
+let users = {
+    "Gilles" : {
+        roles : [
+            "Game developer","Team mode coder","Survival coder","Racing coder",
+            "Deathmatch coder","Event creator","Mod creator","Discord contributor","Tool creator",
+            "Ship creator","Codes creator"
+        ],
+        star : "UCP Holder",
+    },
+    "X-27" : {
+        roles : [
+            "Discord contributor","Discord staff","Youtube","Youtube+"
+        ],
+        star : "UCP Holder (1st)",
+    },
+    "Tournebulle" : {
+        roles : [
+            "Graphisms"
+        ],
+        star : "UCP Holder",
+    },
+    "Oh_" : {
+        roles : [
+            "Discord contributor","Discord staff","Bot developer"
+        ],
+        star : "UCP Holder",
+    },
+    "Dimed" : {
+        roles : [
+            "Discord contributor","Discord staff","Wiki","Reddit mod"
+        ],
+        star : "UCP Holder",
+    },
+    "Finalizer" : {
+        roles : [
+            "Discord contributor","Discord staff","Ship creator","Mod creator","Codes creator","Wiki","Reddit mod"
+        ],
+        star : "UCP Holder",
+    },
+    "ChickenMan" : {
+        roles : [
+            "Mod creator","Discord contributor",
+            "Ship creator","Codes creator","Wiki"
+        ],
+        star : "UCP Holder",
+    },
+    "Bhpsngum" : {
+        roles : [
+            "Mod creator","Discord contributor",
+            "Codes creator", "Tool creator","Discord staff",
+            "Wiki"
+        ],
+        star : "UCP Holder",
+    },
+    "45Rfew" : {
+        roles : [
+            "Mod creator","Discord contributor",
+            "Codes creator", "Mod creator",
+            "Wiki"
+        ],
+        star : "UCP Holder",
+    },
+    "Carme" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "UCP Holder",
+    },
+    "Dmitron" : {
+        roles : [
+            "Discord contributor","Tool creator","Mod creator","Wiki"
+        ],
+        star : "UCP Holder",
+    },
+    "Acarii" : {
+        roles : [
+            "Discord contributor", "Discord staff",
+        ],
+        star : "UCP Holder",
+    },
+    "Notus" : {
+        roles : [
+           
+            "Codes creator", "Mod creator","Discord contributor","Discord staff",
+            "Wiki","Reddit mod"
+        ],
+        star : "UCP Holder",
+    },
+    "Megalodon" : {
+        roles : [
+            "Discord contributor","Youtube"
+        ],
+        star : "sUCP Holder",
+    },
+    "Partytime" : {
+        roles : [
+            "Discord contributor","Discord staff"
+        ],
+        star : "sUCP Holder",
+    },
+    "Senko" : {
+        roles : [
+            "Ship creator","Mod creator","Codes creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "xys!" : {
+        roles : [
+            "Discord contributor","Youtube","Ship creator","Wiki"
+        ],
+        star : "sUCP Holder",
+    },
+    "Serendibite" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Supernova" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Kirito Kun" : {
+        roles : [
+            "Mod creator",
+            "Codes creator","Discord contributor",
+            "Wiki", "Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Endersult" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "sUCP Holder",
+    },
+    "201x Captain" : {
+        roles : [
+            "Discord contributor","Translator"
+        ],
+        star : "sUCP Holder",
+    },
+    "Admiral" : {
+        roles : [
+            "Discord contributor", "Discord staff","Ship creator","Wiki"
+        ],
+        star : "sUCP Holder"
+    },
+    "Kaleo" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "",
+    },
+    "Naf" : {
+        roles : [
+            "Discord contributor", "Discord staff","Tool creator","Wiki","Codes creator"
+        ],
+        star : "",
+    },
+    "()" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "",
+    },
+    "Glitch" : {
+        roles : [
+            "Discord contributor", "Discord staff","Reddit mod"
+        ],
+        star : "",
+    },
+    "DSE" : {
+        roles : [
+            "Discord contributor", "Discord staff"
+        ],
+        star : "",
+    },
+    "Badger" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "",
+    },
+    "MK" : {
+        roles : [
+            "Ship creator","Mod creator"
+        ],
+        star : "",
+    },
+    "Daweilicious" : {
+        roles : [
+            "Discord contributor", "Discord staff","Youtube"
+        ],
+        star : "",
+    },
+    "Emperor" : {
+        roles : [
+            "Discord contributor", "Youtube"
+        ],
+        star : "",
+    },
+    "Tez" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "",
+    },
+    "Nevadan" : {
+        roles : [
+            "Discord contributor","Discord staff"
+        ],
+        star : "",
+    },
+    "JavRedstone" : {
+        roles : [
+            "Discord contributor","Mod creator","Codes creator"
+        ],
+        star : "",
+    },
+    "NukePhysics" : {
+        roles : [
+            "Discord contributor","Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Orio" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "",
+    },
+    "Otsu" : {
+        roles : [
+            "Discord contributor","Ship creator"
+        ],
+        star : "",
+    },
+    "Tsukii^^" : {
+        roles : [
+            "Discord contributor"
+        ],
+        star : "",
+    },
+    "Twidash" : {
+        roles : [
+            "Discord contributor","Youtube"
+        ],
+        star : "",
+    },
+    "Thuliux" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
+    "Ayaka Aram" : {
+        roles : [
+            "Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Trollbaba" : {
+        roles : [
+            "Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Neo Space" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
+    "Codicia" : {
+        roles : [
+            "Youtube","Youtube+"
+        ],
+        star : "",
+    },
+    "Susky" : {
+        roles : [
+            "Youtube"
+        ],
+        star : "",
+    },
+};
+
+function Del() {
+    let area = document.getElementById('results');
+    let v = document.getElementById('searchBy');
+    let txtarea = document.getElementById('research_textarea');
+    v.value = "";
+    txtarea.value = "";
+    area.innerHTML="";
+    let u = []
+    for (let i of Object.keys(users)) {
+        u.push(i)
+    }
+    Draw(u)
+}
+let search = function() {
+    let area = document.getElementById('results');
+    let v = document.getElementById('searchBy');
+    let txtarea = document.getElementById('research_textarea');
+    area.innerHTML="";
+    let roles = [];    
+    function getTextAreaValue() {
+        for (let i of Object.keys(contributions)) {
+            let n = i.toLowerCase();
+            if (n.includes(txtarea.value.toLowerCase()) && txtarea.value != "") {
+                roles.push(i);
+            }
+        }
+        for (let i of Object.keys(users)) {
+            let n = i.toLowerCase();
+            if (n.includes(txtarea.value.toLowerCase()) && txtarea.value != "") {
+                roles.push(i);
+            }
+        }
+    }
+    getTextAreaValue();
+    if (roles.length === 0) {
+        if (v.value != "") {
+            roles.push(v.value);
+        } else {
+            let u = []
+            for (let i of Object.keys(users)) {
+                u.push(i)
+            }
+            Draw(u)
+        }
+    }
+    function returnUsers() {
+        let u = [];
+        for (let i of Object.keys(users)) {
+            for (let j of roles) {
+                if ((users[`${i}`].roles.includes(`${j}`) || i === j) && u.includes(i) != true) {
+                    u.push(i);
+                }
+            }
+        }
+        return u;
+    }
+    let u = returnUsers();
+    Draw(u);
+};
+function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+function Draw(u) {
+    let area = document.getElementById('results');
+
+    for (let i = 0; i < u.length; i++) {
+        let ship = `starblast-ships/${getRandomArbitrary(601,609)}.png`;
+        let pattern = `
+        <div class="user">
+            <div class="body">
+                <div class="pfp-and-name">
+                    <div class="pfp">
+                        <img src=${users[u[i]].profile ? users[u[i]].profile : ship} style="transform:rotate(${users[u[i]].profile ? "0deg" : "30deg"}); width: ${users[u[i]].profile ? "100%" : "80%"} ;height: ${users[u[i]].profile ? "100%" : "80%"}">
+                    </div>
+                    <div class="name">
+                        ${u[i]}
+                    </div>
+            
+                </div>
+                <div class="distinctions" id="distinctions_${u[i]}">
+                </div>
+                <div class="ecp" id="ecp_${u[i]}">
+                    <p id="star">&#9733</p> ${users[u[i]].star}
+                </div>
             </div>
         </div>
-        <div class="end-header">
-            <div class="credits" id="e-h">
-                &#x24B8 - Naflouille
-            </div>
-            <div class="links">
-                <div class="ds" >
-                    <a href="https://discord.gg/Q5RTE3GF9Y" target="_blank" style="text-decoration: none;color:rgba(255,255,255,0.5)">Support</a>
+        `;
+        area.innerHTML = area.innerHTML + pattern;
+        let d = document.getElementById(`distinctions_${u[i]}`);
+        let p = users[u[i]].roles;
+        for (let j = 0; j < p.length; j++) {
+            d.innerHTML = d.innerHTML + `
+                <div class="distinctions-content" style="background-color : ${contributions[`${p[j]}`]}">
+                    ${p[j]}
                 </div>
-                <div class="ds" >
-                    <a href="https://discord.com/invite/JwfJSFmXtn" target="_blank" style="text-decoration: none;color:rgba(255,255,255,0.5)">Starblast</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+            `
+        }
+    }
+}
+
+
+
+window.onload = function() {
+    for (let i of Object.keys(contributions)) {
+        var opt = document.createElement("option");
+        opt.value = i;
+        opt.innerHTML = i;
+        document.getElementById('searchBy').appendChild(opt);
+    }
+    let u = [];
+    for (let i of Object.keys(users)) {
+        u.push(i)
+    }
+    Draw(u)
+}
+
