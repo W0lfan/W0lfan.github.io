@@ -20,7 +20,7 @@ let contributions = {
     "Bot developer" : "rgba(54, 54, 54, 1)",
 };
 
-let users = { 
+let users = {
     "Gilles" : {
         roles : [
             "Game developer","Team mode coder","Survival coder","Racing coder",
@@ -69,7 +69,7 @@ let users = {
     "Bhpsngum" : {
         roles : [
             "Mod creator","Discord contributor",
-            "Codes creator", "Tool creator","Mod creator","Discord contributor","Discord staff",
+            "Codes creator", "Tool creator","Mod creator","Discord staff",
             "Wiki"
         ],
         star : "UCP Holder",
@@ -94,7 +94,7 @@ let users = {
     },
     "Notus" : {
         roles : [
-            "Mod creator","Discord contributor",
+            "Mod creator",
             "Codes creator", "Mod creator","Discord contributor","Discord staff",
             "Wiki","Reddit mod"
         ],
@@ -265,13 +265,13 @@ let users = {
 };
 
 
-
 let search = function() {
     let area = document.getElementById('results');
     let v = document.getElementById('searchBy');
     let txtarea = document.getElementById('research_textarea');
     area.innerHTML="";
     let roles = [];
+    console.log(v.value)
     function getTextAreaValue() {
         for (let i of Object.keys(contributions)) {
             let n = i.toLowerCase();
@@ -330,7 +330,6 @@ function Draw(u) {
         area.innerHTML = area.innerHTML + pattern;
         let d = document.getElementById(`distinctions_${u[i]}`);
         let p = users[u[i]].roles;
-        document.getElementById(`ecp_${u[i]}`).style.backgroundColor = contributions[`${users[u[i]].star}`];
         for (let j = 0; j < p.length; j++) {
             d.innerHTML = d.innerHTML + `
                 <div class="distinctions-content" style="background-color : ${contributions[`${p[j]}`]}">
