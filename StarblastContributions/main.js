@@ -207,12 +207,6 @@ let users = {
         ],
         star : "",
     },
-    "MK" : {
-        roles : [
-            "Ship creator","Mod creator"
-        ],
-        star : "",
-    },
     "Daweilicious" : {
         roles : [
             "Discord contributor", "Discord staff","Youtube"
