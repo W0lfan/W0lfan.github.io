@@ -18,25 +18,53 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-decoration: none;
 }
 .main-body {
     width: 100%;
     height: 40%;
     display: flex;
     flex-direction: column;
-    gap: 20px
+    gap: 20px;
+    margin-top: 70px;
 }
 
 .header {
-    width: 95%;
+    width: 100%;
     height: 60px;
+    position: fixed;
+    top: 0;
     margin-left: auto;
     margin-right: auto;
     color : rgba(255,255,255);
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
+    background-color: rgba(0,0,0,0.8);
+    padding-left: 10px;
+    padding-right: 100px;
+
+}
+.header-logo-and-title {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+body a, .website-safety a  {
+    text-decoration: none;
+}
+.more {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    color : rgba(255,255,255,1);
+    width: 200px;
 }
 .research {
     display: flex;
@@ -45,28 +73,49 @@ body {
     align-items: center;
 }
 .research button {
-    width: 60px;
+    width: 90px;
     height: 30px;
     margin-left: 10px;
-    text-align: center;
     border: none;
     background-color: rgba(0,0,0,0);
     color: rgba(255,255,255);
     cursor: pointer;
     border-radius: 5px;
     box-shadow: 0 0 5px hsl(200,100%,80%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.searchArea {
+    color : rgba(255,255,255);
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px hsl(200,100%,80%);
+    padding-right: 5px;
+}
+.material-symbols-outlined {
+    cursor: pointer;
+
 }
 body input {
     width: 120px;
     height: 20px;
-    padding: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
     margin-left: 10px;
-    box-shadow: 0 0 5px hsl(200,100%,80%);
     background-color: rgba(0,0,0,0);
     color: rgba(255,255,255);
     outline : none;
     border: none;
 }
+
 .input {
     width: 150px;
     text-align: center;
