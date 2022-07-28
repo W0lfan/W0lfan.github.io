@@ -60,7 +60,7 @@ let users = {
         ],
         star : "UCP Holder",
     },
-    "ChickenMan" : {
+    "ThirdEyeMan" : {
         roles : [
             "Mod creator","Discord contributor",
             "Ship creator","Codes creator","Wiki"
@@ -175,7 +175,7 @@ let users = {
         roles : [
             "Discord contributor", "Discord staff","Ship creator","Wiki"
         ],
-        star : "sUCP Holder"
+        star : ""
     },
     "Kaleo" : {
         roles : [
