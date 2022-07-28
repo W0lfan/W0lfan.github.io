@@ -28,7 +28,7 @@ let users = {
             "Deathmatch coder","Event creator","Mod creator","Discord contributor","Tool creator",
             "Ship creator","Codes creator"
         ],
-        star : "UCP Holder",
+        star : "sUCP Holder",
     },
     "X-27" : {
         roles : [
