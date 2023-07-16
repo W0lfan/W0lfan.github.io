@@ -1,527 +1,554 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-body {
-    background: linear-gradient(45deg, rgb(24, 24, 24) 45%, rgb(42, 42, 42));
-    color: white;
-    background-repeat: no-repeat;
-    background-size: 100% 100vh;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-size: 100% auto;
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Starblast Arena : Team Fights</title>
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="icon" href="medias/logo.ico" type="image/x-icon">
+        <meta content="Naflouille Creations" property="og:title" />
+        <meta content="Introducing Starblast Arena: Team Fights, an exhilarating team duel mode where teamwork and coordination are paramount." property="og:description" />
+        <meta content="https://w0lfan.github.io/arena/" property="og:url" />
+        <meta content="https://github.com/W0lfan/W0lfan.github.io/blob/main/arena/medias/logo.png?raw=true" property="og:image" />
+        <meta content="#F6AEFF" data-react-helmet="true" name="theme-color" />
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-title">
+                <img src="medias/Starblast Arena Team Fights.png">
+                <span>Naflouille Creations</span>
+            </div>
+            <div class="download-lastest">
+                <svg id="download-lastest" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+                    <path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/>
+                </svg>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="about-arena">
+                <div class="text-container">
+                    <div class="title">
+                        <div class="name">Starblast Arena : Team Fights</div>
+                        <div class="desc">Enhance your team cohesion</div>
+                    </div>
+                    <div class="description">
+                        The Starblast Arena is an exciting mode in Starblast where 
+                        players engage in team-based battles against each other. 
+                        Currently, each match can accommodate up to 12 players. 
+                        This mode utilizes vanilla ships, providing a level 
+                        playing field for all participants.
+                        <br>
+                        One key feature of the Starblast Arena is ship lock customization. 
+                        When a player chooses a ship to use in battle, they will be unable 
+                        to select that same ship again, unless the round count reaches 7 or 
+                        more. This adds an element of strategy and variety to the gameplay, 
+                        as players must carefully consider their ship choices throughout the 
+                        match.
+                    </div>
+                </div>
+                <div class="screenshots">
+                    <img src="medias/lobby_screenshot.PNG">
+                    <img src="medias/discord.PNG">
+                    <img src="medias/code.PNG">
+                </div>
+            </div>
+            <div class="medias">
+                <div class="media-container">
+                    <div class="center">
+                        <div class="infos-container">
+                            <img src="https://www.freepnglogos.com/uploads/discord-logo-png/discord-will-provide-official-verification-esports-team-4.png">
+                            <div class="infos">
+                                <div class="name">
+                                    Naflouille Creations
+                                </div>
+                                <div class="description">
+                                    Discord Community
+                                </div>
+                            </div>
+                        </div>
+                        <div class="server-name" id="discord" onclick="window.open('https://discord.gg/Q5RTE3GF9Y ',target='_blank')">
+                            JOIN
+                        </div>
+                    </div>
+                </div>
+                <div class="media-container">
+                    <div class="center">
+                        <div class="infos-container">
+                            <img src="https://static-00.iconduck.com/assets.00/github-icon-2048x1988-jzvzcf2t.png">
+                            <div class="infos">
+                                <div class="name">
+                                    Starblast Arena : Team Fights
+                                </div>
+                                <div class="description">
+                                    Code Repository
+                                </div>
+                            </div>
+                        </div>
+                        <div class="server-name" id="github" onclick="window.open('https://github.com/W0lfan/Starblast-Arena',target='_blank')">
+                            OPEN
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="huge-title">
+                Upcoming Features
+            </div>
+            <div class="upcoming-features">
+                <div class="container">
+                    <div class="column">
+                        <div class="upcoming">
+                            <div class="title">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M200-200v-193h60v133h133v60H200Zm0-367v-193h193v60H260v133h-60Zm367 367v-60h133v-133h60v193H567Zm133-367v-133H567v-60h193v193h-60Z"/></svg>
+                                New Map Sizes
+                                <div class="tag" id="prior">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m286-79 171-307-337-40 495-455h59L503-574l337 40L345-79h-59Z"/></svg>
+                                </div>
+                            </div>
+                            <div class="description">
+                                Experience the dynamic Starblast Arena with a customizable map 
+                                size that adapts to the number of players. Join forces, 
+                                engage in thrilling battles, and dominate the arena with 
+                                strategic prowess and overwhelming firepower!
+                            </div>
+                        </div>
+                        <div class="upcoming">
+                            <div class="title">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M768-120 517-371l57-57 251 251-57 57Zm-581 0-57-57 290-290-107-107-23 23-44-44v85l-24 24-122-122 24-24h86l-48-48 131-131q17-17 37-23t44-6q24 0 44 8.5t37 25.5L348-699l48 48-24 24 104 104 122-122q-8-13-12.5-30t-4.5-36q0-53 38.5-91.5T711-841q15 0 25.5 3t17.5 8l-85 85 75 75 85-85q5 8 8.5 19.5T841-709q0 53-38.5 91.5T711-579q-18 0-31-2.5t-24-7.5L187-120Z"/></svg>
+                                Custom Ships
+                            </div>
+                            <div class="description">
+                                Stay informed and in control of your game with our comprehensive information system. Get crucial details and 
+                                important information presented in a visually appealing and easily understandable format. Keep track of game events effortlessly, 
+                                make informed decisions, and enjoy a seamless gaming experience with clear visibility into the unfolding events.
+                            </div>
+                        </div>
+                        <div class="upcoming">
+                            <div class="title">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M298-120v-60h152v-148q-54-11-96-46.5T296-463q-74-8-125-60t-51-125v-44q0-25 17.5-42.5T180-752h104v-88h392v88h104q25 0 42.5 17.5T840-692v44q0 73-51 125t-125 60q-16 53-58 88.5T510-328v148h152v60H298Zm-14-406v-166H180v44q0 45 29.5 78.5T284-526Zm392 0q45-10 74.5-43.5T780-648v-44H676v166Z"/></svg>
+                                Championships
+                            </div>
+                            <div class="description">
+                                Championships may be hosted in the future to facilitate competitive gameplay and showcase players' skills. 
+                                However, please note that due to the limited availability 
+                                of free time from the developer, the hosting of championships may not occur in the immediate future.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="upcoming">
+                            <div class="title">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-80q-34 0-57.5-23.5T399-161h162q0 34-23.5 57.5T480-80ZM318-223v-60h324v60H318Zm5-121q-66-43-104.5-107.5T180-597q0-122 89-211t211-89q122 0 211 89t89 211q0 81-38 145.5T637-344H323Z"/></svg>
+                                More Informations
+                                <div class="tag" id="prior">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m286-79 171-307-337-40 495-455h59L503-574l337 40L345-79h-59Z"/></svg>
+                                </div>
+                            </div>
+                            <div class="description">
+                                Stay informed and in control of your game with our comprehensive information system. 
+                                Get crucial details and important information in a visually appealing and easy-to-understand format. 
+                                Effortlessly track game progress, make informed decisions, and enjoy a seamless gaming 
+                                experience with clear visibility into unfolding events.
+                            </div>
+                        </div>
+                        <div class="upcoming">
+                            <div class="title">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-80q-140-35-230-162.5T160-522v-238l320-120 320 120v238q0 152-90 279.5T480-80Zm0-62q106-35 175.5-128.5T737-480H480v-335l-260 97v196q0 12 .5 20.5T223-480h257v338Z"/></svg>
+                                Enhanced Security
+                            </div>
+                            <div class="description">
+                                Take full control of player management in your game with robust security tools. 
+                                Actions such as kicking players, changing teams, preventing spectating, and managing 
+                                waiting can be performed to ensure a secure and fair gameplay environment. 
+                                These tools empower you to create an enjoyable experience for all players involved in your game.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="huge-title">
+                Game Parameters
+            </div>
+            <div class="specitifications">
+                <div class="sp-header">
+                    <div class="name">
+                        Parameter
+                    </div>
+                    <div class="customizable">
+                        Customizable
+                    </div>
+                    <div class="path">
+                        Path
+                    </div>
+                    <div class="value">
+                        Value
+                    </div>
+                </div>
+                <div class="separator">
+                    Playing Parameters
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Maximum Versus
+                    </div>
+                    <div class="customizable">
+                        <svg id="nocustomizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.MAX
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Players Per Team
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.MaxPlayers
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Team Lock
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.AutoLock
+                    </div>
+                    <div class="value">
+                        <span id="true">true</span> / <span id="false">false</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Ship Lock
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.ShipLock
+                    </div>
+                    <div class="value">
+                        <span id="true">true</span> / <span id="false">false</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Spectators
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.Spectator
+                    </div>
+                    <div class="value">
+                        <span id="true">true</span> / <span id="false">false</span>
+                    </div>
+                </div>
+                <div class="separator">
+                    Map
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Map pattern
+                    </div>
+                    <div class="customizable">
+                        <svg id="nocustomizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.Map.Pattern
+                    </div>
+                    <div class="value">
+                        <span id="pattern">Pattern</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Map Reducing Row
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Map.MaxReducing
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="separator">
+                    Rounds
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Rounds Row
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom._p.Inner.MaximumRounds
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="separator">
+                    Timing Parameters
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Time before pick
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InitialTime
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Time Before Round Starts
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.StartingTime
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Time Before Map Reduces
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.MapReducing
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Time Before Round Ends
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.LastTime
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Time Before Game Closes
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.ClosingTime
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="separator">
+                    Teams
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://static.wikia.nocookie.net/starblastio_gamepedia_en/images/b/bf/Hues_ruler.png/revision/latest?cb=20210124185008">Team Hue</a>
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.hue
+                    </div>
+                    <div class="value">
+                        <span id="int">Integer</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        Team Name
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.name
+                    </div>
+                    <div class="value">
+                        <span id="pattern">Text</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color</a>
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.hex
+                    </div>
+                    <div class="value">
+                        <span id="rgba">RGBA</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color (Darker)</a>
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.lighter
+                    </div>
+                    <div class="value">
+                        <span id="rgba">RGBA</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color (Super Lighter)</a>
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.superlighter
+                    </div>
+                    <div class="value">
+                        <span id="rgba">RGBA</span>
+                    </div>
+                </div>
+                <div class="specification">
+                    <div class="name">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://starblast.fandom.com/wiki/Modding_Tutorial#:~:text=report%2C%20Commander%22%2C%22Maria%22)%0A%3E%20%E2%96%88-,Available%20characters,-Lucina">Team Leader</a>
+                    </div>
+                    <div class="customizable">
+                        <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+                    </div>
+                    <div class="path">
+                        game.custom.InnerTeams[x].Color.leader
+                    </div>
+                    <div class="value">
+                        <span id="rgba">RGBA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="down-header">
+            <div class="centered">
+                A mode made by Naflouille, with the help of Glitch.
+            </div>
+            <div class="righted">
+                All rights reserved. Modification allowed with credits.
+            </div>
+        </div>
+        <script>
+            function getScrollPosition() {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-}
+                let medias = document.querySelector('.medias');
+                let media = document.querySelectorAll('.media-container .infos');
+                let M = document.querySelectorAll('.media-container .center');
+                if (scrollTop > 600) {
+                    medias.style.position = "fixed";
+                    medias.style.top = "0px";
+                    medias.style.right = "90px";
+                    medias.style.zIndex = "51";
+                    medias.style.width = "50%";
+                    medias.style.display = "flex";
+                    medias.style.columnGap = "0px";
+                    media.forEach(function(m) {
+                        m.style.display = "none";
+                    });
+                    M.forEach(function(m) {
+                        m.style.backgroundColor = "unset";
+                        m.style.gap = "10px";
+                        m.querySelector('.server-name').style.borderRadius = "50px"
+                    });
+                } 
+                 if (scrollTop < 100) {
+                    medias.style.position = "relative";
+                    medias.style.top = "unset";
+                    medias.style.columnGap = "50px";
+                    medias.style.right = "unset";
+                    medias.style.zIndex = "1";
+                    medias.style.width = "75%";
+                    medias.style.display = "grid";
+                    media.forEach(function(m) {
+                        m.style.display = "flex";
+                    });
+                    M.forEach(function(m) {
+                        m.style.backgroundColor = "black";
+                        m.style.gap = "30px";
 
-.header {
-    position:fixed;
-    padding: 10px;
-    width: calc(100% - 20px);
-    height: 50px;
-    background-color: #181818;
-    top:0px;
-    left:0px;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    z-index: 50;
-    .header-title {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-        width: calc(100% - 60px);
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        height: 100%;
-    }
-    .header-title img {
-        height: 100%;
-    }
-    .download-lastest {
-        background-color: rgba(255,255,255,0.008);
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-    }
-    .download-lastest svg {
-        width:40px;
-        height: 40px;
-        fill:rgb(248, 178, 248);
-
-    }
-}
-
-@keyframes imageshow {
-    from {
-        opacity: 0;
-    } to {
-        opacity: 1;
-    }
-}
-
-.main-container {
-    height: calc(100% - 100px);
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 150px;
-    padding-bottom: 150px;
-    .upcoming-features{
-        width: 75%;
-        font-family: "Roboto",sans-serif;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        .title {
-            font-size: 25px;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            .column {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                width: calc(50% - 5px);
-
-            }
-        }
-        .upcoming {
-            padding: 10px;
-            padding-left: 50px;
-            padding-right: 50px;
-            width: calc(100% - 100px);
-            background-color: rgb(30, 30, 30);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            line-height: 25px;
-            gap: 10px;
-            .title svg {
-                fill:white;
-                height: 30px;
-                width: 30px;
-            }
-            .title {
-                display: flex;
-                flex-direction: row;
-                gap: 5px;
-                align-items: center;
-                font-size: 20px;
-                width: 100%;
-                position:relative;
-            }
-        }
-    }
-    .about-arena {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        position:relative;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        .screenshots {
-            width: 30%;
-            height: 50vh;
-            position:relative;
-        }
-        .screenshots img {
-            width: 90%;
-            position:absolute;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 10px;
-        }
-        .screenshots img:nth-child(1) {
-            right:0;
-            top:0;
-            bottom:0;
-            margin:auto;
-            transform: rotate(0deg);
-            z-index: 2;
-            animation:imageshow;
-            opacity: 0;
-            animation-duration: 0.5s;
-            animation-delay: 0.3s;
-            animation-fill-mode: forwards;
-        }
-        .screenshots img:nth-child(2) {
-            z-index:1;
-            top:0;
-            left:0;
-            transform: rotate(-5deg);
-            animation:imageshow;
-            opacity: 0;
-            animation-duration: 0.5s;
-            animation-delay: 0s;
-            animation-fill-mode: forwards;
-        }
-        .screenshots img:nth-child(3) {
-            transform: rotate(5deg);
-            z-index: 3;
-            bottom:0;
-            animation:imageshow;
-            opacity: 0;
-            animation-duration: 0.5s;
-            animation-delay: 0.6s;
-            animation-fill-mode: forwards;
-        }
-        .text-container {
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            .title {
-                display: flex;
-                flex-direction: column;
-                gap:5px;
-    
-                .name {
-                    font-family: 'Kanit', sans-serif;
-                    font-size: 40px;
+                        m.querySelector('.server-name').style.borderRadius = "10px"
+                    });
                 }
-                .desc {
-                    font-size: 25px;
-                    font-family: 'Roboto', sans-serif;
-                }
+                // Perform actions based on the scroll position
             }
 
-            .description {
-                font-family: 'Roboto', sans-serif;
-                width: 75%;
-                line-height: 25px;
-            }
-        }
 
-    }
-    .medias {
-        width: 75%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill,400px);
-        row-gap: 10px;
-        column-gap: 50px;
-        justify-content: center;
-        align-items: center;
-        transition: position 1s, top 1s, right 1s, z-index 0s, width 0.2s, display 1s;
-    }
-    .media-container {
-        width: 100%;
-        .title {
-            font-family: 'Roboto Slab', serif;
-        }
-        .center {
-            width: 100%;
-            height: 50px;
-            background-color: black;
-            border-radius: 5px;
-            padding: 10px;
-            display: flex;
-            flex-direction: row;
-            gap: 30px;
-            align-items: center;
-            font-family: 'Lato', sans-serif;
-            justify-content: center;
-            transition: display 1s, gap 1s;
-            .infos-container {
-                height: 100%;
-                width: fit-content;
-                display: flex;
-                flex-direction: row;
-                gap: 15px;
-                .infos {
-                    width: calc(100% );
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    .description {
-                        font-size: 13px;
-                        color:rgba(255,255,255,0.6)
-                    }
-                }
-            }
-            .infos {
-                width: calc(100%);
-            }
-            .infos-container img {
-                height: 50px;
-                border-radius: 50%;
-            }
-            .server-name {
-                width: 60px;
-                padding: 4px;
-                height: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10px;
-                padding-left: 20px;
-                padding-right: 20px;
-                cursor: pointer;
-                transition: border-radius 1s, background-color 0.2s;
+        // Call the function when the user scrolls
+        window.addEventListener('scroll', getScrollPosition);
+        window.addEventListener('DOMContentLoaded',function() {
+                document.getElementById('download-lastest').addEventListener('click',function() {
+                var fileURL = 'https://raw.githubusercontent.com/W0lfan/Starblast-Arena/main/main/SA.js';
 
-            }
-            
+                fetch(fileURL)
+                .then(response => response.text())
+                .then(data => {
+                        var fileContent = data;
+                        var fileName = 'SA - Lastest.js';
+                        var fileBlob = new Blob([fileContent], { type: 'text/javascript' });
 
-        }
+                        var downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(fileBlob);
+                        downloadLink.download = fileName;
+                        downloadLink.click();
 
-    }
-}
+                        URL.revokeObjectURL(downloadLink.href);
+                })
+                .catch(error => {
+                    console.error('Error fetching file:', error);
+                    alert('An error occured. Please join the Discord server in order to report it.')
+                });
+            })
+        })
 
-.tag {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    position:absolute;
-    width: fit-content;
-    padding-left: 10px;
-    padding-right: 10px;
-    top:0;right:0;bottom:0;margin:auto;
-    background-color: rgb(234, 220, 12);
-    border-radius: 50px;
-    height: 25px;
-    color:rgb(57, 57, 57);
-    font-weight: bold;
-}
-.tag svg {
-    height: 10px !important;
-    width: 10px !important;
-    fill:rgb(57, 57, 57) !important;
+        </script>
+        
 
-}
-#prior::after {
-    content:"Priority"
-}
-.huge-title {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Kanit",sans-serif;
-    font-size:40px;
-    margin-bottom: -120px;
-}
-#discord {
-    background-color: #35AB36;
-}
-
-#discord:hover {
-    background-color: rgba(53, 171, 54,0.8);
-}
-#github {
-    background-color: #323232;
-}#github:hover {
-    background-color: rgba(50, 50, 50,0.8);
-}
-
-.down-header {
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    width: calc(100% - 10px);
-    padding: 10px;
-    position:fixed;
-    left: -10px;
-    display: flex;
-    flex-direction: row;
-    gap: 2px;
-    align-items: center;
-    justify-content: center;
-    bottom:0;
-    color:rgba(255,255,255,0.3)
-}
-
-.specitifications {
-    width: 90%;
-    border: 1px solid white;
-    border-style: solid solid none solid;
-    border-radius: 5px 5px 0px 0px;
-    font-family: "Roboto",sans-serif;
-    .sp-header {
-        position:relative;
-        display: flex;
-        flex-direction: row;
-        font-size: 20px;
-        height: 40px;
-        border: 1px solid white;
-        border-style: none none solid none;
-        .name, .customizable, .path, .value {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .name {
-            width: 40%;
-            border: 1px solid white;
-            border-style: none solid none none;
-        }
-        .customizable {
-            width: 15%;
-            border: 1px solid white;
-            border-style: none solid none none;
-        }
-        .path {
-            width: 30%;
-            border: 1px solid white;
-            border-style: none solid none none;
-        }
-        .value {
-            width: 15%;
-        }
-    }
-    .separator {
-        width: calc(100% - 10px);
-        height: 30px;
-        display: flex;
-        align-items: center;
-        padding-left: 10px;
-        font-size: 16px;
-        color:rgba(0, 0, 0, 0.7);
-        background-color: white;
-    }
-    .specification {
-        position:relative;
-        display: flex;
-        flex-direction: row;
-        font-size: 15px;
-        height: 40px;
-        border: 1px solid white;
-        border-style: none none solid none;
-        .name, .customizable, .path, .value {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .name {
-            width: 40%;
-            border: 1px solid white;
-            border-style: none solid none none;
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 10px;
-        }
-        .name svg {
-            transform: rotate(-40deg);
-            fill:white;
-            width: 15px;
-            height: 15px;
-        }
-        .customizable {
-            width: 15%;
-            border: 1px solid white;
-            border-style: none solid none none;
-        }
-        .path {
-            width: calc(30%);
-            padding-left: 5px;
-            padding-right: 5px;
-            border: 1px solid white;
-            border-style: none solid none none;
-            font-family: "Source Code Pro",monospace;
-            font-size: 13px;
-            background-color: rgba(40, 40, 40, 0.3);
-            overflow-x: auto;
-            justify-content: unset;
-        }
-        .value {
-            width: 15%;
-        }
-    }
-    #customizable {
-        fill:rgb(98, 205, 98);
-        width: 30px;
-        height: 30px;
-    }
-    #nocustomizable {
-        fill:rgb(235, 93, 93);
-        width: 30px;
-        height: 30px;
-    }
-
-}
-
-body a {
-    outline:none;
-    text-decoration: unset;
-    color:rgb(232, 230, 230);
-}
-
-#int {
-    color:rgb(49, 215, 135);
-}
-#pattern {
-    color:rgb(231, 231, 121);
-}
-#rgba {
-    color:rgb(90, 214, 212);
-}
-#true, #false {
-    color:rgb(177, 79, 206);
-}
-#true {
-    padding-right: 5px;
-}
-#false {
-    padding-left: 5px;
-}
-
-/* For WebKit-based browsers and Microsoft Edge */
-/* Note: Microsoft Edge also supports the -ms-overflow-style property */
-::-webkit-scrollbar,
-*::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-
-}
-
-::-webkit-scrollbar-track,
-*::-webkit-scrollbar-track {
-  background-color: #191919;
-}
-
-::-webkit-scrollbar-thumb,
-*::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover,
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-/* For Firefox */
-/* Note: Firefox also supports scrollbar-width and scrollbar-color properties */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-}
-
-*::-moz-scrollbar-thumb {
-  background-color: #888;
-}
-
-*::-moz-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-*::-moz-scrollbar-track {
-  background-color: #f1f1f1;
-}
+        
+        
+    </body>
+</html>
