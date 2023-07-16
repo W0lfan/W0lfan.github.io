@@ -4,6 +4,11 @@
         <title>Starblast Arena : Team Fights</title>
         <link rel="stylesheet" href="styles/index.css">
         <link rel="icon" href="medias/logo.ico" type="image/x-icon">
+        <meta content="Naflouille Creations" property="og:title" />
+        <meta content="Discover Starblast Arena : Team Fights" property="og:description" />
+        <meta content="https://w0lfan.github.io/arena/" property="og:url" />
+        <meta content="https://github.com/W0lfan/W0lfan.github.io/blob/main/arena/medias/logo.png?raw=true" property="og:image" />
+        <meta content="#F6AEFF" data-react-helmet="true" name="theme-color" />
     </head>
     <body>
         <div class="header">
@@ -439,13 +444,11 @@
         window.addEventListener('scroll', getScrollPosition);
         window.addEventListener('DOMContentLoaded',function() {
                 document.getElementById('download-lastest').addEventListener('click',function() {
-                var fileContentElement = document.querySelector('.file-content');
                 var fileURL = 'https://raw.githubusercontent.com/W0lfan/Starblast-Arena/main/main/SA.js';
 
                 fetch(fileURL)
                 .then(response => response.text())
                 .then(data => {
-                    if (fileContentElement) {
                         var fileContent = data;
                         var fileName = 'SA - Lastest.js';
                         var fileBlob = new Blob([fileContent], { type: 'text/javascript' });
@@ -456,9 +459,6 @@
                         downloadLink.click();
 
                         URL.revokeObjectURL(downloadLink.href);
-                    } else {
-                        console.error('File content element not found.');
-                    }
                 })
                 .catch(error => {
                     console.error('Error fetching file:', error);
