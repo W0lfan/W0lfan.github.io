@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Starblast Arena : Team Fights</title>
-        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="/styles/index.css">
         <link rel="icon" href="medias/logo.ico" type="image/x-icon">
         <meta content="Naflouille Creations" property="og:title" />
         <meta content="Introducing Starblast Arena: Team Fights, an exhilarating team duel mode where teamwork and coordination are paramount." property="og:description" />
@@ -50,7 +50,7 @@
         window.addEventListener('DOMContentLoaded',function() {
             document.querySelector('#Ressources').addEventListener('click',function() {
                 window.scrollTo({top:0,behavior:"smooth"});
-                fetch("/ressources.txt")
+                fetch("ressources.txt")
                 .then(response => response.text())
                 .then(htmlContent => {
                     document.querySelector('.main-container').innerHTML = htmlContent;
@@ -59,7 +59,7 @@
             });
             document.querySelector('#Updates').addEventListener('click',function() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-                fetch("/updates.txt")
+                fetch("updates.txt")
                     .then(response => response.text())
                     .then(htmlContent => {
                         document.querySelector('.main-container').innerHTML = htmlContent;
@@ -88,7 +88,7 @@
             });
             document.querySelector('#Home').addEventListener('click',function() {
                 window.scrollTo({top:0,behavior:"smooth"});
-                fetch("/home.txt")
+                fetch("home.txt")
                 .then(response => response.text())
                 .then(htmlContent => {
                     document.querySelector('.main-container').innerHTML = htmlContent;
