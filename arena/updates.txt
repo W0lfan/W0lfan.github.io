@@ -5,6 +5,40 @@
         </div>
         <div class="update">
             <div class="date"><div class="round"></div>
+                June 24, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Github
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A Github update has been made in order to change the <a href="https://github.com/W0lfan/STF">repository</a> name for the mod.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 23, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Mod Tweaks & Updates
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A few mod fixes and tweaks have been added to the Mod, as well as a brand new update 
+                    SRC alike, where rounds are divided into rows. Each row contains 7 rounds, and each row-ending
+                    resets all the statistics of the mod, including players & teams statistics.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
                 June 20, 2023
             </div>
             <div class="update-container">
@@ -20,7 +54,6 @@
                     min. every round. Last bugs were fixed, and a new armada feature 
                     to display users before the round starts has been added.
                 </div>
-
             </div>
         </div>
         <div class="update">

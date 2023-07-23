@@ -61,6 +61,11 @@ body {
         transition: color 0.4s, font-size 0.2s;
         position:relative;
     }
+    .menu .item svg{
+        width: 30px;
+        height: 30px;
+        display: none;
+    }
     .menu .item:hover {
         font-size: 16px;
         color:#35AB36;
@@ -363,7 +368,7 @@ body {
     font-size: 14px;
     width: calc(100% - 10px);
     padding: 10px;
-    position:fixed;
+    position:relative;
     left: -10px;
     display: flex;
     flex-direction: row;
@@ -579,6 +584,10 @@ body a {
         gap: 30px;
         padding-left: 50px;
         position:relative;
+        .update:hover {
+            transform: translate(-5px,-5px);
+            box-shadow: 2px 2px 5px rgba(184, 40, 40,0.1);
+        }
         .update {
             background-color: #181818;
             padding: 10px;
@@ -587,6 +596,7 @@ body a {
             position:relative;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             opacity: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
             .date {
                 position:absolute;
                 left: -200px;
@@ -716,3 +726,282 @@ body a {
     }
 }
 
+
+.user:hover {
+    box-shadow: 2px 2px 20px black;
+}
+.contrib-class {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.contrib-class:nth-child(2) {
+    margin-top: 50px;
+}
+.user .title img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+}
+@keyframes popuser {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.contrib:nth-child(2) {
+    height: 500px;
+    .user:nth-child(1), .user:nth-child(3){
+        opacity: 0;
+        transform: scale(0);
+        animation:popuser;
+        animation-duration: 1s;
+        animation-delay: 0s;
+        animation-fill-mode: forwards;
+    }
+    .user:nth-child(2){
+        opacity: 0;
+        transform: scale(0);
+        animation:popuser;
+        animation-duration: 1s;
+        animation-delay: 0.7s;
+        animation-fill-mode: forwards;
+    }
+}
+.contrib {
+    position:relative;
+}
+@keyframes animatedown {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 200px;
+    }
+}
+
+.animation {
+    position:absolute;
+    height: 0px;
+    width: 5px;
+    top: 320px;
+    left:0;right:0;margin:auto;
+    border-radius: 50px;
+    background:linear-gradient(
+        -180deg,
+        #dfa60a,
+        rgba(223, 166, 10,0.2)
+    );
+    animation:animatedown;
+    animation-duration: 1s;
+    animation-delay: 1.7s;
+    animation-fill-mode: forwards;
+}
+.contributions {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    .contrib-header {
+        font-family: "Kanit",sans-serif;
+        font-size: 25px;
+    }
+    .contrib-tree {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .contrib-title {
+            position:relative;
+            width: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            .linear {
+                width: 90%;
+                position:absolute;
+                top:0;bottom:0;left:0;right:0;margin:auto;
+                height: 1px;
+            }
+            font-family: "Kanit",sans-serif;
+        }
+        .contrib {
+            display: grid;
+            width: 660px;
+            grid-template-columns: repeat(auto-fill,200px);
+            grid-template-rows: repeat(auto-fill,100px);
+            row-gap: 60px;
+            column-gap: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            align-items: start;
+            justify-content:start;
+
+            .user {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: #181818;
+                position:relative;
+                font-family: "Roboto", sans-serif;
+                padding-bottom: 15px;
+                border: 1px solid #e0e0e0;
+                cursor: pointer;
+                transition: box-shadow 0.3s;
+                .title {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                    .infos-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        align-items: center;
+                        justify-content: center;
+                        .name {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        .discord {
+                            font-size: 12px;
+                            margin-left: auto;
+                        }
+                    }
+                }
+                .description{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    font-size: 14px;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 10px;
+                    #mod-creator::before{
+                        content:"Mod Creator";
+                        background-color: #e4267e;
+                        padding: 2px;
+                        border-radius: 50px;
+                        width: fit-content;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    #mod-coder::before{
+                        content:"Mod Coder";
+                        background-color: #bc6fee;
+                        padding: 2px;
+                        border-radius: 50px;
+                        width: fit-content;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    #mod-contributor::before{
+                        content:"Mod Contributor";
+                        background-color: #49dfaf;
+                        padding: 2px;
+                        border-radius: 50px;
+                        width: fit-content;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    #mod-originals::before{
+                        content:"Mod Originals";
+                        background-color: #dfa60a;
+                        padding: 2px;
+                        border-radius: 50px;
+                        width: fit-content;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+            #honor {
+                border: 1px solid #f033e0;
+                padding-top: 25px;
+            }
+            #coder {
+                border: 1px solid #f08533;
+                padding-top: 25px;
+            }
+            .user svg {
+                height: 25px;
+                width: 25px;
+            }
+            .honorable, .coder {
+                background-color: #181818;
+                padding: 5px;
+                width: 25px;
+                height: 25px;
+                border: 1px solid #f033e0;
+                border-radius: 50%;
+                position:absolute;
+                left:0px;
+                right:0px;
+                margin:auto;
+                top:-20px;
+            }
+            .coder {
+                border: 1px solid #f08533;
+            }
+
+        }
+    }
+
+}                    
+
+
+@media (max-width: 800px) {
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    .header {
+        .header-title span {
+            display: none;
+        }
+        .header-title {
+            width: 50px;
+        }  
+        .menu {
+            margin-left: 140px;
+            gap: 30px;
+            justify-content: center;
+            .item span  {
+                display: none;
+            }
+            .item svg  {
+                display: flex;
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+    .about-arena {
+        width: 95%;
+        text-align: center;
+        flex-direction: column !important;
+        .text-container {
+            width: 100% !important;
+            gap: 30px !important;
+            .description {
+                margin-left: auto;
+                margin-right: auto;
+                text-align:start;
+                display: none;
+            }
+        }
+        .screenshots {
+            width: 75%;
+        }
+
+    }
+  }

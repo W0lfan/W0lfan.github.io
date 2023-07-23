@@ -147,6 +147,20 @@
             <span id="true">true</span> / <span id="false">false</span>
         </div>
     </div>
+    <div class="specification">
+        <div class="name">
+            Ship Unlocking
+        </div>
+        <div class="customizable">
+            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+        </div>
+        <div class="path">
+            game.custom.UnLock
+        </div>
+        <div class="value">
+            <span id="int">Int</span>
+        </div>
+    </div>
     <div class="separator">
         Map
     </div>
@@ -183,13 +197,27 @@
     </div>
     <div class="specification">
         <div class="name">
-            Rounds Row
+            Rounds Amount
         </div>
         <div class="customizable">
             <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
         </div>
         <div class="path">
             game.custom._p.Inner.MaximumRounds
+        </div>
+        <div class="value">
+            <span id="int">Integer</span>
+        </div>
+    </div>
+    <div class="specification">
+        <div class="name">
+            Rounds Row
+        </div>
+        <div class="customizable">
+            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
+        </div>
+        <div class="path">
+            game.custom._p.Inner.MaximumRows
         </div>
         <div class="value">
             <span id="int">Integer</span>
