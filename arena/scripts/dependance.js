@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded',function() {
                 "https://raw.githubusercontent.com/W0lfan/STF/main/main/latest.js",
             ];
             let names = [];
-
+            let i = 0;
 
             for (let ver of versions) {
                 names.push(`STF ${ver.id} - ${VERSIONS[ver.id]}.txt`);
@@ -154,6 +154,7 @@ window.addEventListener('DOMContentLoaded',function() {
                         alert('An error occured. Please join the Discord server in order to report it.')
                     });
                 });
+                i++;
             }
         });
         window.scrollTo({top:0,behavior:"smooth"});
