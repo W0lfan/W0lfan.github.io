@@ -1,4 +1,4 @@
-<div class="about-arena">
+<div class="about-arena"> 
     <div class="text-container">
         <div class="title">
             <div class="name">Starblast Arena : Team Fights</div>
