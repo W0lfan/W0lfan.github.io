@@ -1,5 +1,6 @@
 let switchSlider = 1;
 
+
 window.addEventListener('DOMContentLoaded',function() {
     document.querySelector('#Ressources').addEventListener('click',function() {
         window.scrollTo({top:0,behavior:"smooth"});
@@ -116,46 +117,60 @@ window.addEventListener('DOMContentLoaded',function() {
             document.querySelector('.main-container').innerHTML = htmlContent;
             let versions = document.querySelectorAll('.version');
 
-
-            var files = [
-                "https://raw.githubusercontent.com/W0lfan/STF/main/main/stable.js",
-                "https://raw.githubusercontent.com/W0lfan/STF/main/main/latest.js",
-            ];
             let names = [];
+            let status = ["stable","latest"]
             let i = 0;
 
             for (let ver of versions) {
                 names.push(`STF ${ver.id} - ${VERSIONS[ver.id]}.txt`);
-                ver.querySelector('.title .name .spec').innerHTML = VERSIONS[ver.id];
-            }
-
-            for (let ver of versions) {
-                let button = ver.querySelector('.download-button');
-                button.addEventListener('click',function() {
-                    fetch(files[i])
-                    .then(response => response.text())
-                    .then(data => {
-                            var fileContent = data;
-                            var fileName = names[i];
-
-                            
-                            var fileBlob = new Blob([fileContent], { type: 'text' });
-            
-                            var downloadLink = document.createElement('a');
-                            downloadLink.href = URL.createObjectURL(fileBlob);
-                            downloadLink.download = fileName;
-                            downloadLink.click();
-            
-                            URL.revokeObjectURL(downloadLink.href);
-                            i++;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching file:', error);
-                        alert('An error occured. Please join the Discord server in order to report it.')
-                    });
-                });
+                ver.querySelector('.title .name .spec').innerHTML = VERSIONS[status[i]];
                 i++;
             }
+
+            document.querySelector('#stable').addEventListener("click",function(){
+                fetch('https://raw.githubusercontent.com/W0lfan/STF/main/main/stable.js')
+                .then(response => response.text())
+                .then(data => {
+                        var fileContent = data;
+                        var fileName = `STF Stable - ${VERSIONS["stable"]}.txt`;
+
+                        
+                        var fileBlob = new Blob([fileContent], { type: 'text' });
+        
+                        var downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(fileBlob);
+                        downloadLink.download = fileName;
+                        downloadLink.click();
+        
+                        URL.revokeObjectURL(downloadLink.href);
+                })
+                .catch(error => {
+                    console.error('Error fetching file:', error);
+                    alert('An error occured. Please join the Discord server in order to report it.')
+                });
+            });
+            document.querySelector('#latest').addEventListener("click",function(){
+                fetch('https://raw.githubusercontent.com/W0lfan/STF/main/main/latest.js')
+                .then(response => response.text())
+                .then(data => {
+                        var fileContent = data;
+                        var fileName = `STF Latest - ${VERSIONS["latest"]}.txt`;
+
+                        
+                        var fileBlob = new Blob([fileContent], { type: 'text' });
+        
+                        var downloadLink = document.createElement('a');
+                        downloadLink.href = URL.createObjectURL(fileBlob);
+                        downloadLink.download = fileName;
+                        downloadLink.click();
+        
+                        URL.revokeObjectURL(downloadLink.href);
+                })
+                .catch(error => {
+                    console.error('Error fetching file:', error);
+                    alert('An error occured. Please join the Discord server in order to report it.')
+                });
+            })
         });
         window.scrollTo({top:0,behavior:"smooth"});
     });
