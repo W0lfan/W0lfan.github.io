@@ -54,27 +54,13 @@ window.addEventListener('DOMContentLoaded',function() {
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-left-start');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-left');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.zIndex = "1";
-                if (switchSlider < 3) {
+                if (switchSlider < 7) {
                     switchSlider++;
                 } else {
                     switchSlider = 1;
                 }
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-left');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-left-start');
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.opacity = "1";
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.zIndex = "2";
-            });
-            document.getElementById("switch_before").addEventListener('click', function() {
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-right-start');
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-right');
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.zIndex = "1";
-                if (switchSlider > 1) {
-                    switchSlider--;
-                } else {
-                    switchSlider = 3;
-                }
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-right');
-                document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-right-start');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.opacity = "1";
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.zIndex = "2";
             });
