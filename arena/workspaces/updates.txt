@@ -1,0 +1,466 @@
+<div class="updates-displayer">
+    <div class="updates-container">
+        <div class="updates-linear">
+            <div class="line"></div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 25, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Huge Website Update
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A significant website update has been implemented to make adjustments, including improved animations, 
+                    enhanced understanding of downloadable files and resources, as well as minor bug fixes.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 24, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Mod Update
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A substantial mod update has been released, 
+                    featuring a new ship, a ship lock feature to
+                     prevent armada-spam, and various bug fixes.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 24, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Github
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A Github update has been made in order to change the <a href="https://github.com/W0lfan/STF">repository</a> name for the mod.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 23, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Mod Tweaks & Updates
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A few mod fixes and tweaks have been added to the Mod, as well as a brand new update 
+                    SRC alike, where rounds are divided into rows. Each row contains 7 rounds, and each row-ending
+                    resets all the statistics of the mod, including players & teams statistics.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 20, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Mod Tweaks
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A gem gathering feature as been added to the Starblast Arena mod,
+                    as well as a ship-lock revamp, allowing users to choose two ships 
+                    min. every round. Last bugs were fixed, and a new armada feature 
+                    to display users before the round starts has been added.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 15, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Mod Comeback
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                    <div class="tag" id="creations_tag"></div>
+                </div>
+                <div class="description">
+                    The mod, previously known as Starblast Team Fights, now is The Starblast Arena : Team Fights.<br>
+                    A new update providing a clear and understandable code is published,
+                    as well as Discord server revamp and a new website.<br>All the mod issues were fixed,
+                    and it's stability is higher than ever. 
+                </div>
+                <div class="image">
+                    <img src="https://w0lfan.github.io/arena/medias/Starblast%20Arena%20Team%20Fights.png">
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                November 16, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Infinite Mode
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    An infinite-rounds mode is being coded.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                November 11, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Ship Lock Feature
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A Ship Lock is being added to the Starblast Arena, in order to provide a better challenge 
+                    to players. Each chosen ship is locked for the next rounds, and reseted once it is not possible 
+                    to play any ships anymore.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                November 4, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Massive Tweaks
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    Better UIs & explanations are being added to the Starblast Arena mod, as well as
+                    fixes of timers, bugs, and features. 
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                November 1, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        First Official Beta Test
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The first official test of the Starblast Arena Mod is being hosted. This host takes place 
+                    with community votes regarding the dates.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                October 31, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Kick Feature Removal
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    Judged as useless, the kick feature is being removed from the Starblast Arena mod.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 21, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Starblast Contributions
+                    </div>
+                    <div class="tag" id="creations_tag"></div>
+                </div>
+                <div class="description">
+                    Naflouille developped a new Starblast ressource to view all the official game contributors.
+                </div>
+                <div class="archive">
+                    <button onclick="window.open('https://w0lfan.github.io/StarblastContributions/main.html',target='_blank')">
+                        Open Starblast Contributions
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                July 20, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Kick Feature
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A kick feature is being added to the Starblast Arena Mod, in order to 
+                    kick inactive players from the game.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                June 21, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Sprint
+                    </div>
+                    <div class="tag" id="creations_tag"></div>
+                </div>
+                <div class="description">
+                    Sprint, a clock for people to motivate themselves, is launched.
+                </div>
+                <div class="archive">
+                    <button onclick="window.open('https://w0lfan.github.io/Sprint/index.html',target='_blank')">
+                        Open Sprint
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                May 5, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Projects
+                    </div>
+                    <div class="tag" id="creations_tag"></div>
+                </div>
+                <div class="description">
+                    New Side Projects are being added to the developer's projects list.
+                </div>
+                <div class="archive">
+                    <img src="https://media.discordapp.net/attachments/960210333354590248/975335155474505758/Capture.PNG?width=1920&height=1355">
+                    <iframe src="https://www.youtube.com/embed/qFP3puTjBSw" width="500px" height="250px" style="border:none;border-radius:5px"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                May 1, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Website
+                    </div>
+                    <div class="tag" id="creations_tag"></div>
+                </div>
+                <div class="description">
+                    Naflouille's Creations has a new website, now closed.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 24, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Components
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod gets a major UI revamp and new ship-choosing 
+                    components.
+                </div>
+                <div class="archive">
+                    <img src="https://media.discordapp.net/attachments/960210333354590248/967777257613578280/starblast-1650806361553.png?width=2410&height=1355">
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 16, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        New Logo
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod gets a new logo.
+                </div>
+                <div class="image">
+                    <img src="https://media.discordapp.net/attachments/960210333354590248/964845493928747018/stflogo.png?width=1355&height=1355">
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 14, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Major Fixes
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod heals from a lot of bugs due to 
+                    components & features.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 12, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Positioning
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod implements a position feature to place 
+                    the players whenever a round starts.
+                </div>
+                <div class="archive">
+                    <img src="https://media.discordapp.net/attachments/960210333354590248/963346480243028018/IMG_20220412_095344.jpg?width=1695&height=1355">
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 11, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Spectators
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod starts to implement spectating 
+                    features for non-playing users.
+                </div>
+                <div class="archive">
+                    <img src="https://media.discordapp.net/attachments/960210333354590248/963031371553574952/IMG_20220411_125536.jpg?width=2880&height=1330">
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 10, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Starblast Arena Rename
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    Due to the existence of another mod with the same name, 
+                    the Starblast Arena mode has undergone a rebranding and 
+                    was now known as "Starblast Team Fights."
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 5, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Starblast Arena Merge
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena mod has undergone a significant transformation, 
+                    shifting away from its original alien-based format, where players 
+                    engaged in chaotic battles using custom ships to earn points and 
+                    emerge victorious. Now, it has evolved into a thrilling one-on-one 
+                    duel format, where players face off in a single arena.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                April 3, 2022
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Starblast Arena Discord
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    A new Discord server is created for the Starblast Arena Mod.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
+                Unknown
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Starblast Arena Logo
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    The Starblast Arena, alien version, gets a new logo.
+                </div>
+                <div class="image">
+                    <img src="https://cdn.discordapp.com/icons/765971859299893251/9a87c4aa71fe07b302c71a6c723b27b2.webp?size=96">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
