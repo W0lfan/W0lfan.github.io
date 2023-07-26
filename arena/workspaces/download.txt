@@ -7,14 +7,15 @@
             <div class="download-button" id="stable">
                 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
 
-                    <g id="SVGRepo_iconCarrier"> <path d="M12 7L12 14M12 14L15 11M12 14L9 11" stroke="#B82828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M16 17H12H8" stroke="#B82828" stroke-width="1.5" stroke-linecap="round"/> <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="#B82828" stroke-width="1.5" stroke-linecap="round"/> </g>
+                <g id="SVGRepo_iconCarrier"> <path d="M4.56499 12.4068C4.29258 12.0947 3.81879 12.0626 3.50676 12.335C3.19472 12.6074 3.1626 13.0812 3.43501 13.3932L4.56499 12.4068ZM7.14286 16.5L6.57787 16.9932C6.7203 17.1564 6.92629 17.25 7.14286 17.25C7.35942 17.25 7.56542 17.1564 7.70784 16.9932L7.14286 16.5ZM15.565 7.99324C15.8374 7.68121 15.8053 7.20742 15.4932 6.93501C15.1812 6.6626 14.7074 6.69472 14.435 7.00676L15.565 7.99324ZM10.5064 11.5068C10.234 11.8188 10.2662 12.2926 10.5782 12.565C10.8902 12.8374 11.364 12.8053 11.6364 12.4932L10.5064 11.5068ZM9.67213 14.7432C9.94454 14.4312 9.91242 13.9574 9.60039 13.685C9.28835 13.4126 8.81457 13.4447 8.54215 13.7568L9.67213 14.7432ZM3.43501 13.3932L6.57787 16.9932L7.70784 16.0068L4.56499 12.4068L3.43501 13.3932ZM7.70784 16.9932L9.67213 14.7432L8.54215 13.7568L6.57787 16.0068L7.70784 16.9932ZM11.6364 12.4932L13.6007 10.2432L12.4707 9.25676L10.5064 11.5068L11.6364 12.4932ZM13.6007 10.2432L15.565 7.99324L14.435 7.00676L12.4707 9.25676L13.6007 10.2432Z" fill="#B82828"/> <path d="M20.0002 7.5625L15.7144 12.0625M11.0002 16L11.4286 16.5625L13.5715 14.3125" stroke="#B82828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
                 </svg>
             </div>
             <div class="title">
@@ -27,18 +28,19 @@
                 </div>
             </div>
         </div>
-        <div class="version">
-            <div class="download-button" id="latest">
+        <div class="version" id="latest">
+            <div class="download-button">
                 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-                    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
 
-                    <g id="SVGRepo_iconCarrier"> <path d="M12 7L12 14M12 14L15 11M12 14L9 11" stroke="#B82828" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path d="M16 17H12H8" stroke="#B82828" stroke-width="1.5" stroke-linecap="round"/> <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="#B82828" stroke-width="1.5" stroke-linecap="round"/> </g>
+                <g id="SVGRepo_iconCarrier"> <path d="M20.9844 10H17M20.9844 10V6M20.9844 10L17.6569 6.34315C14.5327 3.21895 9.46734 3.21895 6.34315 6.34315C3.21895 9.46734 3.21895 14.5327 6.34315 17.6569C9.46734 20.781 14.5327 20.781 17.6569 17.6569C18.4407 16.873 19.0279 15.9669 19.4184 15M12 9V13L15 14.5" stroke="#b82828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
                 </svg>
             </div>
             <div class="title">
@@ -51,5 +53,73 @@
                 </div>
             </div>
         </div>
+        <div class="version" id="beta">
+            <div class="download-button">
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <svg fill="#b82828" width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <g id="SVGRepo_iconCarrier">
+
+                <path d="M64 96H0c0 123.7 100.3 224 224 224v144c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V320C288 196.3 187.7 96 64 96zm384-64c-84.2 0-157.4 46.5-195.7 115.2 27.7 30.2 48.2 66.9 59 107.6C424 243.1 512 147.9 512 32h-64z"/>
+
+                </g>
+
+                </svg>
+            </div>
+            <div class="title">
+                <div class="name">
+                    First Version
+                    <div class="spec"></div>
+                </div>
+                <div class="description">
+                    Linked to <a href="https://github.com/W0lfan/STF/blob/main/archives/main/Starbast%20Arena%20Version%201-09.js">https://github.com/W0lfan/STF/blob/main/archives/main/Starbast%20Arena%20Version%201-09.js</a>
+                </div>
+            </div>
+        </div>
     </div>
+        <div class="down-header">
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+                <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z" fill="#B82828"/> </g>
+
+                </svg>
+            <div class="title">Terms ("terms") of use - Effective Date: July 26, 2023</div>
+
+            
+            <div class="info">
+                <div class="title">Ownership and License</div>
+                The Naflouille Creations Mod ("Mod") is brought to you by Naflouille, Glitch, and Koromgo. 
+                The Mod is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA). 
+                This means you are free to use, modify, and distribute the Mod for non-commercial purposes, 
+                as long as you provide appropriate credit to the original creators and share any derivative 
+                works under the same license. For more information, please refer to the license details here.
+            </div>
+            <div class="info">
+                <div class="title">Non-Affiliation</div>
+                It's important to note that this Mod is not officially affiliated with the Starblast.io game 
+                or the Neuronality company. Naflouille Creations operates independently, and any interactions 
+                or experiences you have with this Mod are separate from the official Starblast.io game and 
+                Neuronality's products and services.
+            </div>
+            <div class="info">
+                <div class="title">As-Is Disclaimer</div>
+                The Mod is provided "as-is," and while we strive to deliver a quality experience, we cannot 
+                guarantee a flawless performance. Please be aware that errors and bugs 
+                may occur while using the Mod. We encourage you to report any issues you encounter, 
+                and we will do our best to address them in future updates.
+            </div>
+        </div>
 </div>

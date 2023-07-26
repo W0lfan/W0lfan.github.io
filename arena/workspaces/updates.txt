@@ -210,7 +210,7 @@
                     <div class="tag" id="creations_tag"></div>
                 </div>
                 <div class="description">
-                    Naflouille developped a new Starblast ressource to view all the official game contributors.
+                    Naflouille developped a new Starblast resource to view all the official game contributors.
                 </div>
                 <div class="archive">
                     <button onclick="window.open('https://w0lfan.github.io/StarblastContributions/main.html',target='_blank')">

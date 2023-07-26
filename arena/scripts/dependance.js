@@ -1,10 +1,10 @@
 let switchSlider = 1;
-
+let slided = 0;
 
 window.addEventListener('DOMContentLoaded',function() {
-    document.querySelector('#Ressources').addEventListener('click',function() {
+    document.querySelector('#Resources').addEventListener('click',function() {
         window.scrollTo({top:0,behavior:"smooth"});
-        fetch("workspaces/ressources.txt")
+        fetch("workspaces/resources.txt")
         .then(response => response.text())
         .then(htmlContent => {
             document.querySelector('.main-container').innerHTML = htmlContent;
@@ -45,11 +45,24 @@ window.addEventListener('DOMContentLoaded',function() {
 
 
     document.querySelector('#Home').addEventListener('click',function() {
+
+        let slide_titles = [
+            "Understandable UIs",
+            "Comprehensive Discord Server",
+            "Clear Codes",
+            "Ship Armadas",
+            "Unusual Duels",
+            "All-knowing Terminal",
+            "All Game Statistics"
+        ]
+
+
         fetch("workspaces/home.txt")
         .then(response => response.text())
         .then(htmlContent => {
             document.querySelector('.main-container').innerHTML = htmlContent;
             switchSlider = 1;
+            document.querySelector('.screenshot-title').innerHTML = slide_titles[switchSlider - 1];
             document.getElementById("switch_next").addEventListener('click', function() {
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-left-start');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-left');
@@ -59,6 +72,7 @@ window.addEventListener('DOMContentLoaded',function() {
                 } else {
                     switchSlider = 1;
                 }
+                document.querySelector('.screenshot-title').innerHTML = slide_titles[switchSlider - 1];
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.remove('slide-left');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).classList.add('slide-left-start');
                 document.querySelector(`.screenshots img:nth-child(${switchSlider})`).style.opacity = "1";
@@ -72,7 +86,10 @@ window.addEventListener('DOMContentLoaded',function() {
                     Slide();
                 }, 10000);
             }
-            Slide();
+            if(!slided) {
+                Slide();
+                slided = true;
+            }
             function animatePopup() {
                 const spans = document.querySelectorAll("#sentence span");
                 let delay = 0;
@@ -104,7 +121,7 @@ window.addEventListener('DOMContentLoaded',function() {
             let versions = document.querySelectorAll('.version');
 
             let names = [];
-            let status = ["stable","latest"]
+            let status = ["stable","latest","beta"]
             let i = 0;
 
             for (let ver of versions) {
@@ -113,12 +130,12 @@ window.addEventListener('DOMContentLoaded',function() {
                 i++;
             }
 
-            document.querySelector('#stable').addEventListener("click",function(){
-                fetch('https://raw.githubusercontent.com/W0lfan/STF/main/main/stable.js')
+            function DownLoad(url, name) {
+                fetch(url)
                 .then(response => response.text())
                 .then(data => {
                         var fileContent = data;
-                        var fileName = `STF Stable - ${VERSIONS["stable"]}.txt`;
+                        var fileName = name;
 
                         
                         var fileBlob = new Blob([fileContent], { type: 'text' });
@@ -134,29 +151,16 @@ window.addEventListener('DOMContentLoaded',function() {
                     console.error('Error fetching file:', error);
                     alert('An error occured. Please join the Discord server in order to report it.')
                 });
-            });
+            }
             document.querySelector('#latest').addEventListener("click",function(){
-                fetch('https://raw.githubusercontent.com/W0lfan/STF/main/main/latest.js')
-                .then(response => response.text())
-                .then(data => {
-                        var fileContent = data;
-                        var fileName = `STF Latest - ${VERSIONS["latest"]}.txt`;
-
-                        
-                        var fileBlob = new Blob([fileContent], { type: 'text' });
-        
-                        var downloadLink = document.createElement('a');
-                        downloadLink.href = URL.createObjectURL(fileBlob);
-                        downloadLink.download = fileName;
-                        downloadLink.click();
-        
-                        URL.revokeObjectURL(downloadLink.href);
-                })
-                .catch(error => {
-                    console.error('Error fetching file:', error);
-                    alert('An error occured. Please join the Discord server in order to report it.')
-                });
+                DownLoad('https://raw.githubusercontent.com/W0lfan/STF/main/main/stable.js',`STF Stable - ${VERSIONS["stable"]}.txt`)
             })
+            document.querySelector('#latest').addEventListener("click",function(){
+                DownLoad('https://raw.githubusercontent.com/W0lfan/STF/main/main/latest.js',`STF Latest - ${VERSIONS["latest"]}.txt`)
+            });
+            document.querySelector('#beta').addEventListener("click",function(){
+                DownLoad('https://raw.githubusercontent.com/W0lfan/STF/main/archives/main/Starbast%20Arena%20Version%201-09.js',`STF Beta (SA).txt`)
+            });
         });
         window.scrollTo({top:0,behavior:"smooth"});
     });
@@ -170,29 +174,6 @@ window.addEventListener('DOMContentLoaded',function() {
         });
         window.scrollTo({top:0,behavior:"smooth"});
     });
-    
-    /*
-    document.getElementById('download-lastest').addEventListener('click',function() {
-        var fileURL = 'https://raw.githubusercontent.com/W0lfan/Starblast-Arena/main/main/SA.js';
 
-        fetch(fileURL)
-        .then(response => response.text())
-        .then(data => {
-                var fileContent = data;
-                var fileName = 'SA - Lastest.js';
-                var fileBlob = new Blob([fileContent], { type: 'text/javascript' });
-
-                var downloadLink = document.createElement('a');
-                downloadLink.href = URL.createObjectURL(fileBlob);
-                downloadLink.download = fileName;
-                downloadLink.click();
-
-                URL.revokeObjectURL(downloadLink.href);
-        })
-        .catch(error => {
-            console.error('Error fetching file:', error);
-            alert('An error occured. Please join the Discord server in order to report it.')
-        });
-    })*/
     
 })

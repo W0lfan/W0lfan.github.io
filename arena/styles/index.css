@@ -374,18 +374,47 @@ body {
 
 .down-header {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    width: calc(100% - 10px);
+    width: calc(50% - 20px);
     padding: 10px;
     position:relative;
-    left: -10px;
     display: flex;
-    flex-direction: row;
-    gap: 2px;
+    flex-direction: column;
+    gap: 15px;
     align-items: center;
     justify-content: center;
     bottom:0;
-    color:rgba(255,255,255,0.3)
+    color:#ffffffb3;
+    background-color: #181818;
+    border-radius: 10px;
+    border: 2px solid #B82828;
+    box-shadow: 0px 0px 20px black;
+    margin-top: 20px;
+
+    .title {
+        font-size: 15px;
+        color:rgba(255,255,255,0.9);
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        font-size: 12px;
+    }
+    .last {
+        font-size: 13px;
+        width: 100%;
+    }
+}
+.down-header svg {
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    left:-20px;
+    background-color: #181818;
+    border-radius: 50%;
+
 }
 
 .specitifications {
@@ -973,53 +1002,6 @@ body a {
 }                    
 
 
-@media (max-width: 800px) {
-    body {
-        height: 100%;
-        width: 100%;
-    }
-    .header {
-        .header-title span {
-            display: none;
-        }
-        .header-title {
-            width: 50px;
-        }  
-        .menu {
-            margin-left: 140px;
-            gap: 30px;
-            justify-content: center;
-            .item span  {
-                display: none;
-            }
-            .item svg  {
-                display: flex;
-                width: 25px;
-                height: 25px;
-            }
-        }
-    }
-    .about-arena {
-        width: 95%;
-        text-align: center;
-        flex-direction: column !important;
-        justify-content: center;
-        .text-container {
-            width: 50% !important;
-            .description {
-                margin-left: auto;
-                margin-right: auto;
-                text-align:start;
-                display: none;
-
-            }
-        }
-        .screenshots {
-            width: 75%;
-        }
-
-    }
-  }
 #colored {
     color:#35AB36;
 }
@@ -1063,7 +1045,7 @@ body a {
         margin-left: auto;
     }
     100% {
-        width: 100%;
+        width: 95%;
     }
 }
 
@@ -1087,11 +1069,17 @@ body a {
         align-items: center;
         width: 50%;
         justify-content: center;
+        border-radius: 5px;
+        .version:hover {
+            box-shadow: 0px 0px 2ch black;
+        }
         .version {
+            transition: box-shadow 0.5s;
             animation : version_appear;
+            cursor: pointer;
             animation-duration: 1s;
             height: 60px;
-            width: 100%;
+            width: 95%;
             display: flex;
             flex-direction: row;
             overflow: hidden;
@@ -1099,7 +1087,7 @@ body a {
             font-family: "Roboto",sans-serif;
             padding: 10px;
             padding-left: 10px;
-            border-radius: 10px;
+            border-radius: 5px;
             gap: 20px;
             border: 2px solid rgb(42, 42, 42);
             background-color: rgba(24,24,24,0.9);
@@ -1133,7 +1121,7 @@ body a {
                 .description {
                     font-size: 14px;
                     color:rgba(255, 255, 255, 0.702);
-                    width: 100%;
+                    width: 90%;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     white-space: nowrap;
@@ -1162,6 +1150,16 @@ body a {
     }
 }
 
+.screenshot-title {
+    position:absolute;
+    font-size: 20px;
+    font-family: "Poppins",sans-serif;
+    width: fit-content;
+    text-align: center;
+    bottom:0;
+    left: 0; right: 0; margin:auto;
+    z-index: 3;
+}
 
 @keyframes SlideLeft {
     from {
@@ -1212,3 +1210,114 @@ body a {
     animation-fill-mode: forwards;
 }
 
+
+.disclaimer {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    body {
+        height: 100%;
+        width: 100%;
+    }
+    .header {
+        .header-title span  {
+            display: none;
+        }
+        .header-title {
+            width: fit-content;
+        }
+        .menu {
+            width: calc(100% - 100px);
+            margin-left: auto;
+            margin-right: auto;
+            gap: 10px !important;
+            .item span {
+                display: none;
+            }
+            .item svg {
+                display: inline;
+            }
+        }
+    }
+    .about-arena {
+        flex-direction: column !important;
+        .text-container {
+            width: 90% !important;
+        }
+        .slideshow {
+            width: 80% !important;
+        }
+    }
+    .upcoming-features {
+        flex-direction: column;
+        .container {
+            flex-direction: column !important;
+            .column {
+                width: 100% !important;
+                .upcoming {
+                    padding-left: 15px !important;
+                    padding-right: 15px !important;
+                    width: calc(100% - 30px) !important;
+                    .title {
+                        .tag::after {
+                            content:"" !important;
+                            padding: 0px !important;
+                        }
+                        .tag {
+                            padding-left: 10px !important;
+                            padding-right: 10px !important;
+                            gap:0px !important;
+                        }
+                    }
+                }
+            }
+        } 
+    }
+    .download-view {
+        width: 90% !important;;
+        .download-view-title {
+            text-align: center;
+        }
+        .versions {
+            width: 100% !important;;
+        }
+        .down-header {
+            width: 90% !important;;
+            .title {
+                width: 90%;
+                text-align: center;
+            }
+        }
+    }
+    #Updates, #Contributions {
+        display: none;
+    }
+    #docs-title, .specitifications {
+        display: none;
+    }
+    .medias {
+        position:relative !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        bottom:unset !important;
+        right: unset !important;
+        gap: 10px !important;
+        align-items: center;
+        justify-content: center;
+        margin-top: -100px;
+        .media-container {
+            width: 75% !important;
+            .center {
+                width: calc(100% - 40px) !important;
+            }
+        }
+    }
+    .disclaimer {
+        display: inline;
+        width: 75%;
+        font-size: 20px;
+        font-family: "Poppins",sans-serif;
+        text-align: center;
+    }
+  }
