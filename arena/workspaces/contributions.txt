@@ -56,7 +56,7 @@
             </svg>
           </div>
           <div class="title">
-            <img src="https://cdn.discordapp.com/guilds/819598993071800391/users/689452305212637253/avatars/9c460b9d4474916935334d1c1cbd28f7.webp?size=320">
+            <img src="medias/logo.png">
             <div class="infos-container">
               <div class="name"> Naf </div>
               <div class="discord"> naflouille </div>

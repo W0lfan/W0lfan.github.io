@@ -24,345 +24,68 @@
     </div>
 </div>
 
-<div class="huge-title" id="docs-title">
-    Documentation
-</div>
-<div class="specitifications">
-    <div class="sp-header">
-        <div class="name">
-            Parameter
+<div class="documentation">
+    <div class="documentation-content">
+        <div class="docs-container">
+        <div class="docs-desc">
+            You have complete control over a multitude of parameters by accessing the objects within your code. 
+            This level of customization empowers you to tailor the code to your exact specifications, 
+            creating a truly personalized and unique experience.
         </div>
-        <div class="customizable">
-            Customizable
-        </div>
-        <div class="path">
-            Path
-        </div>
-        <div class="value">
-            Value
-        </div>
-    </div>
-    <div class="separator">
-        Playing Parameters
-    </div>
-    <div class="specification">
-        <div class="name">
-            Maximum Versus
-        </div>
-        <div class="customizable">
-            <svg id="nocustomizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.MAX
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Players Per Team
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.MaxPlayers
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
+        <div class="docs-content" id="code">
+                <code><span id="var">const</span> parameters <span id="equal">=</span> {
+    timing: {
+        pre_round: <span id="value">20</span>,
+        ship_selection: <span id="value">20</span>,
+        map_reduction: <span id="value">20</span>,
+        round_draw: <span id="value">30</span>,
+        cycle_close: <span id="value">10</span>
+    },
+    config: {
+        cycle: <span id="value">3</span>,
+        round: <span id="value">4</span>
+    },
+    play: {
+        gem_gathering: <span id="value">true</span>,    <span id="com">// Allow gem gathering</span>
+        auto_lock: <span id="value">true</span>,        <span id="com">// Allow team lock</span>
+        spectating: <span id="value">true</span>,       <span id="com">// Allow spectating</span>
+
+        ship_lock: {
+            allow_lock: <span id="value">true</span>,   <span id="com">// General. Allow ship lock or not </span>
+            unlock_cap: <span id="value">2</span>,      <span id="com">// How much ships are unlocked when all the ships were played</span>
+            team_limit: <span id="value">1</span>       <span id="com">// Lock limit depending on the amount of ships taken</span>
+        },
+
+        team_switch: <span id="value">true</span>,      <span id="com">// Allow team switch between rounds</span>
+
+        <span id="com">// Beta</span>
+        random_assignation: <span id="value">false</span>
+    }
+}
+                </code>
+
         </div>
     </div>
-    <div class="specification">
-        <div class="name">
-            Team Lock
+    <div class="docs-container">
+        <div class="docs-desc">
+            The latest update of the mod introduces an exciting new feature – the ability to incorporate your very own custom ships into the game.
         </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.AutoLock
-        </div>
-        <div class="value">
-            <span id="true">true</span> / <span id="false">false</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Ship Lock
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.ShipLock
-        </div>
-        <div class="value">
-            <span id="true">true</span> / <span id="false">false</span>
+        <div class="docs-content" id="code">
+<code>game.custom.core <span id="equal">=</span> {
+    config : {
+        ships : [
+            <span id="string">'{"name":"Fly",""level":1,"model":1,"size":1}'</span>         <span id="com">// Never remove this ship</span>
+
+            <span id="com">// You can then add up to 9 ships of yours</span>
+        ]
+    }
+}
+</code>
+<code>
+<span id="com">// Remove "var =", and then put the string in game.custom.core.config.ships</span>
+<span id="var">var</span> ship_code <span id="equal">=</span> <span id="string">'your ship code'</span>
+</code>
         </div>
     </div>
-    <div class="specification">
-        <div class="name">
-            Gem Gathering
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.GemGathering
-        </div>
-        <div class="value">
-            <span id="int">Int</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Spectators
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.Spectator
-        </div>
-        <div class="value">
-            <span id="true">true</span> / <span id="false">false</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Ship Unlocking
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.UnLock
-        </div>
-        <div class="value">
-            <span id="int">Int</span>
-        </div>
-    </div>
-    <div class="separator">
-        Map
-    </div>
-    <div class="specification">
-        <div class="name">
-            Map pattern
-        </div>
-        <div class="customizable">
-            <svg id="nocustomizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.Map.Pattern
-        </div>
-        <div class="value">
-            <span id="pattern">Pattern</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Map Reducing Row
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Map.MaxReducing
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="separator">
-        Rounds
-    </div>
-    <div class="specification">
-        <div class="name">
-            Rounds Amount
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.MaximumRounds
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Rounds Row
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom._p.Inner.MaximumRows
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="separator">
-        Timing Parameters
-    </div>
-    <div class="specification">
-        <div class="name">
-            Time before pick
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InitialTime
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Time Before Round Starts
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.StartingTime
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Time Before Map Reduces
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.MapReducing
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Time Before Round Ends
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.LastTime
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Time Before Game Closes
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.ClosingTime
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="separator">
-        Teams
-    </div>
-    <div class="specification">
-        <div class="name">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://static.wikia.nocookie.net/starblastio_gamepedia_en/images/b/bf/Hues_ruler.png/revision/latest?cb=20210124185008">Team Hue</a>
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.hue
-        </div>
-        <div class="value">
-            <span id="int">Integer</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            Team Name
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.name
-        </div>
-        <div class="value">
-            <span id="pattern">Text</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color</a>
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.hex
-        </div>
-        <div class="value">
-            <span id="rgba">RGBA</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color (Darker)</a>
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.lighter
-        </div>
-        <div class="value">
-            <span id="rgba">RGBA</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://rgbacolorpicker.com/">Team Color (Super Lighter)</a>
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.superlighter
-        </div>
-        <div class="value">
-            <span id="rgba">RGBA</span>
-        </div>
-    </div>
-    <div class="specification">
-        <div class="name">
-            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h170v60H280q-58.333 0-99.167 40.765-40.833 40.764-40.833 99Q140-422 180.833-381q40.834 41 99.167 41h170v60ZM325-450v-60h310v60H325Zm185 170v-60h170q58.333 0 99.167-40.765 40.833-40.764 40.833-99Q820-538 779.167-579 738.333-620 680-620H510v-60h170q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H510Z"/></svg><a target="_blank"href="https://starblast.fandom.com/wiki/Modding_Tutorial#:~:text=report%2C%20Commander%22%2C%22Maria%22)%0A%3E%20%E2%96%88-,Available%20characters,-Lucina">Team Leader</a>
-        </div>
-        <div class="customizable">
-            <svg id="customizable" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M378-246 154-470l43-43 181 181 384-384 43 43-427 427Z"/></svg>
-        </div>
-        <div class="path">
-            game.custom.InnerTeams[x].Color.leader
-        </div>
-        <div class="value">
-            <span id="rgba">RGBA</span>
-        </div>
     </div>
 </div>

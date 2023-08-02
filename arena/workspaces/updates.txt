@@ -5,6 +5,29 @@
         </div>
         <div class="update">
             <div class="date"><div class="round"></div>
+                August 1, 2023
+            </div>
+            <div class="update-container">
+                <div class="update-header">
+                    <div class="title">
+                        Huge Mod Update
+                    </div>
+                    <div class="tag" id="arena_tag"></div>
+                </div>
+                <div class="description">
+                    An enormous code update has emerged, bringing with it a vastly improved 
+                    and more readable code structure that enhances processing efficiency. 
+                    Moreover, the update introduces the much-anticipated ability to 
+                    seamlessly integrate custom ships into the game. Alongside this 
+                    addition, a new team switch feature has been implemented, 
+                    offering a fresh dimension of gameplay strategy. Additionally, 
+                    to further spice things up, teams are now randomized at the start 
+                    of each cycle, injecting an element of unpredictability and excitement into every match.
+                </div>
+            </div>
+        </div>
+        <div class="update">
+            <div class="date"><div class="round"></div>
                 June 25, 2023
             </div>
             <div class="update-container">
@@ -12,7 +35,7 @@
                     <div class="title">
                         Huge Website Update
                     </div>
-                    <div class="tag" id="arena_tag"></div>
+                    <div class="tag" id="creations_tag"></div>
                 </div>
                 <div class="description">
                     A significant website update has been implemented to make adjustments, including improved animations, 
