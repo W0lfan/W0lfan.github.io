@@ -84,7 +84,7 @@ function QueryItems(r) {
             }
 
     }
-    fetch("/modding/database/mods.json")
+    fetch("/database/mods.json")
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -101,7 +101,7 @@ function QueryItems(r) {
       console.error('Fetch error:', error);
     });
 
-    fetch("/modding/database/codes.json")
+    fetch("/database/codes.json")
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
