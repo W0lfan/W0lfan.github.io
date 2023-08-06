@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',function() {
     });
     document.addEventListener("click", function(event) {
         let ev = event.target;
-        fetch("/modding/database/mods.json")
+        fetch("/database/mods.json")
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
