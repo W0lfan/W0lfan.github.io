@@ -22,7 +22,7 @@ function QueryOfficial() {
                 return;
             } 
     }
-    fetch("../database/mods.json")
+    fetch("https://raw.githubusercontent.com/W0lfan/W0lfan.github.io/main/sesame/database/mods.json")
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -84,7 +84,7 @@ function QueryItems(r) {
             }
 
     }
-    fetch("../database/mods.json")
+    fetch("https://raw.githubusercontent.com/W0lfan/W0lfan.github.io/main/sesame/database/mods.json")
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -101,7 +101,7 @@ function QueryItems(r) {
       console.error('Fetch error:', error);
     });
 
-    fetch("../database/codes.json")
+    fetch("https://raw.githubusercontent.com/W0lfan/W0lfan.github.io/main/sesame/database/codes.json")
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
