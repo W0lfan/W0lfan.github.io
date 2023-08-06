@@ -357,7 +357,7 @@ function Search(opt = null,official = false) {
         document.querySelector('#search-input').value = key_word;
 
 
-    }, 50);
+    }, 500);
 }
 function CopyText(text) {
 
