@@ -850,6 +850,26 @@
       "event": 0
     },
     {
+      "name": "Meg's Dueling OP",
+      "abvrt": "",
+      "version": "",
+      "description": "A dueling mod made by Megalodon.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/TheGreatMegalodon/Megalodon-s-dueling-code/blob/main/Meg's%20Dueling%20(Light%20Version).js",
+        "state": 2
+      },
+      "author": [
+        {
+          "name": ["Megalodon"],
+          "link": ""
+        }
+      ],
+      "official": 0,
+      "event": 0
+    },
+    {
       "name": "Alien Speedrun",
       "abvrt": "",
       "version": "",
@@ -883,6 +903,14 @@
       "author": [
         {
           "name": ["Megalodon"],
+          "link": ""
+        },
+        {
+          "name": ["ByLolPro"],
+          "link": ""
+        },
+        {
+          "name": ["Neo Space"],
           "link": ""
         }
       ],

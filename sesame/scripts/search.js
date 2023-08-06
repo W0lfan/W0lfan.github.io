@@ -200,8 +200,8 @@ function wrapCodeWithSyntaxHighlighting(codeLines) {
 let search_input;
 
 function Search(opt = null,official = false) {
+    search_input;
     if (search_input === "Official Starblast Mods") {
-        search_input="";
         Search('Official Starblast Mods',true);
         return;
     }
@@ -281,7 +281,6 @@ function Search(opt = null,official = false) {
                 return `<a href="${author.link}" target="_blank">${author.name}</a>`;
             }).join(', ');
         }
-        let i = 0;
         for (let data of Datas) {
             if (data.type==="Mod") {
                 document.querySelector('.results-container').innerHTML += `
@@ -329,9 +328,6 @@ function Search(opt = null,official = false) {
                 document.querySelector('.results-container').innerHTML += `
             
                 <div class="result-${localStorage.getItem('display')}" id="code-view-${localStorage.getItem('display')}">
-                    <div class="identifier">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z"/></svg>
-                    </div>
                     <div class="container">
                         <div class="header">
                             <div class="title">

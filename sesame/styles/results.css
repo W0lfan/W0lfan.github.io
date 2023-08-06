@@ -398,6 +398,7 @@
     margin-right: auto;
     padding: 5px;
     border-radius: 5px;
+    position: relative;
 }
 
 
@@ -419,6 +420,28 @@
         border-radius: 5px;
     }
 }
+.copy {
+    position:absolute;
+    top:5px;right:5px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.4s;
+}
+.copy svg {
+    width: 30px;
+    height: 30px;
+    fill:white;
+
+}
+.copy:hover {
+    background-color: rgba(255,255,255,0.1);
+}
 #code-view-line .container {
     width: calc(100% - 20px);
     padding-left: 10px;
@@ -431,28 +454,7 @@
         height: 65%;
         position:relative;
     }
-    .copy {
-        position:absolute;
-        top:5px;right:5px;
-        width: 30px;
-        height: 30px;
-        padding: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border-radius: 50%;
-        transition: background-color 0.4s;
-    }
-    .copy svg {
-        width: 30px;
-        height: 30px;
-        fill:white;
 
-    }
-    .copy:hover {
-        background-color: rgba(255,255,255,0.1);
-    }
 }
 .result-line {
     align-items: center;
@@ -491,6 +493,7 @@
         padding: 5px;
         z-index: 15;
     }
+
     .identifier svg {
         width: 30px;
         height: 30px;
