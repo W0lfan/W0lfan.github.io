@@ -200,7 +200,10 @@ function wrapCodeWithSyntaxHighlighting(codeLines) {
 let search_input;
 
 function Search(opt = null,official = false) {
-    console.log('Searching')
+    if (search_input === "Official Starblast Mods") {
+        Search('Official Starblast Mods',true)
+        return;
+    }
     let key_word;
     if (!opt) {
         key_word = document.querySelector('#search-input').value;
@@ -217,6 +220,7 @@ function Search(opt = null,official = false) {
     } else {
          result = QueryOfficial();
     }
+
     search_input = key_word;
     const Metrics = result[1];
     const Datas = result[0];
