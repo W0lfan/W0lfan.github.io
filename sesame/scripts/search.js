@@ -201,7 +201,8 @@ let search_input;
 
 function Search(opt = null,official = false) {
     if (search_input === "Official Starblast Mods") {
-        Search('Official Starblast Mods',true)
+        search_input="";
+        Search('Official Starblast Mods',true);
         return;
     }
     let key_word;
