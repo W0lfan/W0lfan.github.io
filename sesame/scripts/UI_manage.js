@@ -20,5 +20,11 @@ let ManageDisplay = function() {
     } else {
         localStorage.setItem('display',"grid");
     }
-    Search(search_input);
+    if (search_input == "Official Starblast Mods") {
+        Search(search_input, true);
+    } else if (search_input == "All mods") {
+        Search(search_input, false, true);
+    } else {
+        Search(search_input, false);
+    }
 }

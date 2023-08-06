@@ -85,6 +85,11 @@
         }
         
     }
+    .infos{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
     .terms-of-push {
         font-family: "Roboto",sans-serif;
         display: flex;

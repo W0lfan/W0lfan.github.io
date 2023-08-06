@@ -41,7 +41,7 @@ function QueryOfficial() {
     return [Identifiers,Datas];
 }
 
-function QueryItems(r) {
+function QueryItems(r,allmods = false) {
     let Identifiers = [];
     let Datas = {mods : 0, users : 0,codes : 0};
 
@@ -59,6 +59,13 @@ function QueryItems(r) {
                 type : title,
                 mod : content,
                 prior : 0
+            }
+
+            if (allmods) {
+                push.prior = 3;
+                Identifiers.push(push);
+                Datas[type]++;
+                return;
             }
 
             if (name.includes(r) || abvrt) {
@@ -199,27 +206,26 @@ function wrapCodeWithSyntaxHighlighting(codeLines) {
 
 let search_input;
 
-function Search(opt = null,official = false) {
-    search_input;
-    if (search_input === "Official Starblast Mods") {
-        Search('Official Starblast Mods',true);
-        return;
-    }
+function Search(opt = null,official = false,all = false) {
     let key_word;
     if (!opt) {
         key_word = document.querySelector('#search-input').value;
     } else {
         key_word = opt;
     }
-    if (key_word.length <= 0 && official === false) {
+    if (key_word.length <= 0 && official === false && all === false) {
         return;
     } 
 
     let result;
-    if (official === false) {
+    if (official === false && all === false) {
          result = QueryItems(key_word.toLowerCase());
     } else {
-         result = QueryOfficial();
+        if (official) {
+            result = QueryOfficial();
+        } else if (all) {
+            result = QueryItems('',true);
+        }
     }
 
     search_input = key_word;
@@ -328,6 +334,7 @@ function Search(opt = null,official = false) {
                 document.querySelector('.results-container').innerHTML += `
             
                 <div class="result-${localStorage.getItem('display')}" id="code-view-${localStorage.getItem('display')}">
+
                     <div class="container">
                         <div class="header">
                             <div class="title">
