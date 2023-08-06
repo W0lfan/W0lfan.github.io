@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded',function() {
                     alert('An error occured. Please join the Discord server in order to report it.')
                 });
             }
-            document.querySelector('#latest').addEventListener("click",function(){
+            document.querySelector('#stable').addEventListener("click",function(){
                 DownLoad('https://raw.githubusercontent.com/W0lfan/STF/main/main/stable.js',`STF Stable - ${VERSIONS["stable"]}.txt`)
             })
             document.querySelector('#latest').addEventListener("click",function(){
