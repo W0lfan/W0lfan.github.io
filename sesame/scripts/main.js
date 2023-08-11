@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded',function() {
+
+    if (!localStorage.getItem('display')) {
+        localStorage.setItem('display','grid');
+    }
+
     document.querySelector('.search-button').addEventListener('click',function() {
         Search();
     });
@@ -18,11 +23,9 @@ document.addEventListener('DOMContentLoaded',function() {
         })
         .then(data => {
             let mods = data;
-            console.log(ev.id)
             for (let mod of mods) {
                 if (mod.name === ev.id.replace('load-',"")) {
-                    console.log("yes")
-                    DownLoad(githubToRaw(mod.link.url), `SMSE - ${mod.name}`);
+                    DownLoad(githubToRaw(mod.link.url), mod.name);
                 }
             }
         })
