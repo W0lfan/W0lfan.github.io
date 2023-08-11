@@ -58,7 +58,7 @@ function Search(search_query = null,official_content = false,all = "",not_query 
     `
 
     
-    fetch('../../api/building.js')
+    fetch('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/api/building.js')
     .then(response => response.text())
     .then(buildingCode => {
         // Execute the code from building.js using eval()
