@@ -1,0 +1,118 @@
+
+
+.parameters {
+    position:fixed;
+    z-index : 99;
+    top:10px;
+    right:10px;
+    user-select: none;
+    background-color: rgba(0,0,0,0);
+    border-radius: 20px;
+    border: 2px solid rgba(0,0,0,0);
+    width: fit-content;;
+    height: fit-content;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 50px;
+    .parameters-content {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        .parameter {
+            .action {
+                padding-top: 5px;
+                display: flex;
+                flex-direction: row;
+                gap: 0px;
+                align-items: center;
+                justify-content: center;
+                color:var(--coloring);
+                font-family: "Poppins";
+                .switch {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 5px;
+                    width: fit-content;
+                    cursor: pointer;
+                    transition:background-color 0.4s;
+                }
+                .switch:hover {
+                    background-color: var(--color-lighter) !important;
+                }
+                .switch:nth-child(1) {
+                    border-radius: 5px 0px 0px 5px;
+                }
+                .switch:nth-last-child(1) {
+                    border-radius: 0px 5px 5px 0px;
+                }
+                .switch svg {
+                    fill:var(--coloring);
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .header {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                .title {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 2px;
+                    font-family: "Lato";
+                    font-weight: bold;
+                    font-size: 13px;
+                    .icon svg {
+                        width: 15px;
+                        height: 15px;
+                        fill:var(--coloring);
+                    }
+                }
+                .description {
+                    font-family: "Roboto";
+                    font-size: 11px;
+                    color:var(--color-light)
+                }
+            }
+        }
+    }
+    .parameters-container .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--backgrounds-lighter);
+        border-radius: 50%;
+        border: 2px solid var(--color-lighter);
+        padding: 5px;
+    }
+    .parameters-container {
+        position:absolute;
+        right:7.5px;
+        top:7.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        z-index:100;
+        transition:background-color 0.4s;
+    }
+    .parameters-container {
+        cursor: pointer;
+    }
+    .parameters-container:hover {
+        background-color: var(--light-hovering);
+    }
+    .parameters-container svg {
+        fill:var(--coloring);
+        width: 30px;
+        height: 30px;
+    }
+}

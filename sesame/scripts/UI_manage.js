@@ -1,5 +1,5 @@
 async function display_ui_by_file(type, act_back) {
-    const response = await fetch(`uis/${type}.html`);
+    const response = await fetch(`uis/${type}`);
     const text = await response.text();
     const parent = document.createElement('div');
     parent.innerHTML = text;
@@ -8,12 +8,12 @@ async function display_ui_by_file(type, act_back) {
         act_back();
         console.log('The parent is fully loaded!');
     });
-    document.body.innerHTML += parent.outerHTML;
+    document.body.innerHTML += text;
 }
 
 let check_ui_display = function() {
     let status = localStorage.getItem('display');
-    document.querySelector(`.view-${status}`).style.backgroundColor = "rgba(255,255,255,0.1)";
+    document.querySelector(`.view-${status}`).style.backgroundColor = "var(--backgrounds-lighter)";
 };
 
 let trigger_search = [];
@@ -23,26 +23,57 @@ function ManageQuerySearch(element) {
     // Toggle the id in the array
     if (trigger_search.includes(id)) {
         trigger_search = trigger_search.filter(triggeredId => triggeredId !== id);
-        element.style.backgroundColor ="rgba(255, 255, 255, 0.1)";
+        element.style.backgroundColor ="var(--backgrounds-lighter)";
+        document.querySelectorAll(`.${id}-result`).forEach((el) => {
+            el.style.display = 'flex';
+        });
+        document.querySelector(`#${id}-metrics span`).innerHTML = Metrics[id];
     } else {
         trigger_search.push(id);
-        element.style.backgroundColor ="rgba(0, 0, 0, 0)";
+        element.style.backgroundColor ="var(--backgrounds)";
+        document.querySelectorAll(`.${id}-result`).forEach((el) => {
+            el.style.display = 'none';
+        });
+        document.querySelector(`#${id}-metrics span`).innerHTML = '0';
     }
+
+
+
+
 
     // Update element's background color
 
     // Perform search using Search function
-    Search(search_input, false, false, trigger_search);
 }
 
 
 let ManageDisplay = function() {
     let status = localStorage.getItem('display');
-    if (status==="grid") {
-        localStorage.setItem('display',"line");
+    let toDisplayBack = document.querySelectorAll('.mod-result');
+
+    if (status === "grid") {
+        localStorage.setItem('display', 'line');
+        toDisplayBack.forEach((el) => {
+            el.classList.remove('result-grid');
+            el.classList.add('result-line'); // Use a different class name for line display
+        });
+        document.querySelector('.results-container').classList.remove("grid-display");
+        document.querySelector('.results-container').classList.add("line-display");
+        document.querySelector('.view-line').style.backgroundColor = "var(--backgrounds-lighter)";
+        document.querySelector('.view-grid').style.backgroundColor = "var(--backgrounds)";
     } else {
-        localStorage.setItem('display',"grid");
+        localStorage.setItem('display', 'grid');
+        toDisplayBack.forEach((el) => {
+            el.classList.add('result-grid');
+            el.classList.remove('result-line'); // Use a different class name for line display
+        });
+        document.querySelector('.results-container').classList.add("grid-display");
+        document.querySelector('.results-container').classList.remove("line-display");
+        document.querySelector('.view-line').style.backgroundColor = "var(--backgrounds)";
+        document.querySelector('.view-grid').style.backgroundColor = "var(--backgrounds-lighter)";
     }
+
+    /*
     if (search_input == "Official Mods") {
         Search('Official Mods',false,'mods',[],'official',[1,2])
     } else if (search_input == "All Mods") {
@@ -57,7 +88,7 @@ let ManageDisplay = function() {
         Search('Sesame Team',false,'users',trigger_search,'isSesame',true)
     }else {
         Search(search_input, false, false,trigger_search);
-    }
+    }*/
 }
 
 function githubToRaw(githubUrl) {
@@ -104,4 +135,25 @@ function formatArray(array) {
     return array.map(item => {
         return `${item}`;
     }).join(', ');
+}
+
+let article_view = true;
+
+function ManageArticle() {
+    let article_parent = document.querySelector('.sesame-informative');
+    let show = document.getElementById('show-article');
+    let hide = document.getElementById('hide-article');
+    if (article_view === true) {
+        hide.style.display = "none";
+        show.style.display = "flex";
+        article_parent.style.height = "30px"; // Set initial value before transition
+        article_parent.style.borderRadius = "20px";
+    } else {
+        hide.style.display = "flex";
+        show.style.display = "none";
+        article_parent.style.borderRadius = "10px";
+        article_parent.style.height = article.height; // Set full height before transition
+    }
+
+    article_view = !article_view;
 }

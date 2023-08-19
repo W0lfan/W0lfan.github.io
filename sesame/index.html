@@ -4,12 +4,16 @@
     <link rel="stylesheet" href="webutils/styles/home.css">
     <link rel="stylesheet" href="webutils/styles/main.css">
     <link rel="stylesheet" href="webutils/styles/results.css">
+    <link rel="stylesheet" href="webutils/styles/parameters.css">
+    <link rel="stylesheet" href="webutils/styles/root.css">
+
     <script src="https://raw.githubusercontent.com/W0lfan/SesameAPI/main/api/building.js" type="text/javascript"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/search/main.js"></script>
     <script src="scripts/UI_manage.js"></script>
     <script src="scripts/occur.js"></script>
     <script src="scripts/download.js"></script>
+    <script src="scripts/parameters/main.js"></script>
 
     <link rel="import" href="uis/main.html">
     <link rel="import" href="uis/results.html">
@@ -33,7 +37,7 @@
     <div class="main-container">
         <div class="welcome-title">
             <div class="big-header">
-                <img src="webutils/img/Sesame About.png">
+                <img src="webutils/img/logo.png">
             </div>
         </div>
         <div class="sesame-creator" onclick="window.open('https://w0lfan.github.io/arena/')">
@@ -55,27 +59,33 @@
                 <div class="top">
                     Global Research
                 </div>
-                <div class="terms-of-push" onclick="Search('All Clans',false,'clans')">
-                    <span>All Clans</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                <div class="infos-type">
+                    <span>Modding</span>
                 </div>
-                <div class="terms-of-push" onclick="Search('All Mods',false,'mods')">
+                <div class="search-suggestion" onclick="Search('All Mods',false,'mods')">
                     <span>All Mods</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
                 </div>
-                <div class="terms-of-push" onclick="Search('All Users',false,'users')">
-                    <span>All Users</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="terms-of-push" onclick="Search('Official Contributors',false,'users',[],'isContrib',true)">
-                    <span>Contributors</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="terms-of-push" onclick="Search('Official Mods',false,'mods',[],'official',[1,2])">
+                <div class="search-suggestion" onclick="Search('Official Mods',false,'mods',[],'official',[1,2])">
                     <span>Official Mods</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
                 </div>
-                <div class="terms-of-push" onclick="Search('Sesame Team',false,'users',[],'isSesame',[true])">
+                <div class="infos-type">
+                    <span>Community</span>
+                </div>
+                <div class="search-suggestion" onclick="Search('All Clans',false,'clans')">
+                    <span>All Clans</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                </div>
+                <div class="search-suggestion" onclick="Search('All Users',false,'users')">
+                    <span>All Users</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                </div>
+                <div class="search-suggestion" onclick="Search('Official Contributors',false,'users',[],'isContrib',true)">
+                    <span>Contributors</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                </div>
+                <div class="search-suggestion" onclick="Search('Sesame Team',false,'users',[],'isSesame',[true])">
                     <span>Sesame Team</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
                 </div>

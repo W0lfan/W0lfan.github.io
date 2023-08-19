@@ -1,0 +1,36 @@
+
+:root {
+    --background-color-left : #232323;
+
+    --backgrounds :  #fdfdfd;
+    --backgrounds-lighter : #f0f0f0;
+
+    --black-coloring : #616161b3; /* 0.7 */
+    --black-lighter : #bdbdbd1a; /* 0.1 */
+
+    --coloring : rgb(46, 45, 45);
+    --color-light : #000000b3; /* 0.7 */
+    --color-lighter : #4747471a; /* 0.1 */
+    --color-super-light :  #ffffff06; /* 0.025 */
+
+    --light-hovering : #ffffff1a;
+}
+
+/*
+
+:root {
+
+    --backgrounds :  #181818;
+    --backgrounds-lighter : #1F1F1F;
+
+    --black-coloring : #181818b3;  0.7 
+    --black-lighter : #ffffff1a;  0.1 
+
+    --coloring : white;
+    --color-light : #ffffffb3;  0.7 
+    --color-lighter : #ffffff1a;  0.1 
+    --color-super-light :  #ffffff06;  0.025 
+
+    --light-hovering : #ffffff1a;
+}
+*/

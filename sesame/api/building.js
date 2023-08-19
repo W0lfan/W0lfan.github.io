@@ -74,3 +74,17 @@
             console.error('Fetch error:', error);
         }
     }
+
+    async function QuerySpecific(query, directory) {
+        let path =  "https://raw.githubusercontent.com/W0lfan/sesame/main/database/" + directory + ".json";
+        try {
+            const content = await fetchData(path);
+            for (let value of content) {
+                if (value.name && value.name == query) {
+                    return value;
+                }
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }

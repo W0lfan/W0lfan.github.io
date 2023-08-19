@@ -3,13 +3,52 @@ document.addEventListener('DOMContentLoaded',function() {
     if (!localStorage.getItem('display')) {
         localStorage.setItem('display','grid');
     }
-
+    if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme','black');
+    }
+    if (!localStorage.getItem('article_view')) {
+        localStorage.setItem('article_view',true);
+    }
+    ChangeFont(localStorage.getItem('theme'));
+    ArticleManagement();
+    const display_result = () => {
+        console.log('e');
+    };
+    async function DisplayParameters() {
+        await display_ui_by_file('parameters.txt',display_result);
+        ChangeFont(localStorage.getItem('theme'));
+        ArticleManagement(true);
+    }
+    DisplayParameters()
     document.querySelector('.search-button').addEventListener('click',function() {
         Search();
     });
     document.addEventListener('keydown', function(event) {
+        let Input = document.querySelector('.search-input input');
         if (event.key === 'Enter') {
             Search();
+        } else if ((event.key === 'p' || event.key === 'P') && (Input && document.activeElement != Input)) {
+            TriggerParameterView()
+        }
+    });
+    window.addEventListener('scroll', function() {
+        let scrollY = window.scrollY;
+        let article = document.querySelector('.sesame-informative');
+        let metricsBar = document.querySelector('.display-research .results .infos');
+        if (scrollY > 20) {
+            if (metricsBar) {
+                metricsBar.style.opacity = 0;
+            }
+            if (article) {
+                article.style.top = "80px";
+            }
+        } else {
+            if (metricsBar) {
+                metricsBar.style.opacity = 1;
+            }
+            if (article) {
+                article.style.top = "130px"; // Initial position when at the top
+            }
         }
     });
     document.addEventListener("click", function(event) {
