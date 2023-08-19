@@ -78,7 +78,7 @@ body {
 
 .loader-search {
   z-index: 90;
-  background-color: #2d2d2d ;
+  background-color: var(--backgrounds) ;
   width: 50vh ;
   height: 20px ;
   position:absolute;

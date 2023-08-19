@@ -350,7 +350,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                 await display_ui_by_file('results.html', display_result);
                 ChangeFont(localStorage.getItem('theme'));
-                ArticleManagement(true);
 
                 document.querySelector('.display-research').innerHTML += `
                     <div class="results">
@@ -927,60 +926,61 @@ function Search(search_query = null, official_content = false, all = "", not_que
                             user = await FetchDataFromDatabase('users', [`${article.user_article}`]);
                             user = user[0];
                             document.body.innerHTML += `
-                        <div class="sesame-informative ${Display}-info-display" style="top:${Display == "line" ? "130px" : ""};height:${Display == "line" ? article.height : ""};transition: height 1s, top 1s,border-radius 0.3s">
-                            <div class="close-item" onclick="ManageArticle()">
-                                <svg id="hide-article" style="display:flex;" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m162-120-42-42 214-214H216v-60h220v220h-60v-118L162-120Zm363-405v-220h60v118l213-213 42 42-213 213h118v60H525Z"/></svg>
-                            
-                                <svg id="show-article" style="display:none" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M120-120v-300h60v198l558-558H540v-60h300v300h-60v-198L222-180h198v60H120Z"/></svg>
-        
-                            </div>
-                            <div class="content">
-                                <div class="title">
-                                    <div class="article-name">
-                                        ${article.name}
+                                <div class="sesame-informative ${Display}-info-display" style="top:${Display == "line" ? "130px" : ""};height:${Display == "line" ? article.height : ""};transition: height 1s, top 1s,border-radius 0.3s;">
+                                    <div class="close-item" onclick="ManageArticle()">
+                                        <svg id="hide-article" style="display:flex;" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m162-120-42-42 214-214H216v-60h220v220h-60v-118L162-120Zm363-405v-220h60v118l213-213 42 42-213 213h118v60H525Z"/></svg>
+                                    
+                                        <svg id="show-article" style="display:none" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M120-120v-300h60v198l558-558H540v-60h300v300h-60v-198L222-180h198v60H120Z"/></svg>
+                
                                     </div>
-                                    <div class="author" onclick="Search('${user.name}')">
-                                        <div class="pfp">
-                                            <img src="${user.pfp}">
-                                        </div>
-                                        <div class="author-name">
-                                            ${user.name}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="article">
-                                    ${
-                                        article.container.map(part => `
-                                            <div class="article-part">
-                                                <div class="title">${part.title.toUpperCase()}</div>
-                                                <div class="content">${part.content}</div>
+                                    <div class="content">
+                                        <div class="title">
+                                            <div class="article-name">
+                                                ${article.name}
                                             </div>
-                                        `).join('')
-                                    }
-                                </div>
-                            </div>
-                            <div class="resources" style="display:${article.links.resources.length > 0 ? '' : 'none'}">
-                                ${
-                                    article.links.resources.map(link => `
-                                        <div class="link-article" onclick="window.open('${link.src}')">
-                                            ${SVG_Paths[link.id]}
-                                            <div class="link-content">
-                                                <div class="link-name">
-                                                    ${link.name}
+                                            <div class="author" onclick="Search('${user.name}')">
+                                                <div class="pfp">
+                                                    <img src="${user.pfp}">
                                                 </div>
-                                                <div class="link">
-                                                    ${link.src}
+                                                <div class="author-name">
+                                                    ${user.name}
                                                 </div>
                                             </div>
                                         </div>
-                                    `).join('')
-                                }
-                            </div>
-                            <div class="article-actions" style="display:${article.links.actions.length > 0 ? '' : 'none'}">
-        
-                            </div>
-                        </div>
-                    `;
+                                        <div class="article">
+                                            ${
+                                                article.container.map(part => `
+                                                    <div class="article-part">
+                                                        <div class="title">${part.title.toUpperCase()}</div>
+                                                        <div class="content">${part.content}</div>
+                                                    </div>
+                                                `).join('')
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="resources" style="display:${article.links.resources.length > 0 ? '' : 'none'}">
+                                        ${
+                                            article.links.resources.map(link => `
+                                                <div class="link-article" onclick="window.open('${link.src}')">
+                                                    ${SVG_Paths[link.id]}
+                                                    <div class="link-content">
+                                                        <div class="link-name">
+                                                            ${link.name}
+                                                        </div>
+                                                        <div class="link">
+                                                            ${link.src}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `).join('')
+                                        }
+                                    </div>
+                                    <div class="article-actions" style="display:${article.links.actions.length > 0 ? '' : 'none'}">
+                
+                                    </div>
+                                </div>
+                            `;
+                            ArticleManagement((localStorage.getItem('article_view') === 'true'));
                             setTimeout(() => {
                                 article.links.actions.forEach((linkData, index) => {
                                     const linkElement = document.createElement('div');

@@ -42,25 +42,29 @@ const fonts = {
   }
 
 
-  function ArticleManagement(value) {
-    let status = localStorage.getItem('article_view');
-    let articles = document.querySelectorAll('.sesame-informative')
-    status = value;
-    if (document.querySelector(`#switch-article-hide`) && document.querySelector(`#switch-article-view`)) {
-        if (!status) {
-            articles.forEach((article) => {
-                article.animate([{opacity:1},{opacity:0,display:"none"}],{duration:200,fill:"forwards"})
-            });
-            document.querySelector(`#switch-article-hide`).style.backgroundColor = 'var(--color-lighter)';
-            document.querySelector(`#switch-article-view`).style.backgroundColor = 'rgba(0,0,0,0)';
-        } else {
-            articles.forEach((article) => {
-                article.animate([{opacity:0,display:"flex"},{opacity:1}],{duration:200,fill:"forwards"})
-            });
-            document.querySelector(`#switch-article-view`).style.backgroundColor = 'var(--color-lighter)';
-            document.querySelector(`#switch-article-hide`).style.backgroundColor = 'rgba(0,0,0,0)';
-        }
+  function ArticleManagement(value,Switch = true) {
+    let articles = document.querySelectorAll('.sesame-informative');
+
+    if (value === false) {
+      document.querySelector(`#switch-article-hide`).style.backgroundColor = 'var(--color-lighter)';
+      document.querySelector(`#switch-article-view`).style.backgroundColor = 'rgba(0,0,0,0)';
+      if (Switch === true) {
+          articles.forEach((article) => {
+            article.animate([{opacity:1},{opacity:0,display:"none"}],{duration:200,fill:"forwards"})
+        });
+      }
+    } else {
+      document.querySelector(`#switch-article-view`).style.backgroundColor = 'var(--color-lighter)';
+      document.querySelector(`#switch-article-hide`).style.backgroundColor = 'rgba(0,0,0,0)';
+      if (Switch) {
+        articles.forEach((article) => {
+          article.animate([{opacity:0,display:"flex"},{opacity:1}],{duration:200,fill:"forwards"})
+      });
+      }
+
     }
-    localStorage.setItem('article_view',!status)
+    if (Switch == true) {
+        localStorage.setItem('article_view',value)
+    }
   }
   

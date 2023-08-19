@@ -3,21 +3,20 @@ document.addEventListener('DOMContentLoaded',function() {
     if (!localStorage.getItem('display')) {
         localStorage.setItem('display','grid');
     }
-    if (!localStorage.getItem('theme')) {
+    if (localStorage.getItem('theme')  === null) {
         localStorage.setItem('theme','black');
     }
-    if (!localStorage.getItem('article_view')) {
+    if (localStorage.getItem('article_view') === null) {
         localStorage.setItem('article_view',true);
     }
     ChangeFont(localStorage.getItem('theme'));
-    ArticleManagement();
     const display_result = () => {
         console.log('e');
     };
     async function DisplayParameters() {
         await display_ui_by_file('parameters.txt',display_result);
         ChangeFont(localStorage.getItem('theme'));
-        ArticleManagement(true);
+        ArticleManagement((localStorage.getItem('article_view') === 'true'),"switch");
     }
     DisplayParameters()
     document.querySelector('.search-button').addEventListener('click',function() {
