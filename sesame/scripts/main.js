@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded',function() {
 
-    if (!localStorage.getItem('display')) {
-        localStorage.setItem('display','grid');
-    }
+        localStorage.setItem('display','line');
     if (localStorage.getItem('theme')  === null) {
         localStorage.setItem('theme','black');
     }
