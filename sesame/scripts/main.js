@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded',function() {
 
-        localStorage.setItem('display','line');
+    localStorage.setItem('display','line');
     if (localStorage.getItem('theme')  === null) {
         localStorage.setItem('theme','black');
     }
