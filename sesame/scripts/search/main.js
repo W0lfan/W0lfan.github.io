@@ -77,25 +77,25 @@ const InformativeSheets = {
         }
     },
     "All Clans": {
-        name: "Starblast.io Clans & Teams",
+        name: "Starblast.io Communityies",
         user_article: "naf",
         height: "388px",
         container: [{
                 title: "About",
                 content: `
-                    All Starblast clans are listed, but Discord invites for banned servers due to toxicity and cheating are unavailable.
+                    All Starblast clans, teams, and communities are listed, but Discord invites for banned servers due to toxicity and cheating are unavailable.
                 `
             },
             {
                 title: "Informations",
                 content: `
-                    Clans and teams are combined in a single "clans" section for simplicity. However, certain clans function as teams. Each clan or team typically has a founding leader and co-founders. Teams create various events and use unique tags to identify themselves in-game.
+                    Clans and teams are combined in a single community section for simplicity. However, certain community servers function as teams. Each clan or team typically has a founding leader and co-founders. Communities create various events and use unique tags to identify themselves in-game.
                 `
             },
             {
                 title: "Huge History",
                 content: `
-                    Starblast clans exist since the game's inception, with the SDF clan being the oldest. Clans aim to combat in-game stacks, cheaters, and toxicity. Many teams have been caught in dramas due to cheating and toxic behavior.
+                    Starblast communities exist since the game's inception, with the SDF clan being the oldest. Clans & teams aim to combat in-game stacks, cheaters, and toxicity. Many communities have been caught in dramas due to cheating and toxic behavior.
                 `
             }
         ],
@@ -181,6 +181,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
     let userSet = 0;
     let sureStatus = false;
     let checkIfUser = false;
+    let sureUserName;
     Metrics;
     let section_diff = {};
 
@@ -271,12 +272,42 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 content: item,
                                 sure: (item.name.toLowerCase() === key_word.toLowerCase())
                             });
-                            if ((item.name.toLowerCase() === key_word.toLowerCase())) {
+                            if ((item.name.toLowerCase() === key_word.toLowerCase()) && key === "users") {
                                 sureStatus = true;
+                                sureUserName = item.name;
                             }
                             result[1][key]++;
                         });
                     }
+                }
+                if (sureStatus === true) {
+                    console.log(sureStatus, "status")
+
+                    Object.keys(result[0]).forEach(key => {
+                        let content = result[0][key];
+                        content.forEach((value) => {
+                            console.log(value, sureUserName, value.content.author);
+                    
+                            if (value.id != "users") {
+                                if (value.content.author && Array.isArray(value.content.author)) {
+                                    const hasMatchingName = value.content.author.some((item) => 
+                                        item.name[0].toLowerCase().includes(sureUserName.toLowerCase())
+                                    );
+                                    
+                        
+                                    if (!hasMatchingName) {
+                                        delete result[0][key];
+                                    }
+                                } else {
+                                    delete result[0][key];
+                                }
+                            }
+                        });
+                    });
+                    
+                    
+                    
+                    
                 }
                 Object.keys(result[0]).forEach(key => {
                     result[0][key].sort((a, b) => b.prior - a.prior);
@@ -414,11 +445,16 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                     </div>
                 `;
-                if (Datas.length === 0) {
+                if (
+                    Datas.codes.length === 0 &&
+                    Datas.users.length === 0 &&
+                    Datas.mods.length === 0 &&
+                    Datas.clans.length === 0 &&
+                    Datas.ships.length === 0
+                  ) {
                     document.querySelector('.loader-search').style.display = "none";
                     document.body.innerHTML += `
                         <div class="no-result">
-                            <img src="../../webutils/img/sadpiranha.jpg">
                             <div class="big-title">We found nothing related to <span>${key_word}</span></div>
                             <div class="small-title">Try searching for something else</div>
                         </div>
@@ -624,7 +660,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
     
                                 } else if (userSet === 0 && JSON.parse(data.sure) === true) {
                                     checkIfUser = true;
-                                    document.querySelector('.results-container').style.justifyfContent = "center";
                                     document.querySelector('.results-container').style.marginLeft = "auto";
                                     document.querySelector('.results-container').style.marginRight = "auto";
                                     document.querySelector('.results-container').style.width = "90%";
@@ -866,8 +901,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
     
                         `;
                             } else if (data.id === "ships" ) {
-    
-    
                                 function removeLinkEnding(link) {
                                     const pngIndex = link.indexOf('.png/');
                                     if (pngIndex !== -1) {
@@ -875,42 +908,248 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     }
                                     return link;
                                 }
+                                let shipCode = content.code[0];
+                                let lasers = [];
+                                for (let laser of shipCode.typespec.lasers) {
+                                        lasers.push(
+                                            {
+                                                damage : laser.damage,
+                                                speed : laser.speed,
+                                                rate : laser.rate,
+                                                recoil : laser.recoil,
+                                                error : laser.error,
+                                                number : laser.number
+                                            }
+                                        )
+                                }
+                                let lasersType = [0,0];
+                                for (let x of lasers) {
+                                    console.log(lasersType,x)
+                                    lasersType[0]+=x.damage[0] * x.number;
+                                    lasersType[1]+=x.damage[1] * x.number;
+                                }
+                                let statistics = {
+                                    bodies : Object.keys(shipCode.bodies).length,
+                                    specs : shipCode.specs,
+                                    wings : shipCode.wings ? Object.keys(shipCode.wings).length : 0,
+                                }
+
+                                console.log(shipCode);
                                 document.querySelector('.results-container').innerHTML += `
-                                    <div class="ships-result">The Ship Update is not available yet.</div>
-                                `;
-                                /*document.querySelector('.results-container').innerHTML += `
                                     <div class="ships-result">
                                         <div class="ship-render">
                                             <img src="${removeLinkEnding(content.img)}">
                                         </div>  
                                         <div class="header">
                                             <div class="ship-name">
-                                                ${content.name}
-                                            </div>
-                                            <div class="informations">
-                                                <div class="info">
-                                                    Author : ${content.author}
-                                                </div>
-                                                <div class="info">
-                                                    Mod : ${content.mod}
-                                                </div>
+                                                <b>${content.name}</b> by <b>${content.author}</b> in <b>${content.mod}</b>
                                             </div>
                                         </div>
                                         <div class="description">
-                                            ${content.desc}
+                                            <div class="global">
+                                                <div class="global-content">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h270v720H180Zm330 0v-361h330v301q0 24-18 42t-42 18H510Zm0-421v-299h270q24 0 42 18t18 42v239H510Z"/></svg>
+                                                    </div>
+                                                    <div class="value">
+                                                        ${statistics.bodies} bod${statistics.bodies>1?'ies':'y'}
+                                                    </div>
+                                                </div>
+                                                <div class="global-content">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
+                                                    </div>
+                                                    <div class="value">
+                                                        ${lasers.length} laser${lasers.length>1?'s':''}
+                                                    </div>
+                                                </div>
+                                                <div class="global-content">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M465-160q-54 0-85.5-28T348-273h68q0 26 11.5 39.5T465-220q27 0 38.5-12t11.5-41q0-29-11.5-42.5T465-329H80v-60h385q54 0 82 28t28 88q0 57-28 85t-82 28ZM80-568v-60h548q37 0 54-17.5t17-58.5q0-41-17-58.5T628-780q-38 0-55 20.5T556-708h-60q0-58 35-95t97-37q61 0 96 35.5T759-704q0 65-35 100.5T628-568H80Zm672 330v-60q35 0 51.5-19.5T820-374q0-38-18.5-55T748-446H80v-60h668q62 0 97 35t35 97q0 64-33 100t-95 36Z"/></svg>
+                                                    </div>
+                                                    <div class="value">
+                                                        ${statistics.wings} wing${statistics.wings>1?'s':''}
+                                                    </div>
+                                                </div>
+                                                <div class="global-content">
+                                                    <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M160-40v-220h100v-110H160v-220h100v-110H160v-220h260v220H320v110h100v80h160v-80h260v220H580v-80H420v80H320v110h100v220H160Z"/></svg>
+                                                    </div>
+                                                    <div class="value">
+                                                        T.${shipCode.level} - N°${shipCode.model} 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="body-specs">
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Shield
+                                                    </div>
+                                                    <div class="spec-content">
+                                                        <div class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M310-80q-12.75 0-21.375-8.625T280-110v-676q0-12.75 8.625-21.375T310-816h90v-64h160v64h90q12.75 0 21.375 8.625T680-786v676q0 12.75-8.625 21.375T650-80H310Z"/></svg>
+                                                        </div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.shield.capacity[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.shield.capacity[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="spec-content">
+                                                        <div class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M418-340q25 25 63 23.5t55-27.5l221-333-333 221q-26 18-28.5 54.5T418-340ZM192-160q-18 0-34-8.5T134-193q-26-48-40-100T80-399q0-83 31.5-156T197-682.5q54-54.5 126.5-86T478-800q83 0 156.5 31.5t128 86Q817-628 848.5-555T880-399q0 54-13 106.5T827-193q-9 16-25 24.5t-34 8.5H192Z"/></svg>
+                                                        </div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.shield.reload[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.shield.reload[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Generator
+                                                    </div>
+                                                    <div class="spec-content">
+                                                        <div class="icon">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M310-80q-12.75 0-21.375-8.625T280-110v-676q0-12.75 8.625-21.375T310-816h90v-64h160v64h90q12.75 0 21.375 8.625T680-786v676q0 12.75-8.625 21.375T650-80H310Z"/></svg>
+                                                        </div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.generator.capacity[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.generator.capacity[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="spec-content">
+                                                        <div class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M418-340q25 25 63 23.5t55-27.5l221-333-333 221q-26 18-28.5 54.5T418-340ZM192-160q-18 0-34-8.5T134-193q-26-48-40-100T80-399q0-83 31.5-156T197-682.5q54-54.5 126.5-86T478-800q83 0 156.5 31.5t128 86Q817-628 848.5-555T880-399q0 54-13 106.5T827-193q-9 16-25 24.5t-34 8.5H192Z"/></svg>                                                        </div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.generator.reload[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.generator.reload[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Laser damages
+                                                    </div>
+                                                    <div class="spec-content">
+                                                    <div class="icon"></div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${lasersType[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${lasersType[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Speed
+                                                    </div>
+                                                    <div class="spec-content">
+                                                    <div class="icon"></div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.speed[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.speed[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Acceleration
+                                                    </div>
+                                                    <div class="spec-content">
+                                                    <div class="icon"></div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.acceleration[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.acceleration[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="spec">
+                                                    <div class="spec-name">
+                                                        Rotation
+                                                    </div>
+                                                    <div class="spec-content">
+                                                    <div class="icon"></div>
+                                                        <div class="value">
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.rotation[0]}
+                                                            </div>
+                                                            <div class="val-sep">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m560-242-43-42 168-168H160v-60h525L516-681l43-42 241 241-240 240Z"/></svg>
+                                                            </div>
+                                                            <div class="val">
+                                                                ${shipCode.specs.ship.rotation[1]}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="actions">
-                                            <div class="action">
+                                            <div class="action" id="download-${content.name}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>
                                                 <div class="text">Download</div>
                                             </div>
                                             <div class="action" onclick="window.open('https://starblast.fandom.com/wiki/${content.name}')">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z"/></svg>
-                                                <div class="text">Open</div>
+                                                <div class="text">Wiki</div>
                                             </div>
                                         </div>
                                     </div>
-                                `;*/
+                                `;
+                                setTimeout(() => {
+                                    console.log(content.code[0])
+                                    document.getElementById(`download-${content.name}`).addEventListener('click',function() {
+                                        DownLoadCode(`let ${content.name} = '${JSON.stringify(content.code[0])}';`,content.name)
+                                    })
+                                }, 500);
                             }
                         }
                     }

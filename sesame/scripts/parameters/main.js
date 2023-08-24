@@ -52,14 +52,24 @@ const fonts = {
           articles.forEach((article) => {
             article.animate([{opacity:1},{opacity:0,display:"none"}],{duration:200,fill:"forwards"})
         });
+        document.querySelector('.results-container').style.marginLeft = "auto";
+        document.querySelector('.results-container').style.marginRight = "auto";
+        document.querySelector('.results-container').style.width = "90%";
+        document.querySelector('.results .infos').style.display = "none";
+        document.querySelector('.results-container').style.paddingLeft = "0px";
       }
     } else {
-      document.querySelector(`#switch-article-view`).style.backgroundColor = 'var(--color-lighter)';
-      document.querySelector(`#switch-article-hide`).style.backgroundColor = 'rgba(0,0,0,0)';
       if (Switch) {
         articles.forEach((article) => {
           article.animate([{opacity:0,display:"flex"},{opacity:1}],{duration:200,fill:"forwards"})
       });
+      document.querySelector(`#switch-article-view`).style.backgroundColor = 'var(--color-lighter)';
+      document.querySelector(`#switch-article-hide`).style.backgroundColor = 'rgba(0,0,0,0)';
+      document.querySelector('.results-container').style.marginLeft = "10px";
+      document.querySelector('.results-container').style.marginRight = "unset";
+      document.querySelector('.results-container').style.width = "calc(100% - 550px)";
+      document.querySelector('.results .infos').style.display = "none";
+      document.querySelector('.results-container').style.paddingLeft = "0px";
       }
 
     }

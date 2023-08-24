@@ -584,7 +584,8 @@
     position:relative;
     .all-works-here {
         font-family: "Lato",sans-serif;
-        color:var(--color-light)
+        color:var(--color-light);
+        padding-bottom: 10px;
     }
     .user-result {
         display: flex;
@@ -1230,7 +1231,7 @@
 }
 
 .section:nth-child(1) {
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .section {
     margin-top: 10px;
@@ -1307,5 +1308,144 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
+    }
+}
+
+.ships-result {
+    flex-direction: column;
+    width: 100%;
+
+    .actions {
+        z-index: 5;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        .action {
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            font-family: "Roboto" !important;
+            font-size: 15px;
+            flex-direction: row;
+            gap: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }   
+        .action svg {
+            width: 15px;
+            height: 15px;
+            fill:var(--coloring);
+        }
+        .action:hover {
+            background-color: var(--color-lighter);
+        }
+    }
+    .header{
+        text-align: center;
+        height: 30px;
+        font-family: "Poppins";
+        padding-top: 10px;
+    }
+    .ship-render {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position:absolute;
+        left:20px;
+        top: 0;
+        bottom:0;
+        margin:auto;
+        z-index: 1;
+    }
+    .ship-render img {
+        border-radius: 10px;
+        border:2px solid var(--backgrounds-lighter)
+    }
+    .description svg {
+        width: 20px;
+        height: 20px;
+    }
+    .description {
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        .body-specs {
+            display: grid;
+            width: 680px;
+            grid-template-columns: repeat(auto-fill, 330px);
+            row-gap: 5px;
+            column-gap: 15px;
+            .spec {
+                width: calc(300px + 30px);
+                padding: 5px;
+                background-color: var(--backgrounds-lighter);
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                .spec-content:nth-child(2) {
+                    fill:rgb(47, 134, 193) !important;
+                }
+                .spec-content:nth-child(3) {
+                    fill:rgb(254, 254, 60) !important;
+                }
+                .spec-content {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    .value {
+                        .val-sep {
+                            fill:white !important;
+                        }
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 20px;
+                        .val {
+                            width: 100px;
+                        }
+                        .val:nth-last-child(1) {
+                            margin-right: 10px;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+
+
+        }
+        .global {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            .global-content {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                background-color: var(--backgrounds-lighter);
+                padding: 5px;
+                border-radius: 5px;
+                width: 100px;
+                justify-content: center;
+                align-items: center;
+                fill:white;
+            }
+        }
     }
 }

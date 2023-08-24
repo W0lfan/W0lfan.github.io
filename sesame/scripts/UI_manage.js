@@ -28,6 +28,7 @@ function ManageQuerySearch(element) {
             el.style.display = 'flex';
         });
         document.querySelector(`#${id}-metrics span`).innerHTML = Metrics[id];
+        document.querySelector(`${id}-swipe-scroll`).style.display = "flex";
     } else {
         trigger_search.push(id);
         element.style.backgroundColor ="var(--backgrounds)";
@@ -35,6 +36,7 @@ function ManageQuerySearch(element) {
             el.style.display = 'none';
         });
         document.querySelector(`#${id}-metrics span`).innerHTML = '0';
+        document.querySelector(`${id}-swipe-scroll`).style.display = "none";
     }
 
 

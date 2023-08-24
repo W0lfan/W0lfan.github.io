@@ -20,3 +20,18 @@ function DownLoad(url, name) {
         alert('An error occured. Please join the Discord server in order to report it.')
     });
 }
+function DownLoadCode(code, name) {
+
+        var fileContent = code;
+        var fileName = `${__NAME__} - ${name}`;
+
+                
+        var fileBlob = new Blob([fileContent], { type: 'text' });
+
+        var downloadLink = document.createElement('a');
+        downloadLink.href = URL.createObjectURL(fileBlob);
+        downloadLink.download = fileName;
+        downloadLink.click();
+
+        URL.revokeObjectURL(downloadLink.href);
+}
