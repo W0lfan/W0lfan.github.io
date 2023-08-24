@@ -3,7 +3,7 @@
     Sesame Database API Dev Log
 
     📅 Created: Aug. 9, 2023
-    🔄 Last Update: Aug. 10, 2023
+    🔄 Last Update: Aug. 24, 2023
 
  */
     const __Path__ = "https://raw.githubusercontent.com/W0lfan/sesame/main/database/";
@@ -12,7 +12,8 @@
         codes: "codes.json",
         users: "users.json",
         mods: "mods.json",
-        clans: "clans.json"
+        clans: "clans.json",
+        ships: "ships.json"
     };
     
     const __Version__ = "0.0.1";
@@ -59,7 +60,8 @@
                   gathering.some(gather =>
                     item.name.toLowerCase().includes(gather) ||
                     (item.description && item.description.toLowerCase().includes(gather)) ||
-                    (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather))))
+                    (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather)))) ||
+                    (item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather))
                   )
                 );
                 

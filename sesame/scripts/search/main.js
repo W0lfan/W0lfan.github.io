@@ -270,7 +270,8 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 id: key,
                                 prior: prior,
                                 content: item,
-                                sure: (item.name.toLowerCase() === key_word.toLowerCase())
+                                sure: (item.name.toLowerCase() === key_word.toLowerCase()),
+                                DNIF : !(item.name.toLowerCase() === key_word.toLowerCase())
                             });
                             if ((item.name.toLowerCase() === key_word.toLowerCase()) && key === "users") {
                                 sureStatus = true;
@@ -286,20 +287,38 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     Object.keys(result[0]).forEach(key => {
                         let content = result[0][key];
                         content.forEach((value) => {
-                            console.log(value, sureUserName, value.content.author);
+                            console.log(value, sureUserName, value.content.author || value.content.lead);
                     
-                            if (value.id != "users") {
-                                if (value.content.author && Array.isArray(value.content.author)) {
-                                    const hasMatchingName = value.content.author.some((item) => 
-                                        item.name[0].toLowerCase().includes(sureUserName.toLowerCase())
+                            if (value.id != "users" && value.id != "ships") {
+                                if ((value.content.author || value.content.lead) && (Array.isArray(value.content.author) || Array.isArray(value.content.lead))) {
+                                    var hasMatchingName;
+                                    if (value.content.author) {
+                                        hasMatchingName = value.content.author.some((item) => 
+                                        item.name[0].toLowerCase() === sureUserName.toLowerCase()
                                     );
-                                    
-                        
+                                    } else {
+                                        hasMatchingName = value.content.lead.some((item) => 
+                                        item.toLowerCase() === sureUserName.toLowerCase()
+                                    );
+                                    }
+
                                     if (!hasMatchingName) {
                                         delete result[0][key];
                                     }
                                 } else {
                                     delete result[0][key];
+                                }
+
+                            } else {
+                                if (value.id === "users") {
+                                    if (content.DNIF === true) {
+                                        delete result[0][key];
+                                    }
+                                } else if (value.id === "ships") {
+
+                                    if (value.content.author.toLowerCase() != sureUserName.toLowerCase()) {
+                                        delete result[0][key];
+                                    }
                                 }
                             }
                         });
@@ -462,7 +481,9 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     return;
 
                 }
-
+                if (sureStatus) {
+                    delete section_diff["users"];
+                }
                 setTimeout(() => {
                     for (let DatasByKey of Object.values(Datas)) {
                         for (let data of DatasByKey) {
@@ -471,13 +492,11 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 let swipe_content;
                                 let svg_key;
                                 const keys = Object.keys(section_diff);
-                                console.log(keys)
                                 const lastKey = keys[keys.length - 1];
                                 let nextKey;
                                 const currentIndex = keys.indexOf(data.id);
                                 const nextIndex = currentIndex + 1;
                                 nextKey = nextIndex < keys.length ? keys[nextIndex] : lastKey;
-                                console.log(data.id, nextKey)
                                 var section = document.createElement('div');
                                 section.classList.add('section');
                                 section.id = 'section-' + data.id;
@@ -485,7 +504,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 const isLastKey = data.id === lastKey;
     
                                 // Set swipe_content and svg_key based on whether it's the last key or not
-                                if (sureStatus || keys.length <= 1) {
+                                if ((sureStatus && data.id == "users") || keys.length <= 1) {
                                     swipe_content,
                                     svg_key = ''
                                 }
@@ -498,7 +517,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                         svg_key = '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-800v526L202-522l-42 42 320 320 320-320-42-42-248 248v-526h-60Z"/></svg>';
                                     }
                                 }
-    
     
     
     
@@ -646,7 +664,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     CopyText(content.code.join('\n'))
                                 })
                             } else if (data.id == "users") {
-                                if (JSON.parse(data.sure) != true && userSet === 0) {
+                                if (JSON.parse(data.sure) != true && sureStatus != true) {
                                     document.querySelector('.results-container').innerHTML += `
                                     <div class="${data.id}-result userInfos-hover" id="click-${content.name}" onclick="Search('${content.name}')">
                                         <div class="user_pfp">
@@ -658,7 +676,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     </div>
                             `;
     
-                                } else if (userSet === 0 && JSON.parse(data.sure) === true) {
+                                } else if (userSet === 0 && JSON.parse(data.sure) === true && sureStatus) {
                                     checkIfUser = true;
                                     document.querySelector('.results-container').style.marginLeft = "auto";
                                     document.querySelector('.results-container').style.marginRight = "auto";
@@ -901,6 +919,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
     
                         `;
                             } else if (data.id === "ships" ) {
+                                console.log("display ships")
                                 function removeLinkEnding(link) {
                                     const pngIndex = link.indexOf('.png/');
                                     if (pngIndex !== -1) {
@@ -1288,12 +1307,13 @@ function Search(search_query = null, official_content = false, all = "", not_que
             window.addEventListener('scroll', function() {
                 let scrollY = window.scrollY;
                 let header = document.querySelector('.header-search');
-
-                if (scrollY > 20) {
-                    header.classList.add('header-middle')
-                } else {
-                    header.classList.remove('header-middle')
-
+                if (header) {
+                    if (scrollY > 20) {
+                        header.classList.add('header-middle')
+                    } else {
+                        header.classList.remove('header-middle')
+    
+                    }
                 }
             });
 
