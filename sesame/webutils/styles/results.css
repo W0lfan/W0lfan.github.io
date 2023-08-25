@@ -1352,7 +1352,7 @@
         padding-top: 10px;
     }
     .ship-render {
-        height: 100%;
+        width: 250px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1364,6 +1364,7 @@
         z-index: 1;
     }
     .ship-render img {
+        width: 100%;
         border-radius: 10px;
         border:2px solid var(--backgrounds-lighter)
     }
