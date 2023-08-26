@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded',function() {
     }
     if (localStorage.getItem('language') === null) {
         localStorage.setItem('language',"EN");
+        location.reload();
     }
     ChangeFont(localStorage.getItem('theme'));
     const display_result = () => {
