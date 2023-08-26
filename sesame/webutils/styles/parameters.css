@@ -20,7 +20,60 @@
         flex-direction: column;
         gap: 20px;
         .parameter {
+            padding-top: 5px;
+            padding-bottom: 5px;
             .action {
+                .menu:hover {
+                    background-color: var(--backgrounds);
+                    height: 60px;
+                }
+                .menu:hover .down {
+                    display: none;
+                }
+                .menu {
+                    transition:background-color 0.2s, height 0.2s;
+                    height: 30px;
+                    border: 2px solid var(--backgrounds-lighter);
+                    width: 120px;
+                    overflow: hidden;
+                    position:relative;
+                    border-radius: 10px;
+                    cursor:pointer;
+                    gap: 1px;
+                    .down {
+                        position:absolute;
+                        right:5px;
+                        fill:var(--coloring);
+                        top:2.5px;
+                    }
+                    .language {
+                        width: calc(100% - 10px);
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        height: 30px !important;
+                        padding-left: 10px;
+                        display: flex;
+                        align-items: center;
+                        font-size: 12px;
+                        transition: background-color 0.2s;
+                        background-color: var(--backgrounds);
+                        border-radius: 0px;
+                    }
+                    .language:hover {
+                        background-color: var(--backgrounds-lighter);
+                    }
+                    .language:nth-child(2) {
+                        border-radius: 5px 5px 0px 0px !important;
+                    }
+                    .language:nth-last-child(1) {
+                        border-radius: 0px 0px 5px 5px !important;
+                    }
+                    .down svg {
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
                 padding-top: 5px;
                 display: flex;
                 flex-direction: row;
@@ -85,9 +138,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--backgrounds-lighter);
         border-radius: 50%;
-        border: 2px solid var(--color-lighter);
         padding: 5px;
     }
     .parameters-container {
@@ -115,4 +166,9 @@
         width: 30px;
         height: 30px;
     }
+}
+
+.action svg {
+    width: 20px !important;
+    height: 20px !important;
 }

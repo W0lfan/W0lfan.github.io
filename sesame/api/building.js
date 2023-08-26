@@ -3,7 +3,7 @@
     Sesame Database API Dev Log
 
     📅 Created: Aug. 9, 2023
-    🔄 Last Update: Aug. 24, 2023
+    🔄 Last Update: Aug. 26, 2023
 
  */
     const __Path__ = "https://raw.githubusercontent.com/W0lfan/sesame/main/database/";
@@ -12,7 +12,7 @@
         codes: "codes.json",
         users: "users.json",
         mods: "mods.json",
-        clans: "clans.json",
+        communities: "communities.json",
         ships: "ships.json"
     };
     
@@ -31,11 +31,11 @@
     async function FetchDataFromDatabase(directory, gathering) {
     
         /*
+            
+                    NOTE : gathering is set to 1 for a whole return
         
-                NOTE : gathering is set to 1 for a whole return
-    
-        
-            */
+            
+                */
     
         // Checking if the directory is available
         if (!__LINKS__.hasOwnProperty(directory)) {
@@ -57,16 +57,16 @@
             } else {
                 gathering = gathering.map(value => value.toLowerCase());
                 const gathering_available = content.filter(item =>
-                  gathering.some(gather =>
-                    item.name.toLowerCase().includes(gather) ||
-                    (item.description && item.description.toLowerCase().includes(gather)) ||
-                    (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather)))) ||
-                    (item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather))
-                  )
+                    gathering.some(gather =>
+                        item.name.toLowerCase().includes(gather) ||
+                        (item.description && item.description.toLowerCase().includes(gather)) ||
+                        (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather)))) ||
+                        (item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather))
+                    )
                 );
-                
-                
-                
+    
+    
+    
     
                 console.log(`Compatibility found in ${directory}.json for "${gathering.join(', ')}". Returning datas.`);
                 console.log(gathering_available)
@@ -76,9 +76,9 @@
             console.error('Fetch error:', error);
         }
     }
-
+    
     async function QuerySpecific(query, directory) {
-        let path =  "https://raw.githubusercontent.com/W0lfan/sesame/main/database/" + directory + ".json";
+        let path = "https://raw.githubusercontent.com/W0lfan/sesame/main/database/" + directory + ".json";
         try {
             const content = await fetchData(path);
             for (let value of content) {

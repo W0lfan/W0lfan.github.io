@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded',function() {
     if (localStorage.getItem('article_view') === null) {
         localStorage.setItem('article_view',true);
     }
+    if (localStorage.getItem('language') === null) {
+        localStorage.setItem('language',"EN");
+    }
     ChangeFont(localStorage.getItem('theme'));
     const display_result = () => {
         console.log('e');
@@ -16,7 +19,11 @@ document.addEventListener('DOMContentLoaded',function() {
         ChangeFont(localStorage.getItem('theme'));
         ArticleManagement((localStorage.getItem('article_view') === 'true'),"switch");
     }
-    DisplayParameters()
+    DisplayParameters();
+    setTimeout(() => {
+        SetLanguageForHome()
+
+    }, 200);
     document.querySelector('.search-button').addEventListener('click',function() {
         Search();
     });

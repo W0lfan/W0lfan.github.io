@@ -13,15 +13,18 @@ const fonts = {
 
   let param_view = false;
   function TriggerParameterView() {
-    param_view = !param_view;
     let content = document.querySelector('.parameters-content');
     let parent = document.querySelector('.parameters');
-    content.style.display = !param_view ? "none" : "flex";
+    param_view = !param_view;
+    content.style.display = !param_view ? "none" : "flex ";
     parent.style.backgroundColor = !param_view ? "rgba(0,0,0,0)" : "var(--backgrounds)";
     parent.style.borderColor = !param_view ? "rgba(0,0,0,0)" : "var(--backgrounds-lighter)";
     parent.style.width = !param_view ? "fit-content" : "300px";
-    parent.style.height = !param_view ? "fit-content" : "120px";
-
+    parent.style.height = !param_view ? "fit-content" : "180px";
+      setTimeout(() => {
+        SyncParam()
+        GetAvailableLanguages();
+    }, 200);
   }
   
 
@@ -44,7 +47,6 @@ const fonts = {
 
   function ArticleManagement(value,Switch = true) {
     let articles = document.querySelectorAll('.sesame-informative');
-
     if (value === false) {
       document.querySelector(`#switch-article-hide`).style.backgroundColor = 'var(--color-lighter)';
       document.querySelector(`#switch-article-view`).style.backgroundColor = 'rgba(0,0,0,0)';
@@ -78,3 +80,8 @@ const fonts = {
     }
   }
   
+
+
+
+
+

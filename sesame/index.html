@@ -13,6 +13,7 @@
     <script src="scripts/UI_manage.js"></script>
     <script src="scripts/occur.js"></script>
     <script src="scripts/download.js"></script>
+    <script src="scripts/translate.js"></script>
     <script src="scripts/parameters/main.js"></script>
 
     <link rel="import" href="uis/main.html">
@@ -44,7 +45,7 @@
             <img src="https://w0lfan.github.io/arena/medias/Starblast%20Arena%20Team%20Fights.png">
             <span>Naflouille Creations</span>
         </div>
-        <div class="search">
+        <div class="search" id="search-from-home">
             <div class="search-input">
                 <input autocomplete="off" type="text" placeholder="Search by keywords" id="search-input">
                 <div class="icons">
@@ -62,32 +63,44 @@
                 <div class="infos-type">
                     <span>Modding</span>
                 </div>
-                <div class="search-suggestion" onclick="Search('All Mods',false,'mods')">
-                    <span>All Mods</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="search-suggestion" onclick="Search('Official Mods',false,'mods',[],'official',[1,2])">
-                    <span>Official Mods</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                <div class="searches">
+                    <div class="search-suggestion" onclick="Search('All Codes',false,'codes')">
+                        <span>All Codes</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('All Mods',false,'mods')">
+                        <span>All Mods</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('All Ships',false,'ships')">
+                        <span>All Ships</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('Official Mods',false,'mods',[],'official',[1,2])">
+                        <span>Official Mods</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
                 </div>
                 <div class="infos-type">
                     <span>Community</span>
                 </div>
-                <div class="search-suggestion" onclick="Search('All Clans',false,'clans')">
-                    <span>All Clans</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="search-suggestion" onclick="Search('All Users',false,'users')">
-                    <span>All Users</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="search-suggestion" onclick="Search('Official Contributors',false,'users',[],'isContrib',true)">
-                    <span>Contributors</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
-                </div>
-                <div class="search-suggestion" onclick="Search('Sesame Team',false,'users',[],'isSesame',[true])">
-                    <span>Sesame Team</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                <div class="searches">
+                    <div class="search-suggestion" onclick="Search('All Communities',false,'communities')">
+                        <span>All Communities</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('All Users',false,'users')">
+                        <span>All Users</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('Official Contributors',false,'users',[],'isContrib',true)">
+                        <span>Contributors</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
+                    <div class="search-suggestion" onclick="Search('Sesame Team',false,'users',[],'isSesame',[true])">
+                        <span>Sesame Team</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"/></svg>
+                    </div>
                 </div>
             </div>
 

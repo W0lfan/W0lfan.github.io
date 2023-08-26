@@ -80,8 +80,8 @@ let ManageDisplay = function() {
         Search('Official Mods',false,'mods',[],'official',[1,2])
     } else if (search_input == "All Mods") {
         Search('All Mods',false,'mods');
-    } else if (search_input == "All Clans") {
-        Search('All Clans',false,'clans')
+    } else if (search_input == "All communities") {
+        Search('All communities',false,'communities')
     }  else if (search_input == "All Users") {
         Search('All Users',false,'users')
     } else if (search_input == "Official Contributors") {
@@ -128,11 +128,7 @@ function wrapCodeWithSyntaxHighlighting(codeLines) {
         return `${line}<br>`;
     }).join('');
 }
-function formatAuthors(authors) {
-    return authors.map(author => {
-        return `<a href="${author.link}" target="_blank">${author.name}</a>`;
-    }).join(', ');
-}
+
 function formatArray(array) {
     return array.map(item => {
         return `${item}`;
@@ -148,7 +144,7 @@ function ManageArticle() {
     if (article_view === true) {
         hide.style.display = "none";
         show.style.display = "flex";
-        article_parent.style.height = "30px"; // Set initial value before transition
+        article_parent.style.height = "0.1px"; // Set initial value before transition
         article_parent.style.borderRadius = "20px";
     } else {
         hide.style.display = "flex";
