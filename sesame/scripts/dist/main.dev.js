@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(content);
       Search(content);
     }
-  }, 200);
+  }, 500);
   document.querySelector('.search-button').addEventListener('click', function () {
     Search();
   });
@@ -75,21 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () {
     var scrollY = window.scrollY;
     var article = document.querySelector('.sesame-informative');
-    var metricsBar = document.querySelector('.display-research .results .infos');
 
     if (scrollY > 20) {
-      if (metricsBar) {
-        metricsBar.style.opacity = 0;
-      }
-
       if (article) {
         article.style.top = "80px";
       }
     } else {
-      if (metricsBar) {
-        metricsBar.style.opacity = 1;
-      }
-
       if (article) {
         article.style.top = "130px"; // Initial position when at the top
       }

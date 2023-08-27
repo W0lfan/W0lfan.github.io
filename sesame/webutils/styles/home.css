@@ -83,10 +83,10 @@
         }
         .search-input:focus-within,
         .search-input:hover {
-            border: 1px solid #B82828 !important;
+            border: 2px solid #B82828 !important;
         }
         .search-input {
-            border: 1px solid rgba(0,0,0,0);
+            border: 2px solid rgba(0,0,0,0);
             transition:border 0.4s;
         }
         .search-input {
@@ -170,7 +170,7 @@
         align-items: center;
         flex-direction: row;
         gap: 10px;
-        border-radius: 0px;
+        border-radius: 0px !important;
         padding: 5px;
         background-color: var(--backgrounds);
         transition: transform 0.4s;
@@ -182,7 +182,9 @@
     }
 
     .search-suggestion:hover {
-        background-color: var(--backgrounds-lighter) !important;
+        background-color: var(--coloring) !important;
+        color:var(--backgrounds)
+
     }
     .searches {
         background-color: var(--backgrounds);
@@ -196,9 +198,7 @@
         display: none;
     }
 }
-.search-suggestion:last-child(1) {
-    border-radius: 0px 0px 10px 10px;
-}
+
 .pick-a-type {
     transition: height 0.4s;
       .infos-type {
@@ -277,6 +277,24 @@
     background-color: var(--backgrounds) !important;
 }
 @media screen and (width < 500px) {
+    .sort-type {
+        top: 55px !important;
+        padding-left: 0px !important;
+    }
+    .class-s {
+        padding: 0px !important;
+        height: 25px !important;
+        width: 10px !important;
+        height: 30px !important;
+    }
+    .class-s svg {
+        width: 40px !important ;
+        height: 40px !important;
+    }
+
+    .class-s span {
+        display: none;
+    }
     #viewuser .bio-container {
         width: calc(100% - 40px);
     }
@@ -306,14 +324,7 @@
     .global {
         font-size: 10px !important;
     }
-    .sort-type {
-        right: 95px !important;
-        top: 15px !important;
-    }
-    .class-sort .class-s svg {
-        width: 20px !important;
-        height: 20px !important;
-    }
+
     .metrics .metric svg {
         width: 10px !important;
         height: 10px !important;
@@ -325,7 +336,7 @@
         width: 85% !important;
     }
     #search-input:focus,#search-input:focus-within,#search-input:hover {
-        border: 0px solid rgba(0,0,0,0) !important;
+        border: 2px solid rgba(0,0,0,0) !important;
     }
     .search-input  {
         width: 20% !important;

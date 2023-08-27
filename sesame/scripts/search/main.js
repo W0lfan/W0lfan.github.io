@@ -1,3 +1,4 @@
+
 let search_input;
 let article;
 let Metrics;
@@ -43,12 +44,15 @@ function waitForDisplay(element, callback) {
         requestAnimationFrame(() => waitForDisplay(element, callback));
     }
 }
-function copyToClipboard(content,name="link to") {
+
+function copyToClipboard(content,name) {
+    if (!name) {
+        name = LanguageValues.pop.link_to;
+    }
     const url = `https://w0lfan.github.io/sesame/#search?='${content}'`;
     navigator.clipboard.writeText(url)
         .then(() => {
-            console.log('URL copied to clipboard:', url); 
-            DisplayNotif(`Copied ${name} ${capitalizeFirstLetter(content.replace(/-/g,' '))}`,5);
+            DisplayNotif(`${name} ${capitalizeFirstLetter(content.replace(/-/g,' '))}`,5);
         })
         .catch(error => {
             console.error('Error copying URL to clipboard:', error);
@@ -216,7 +220,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
     }
     document.body.innerHTML = `
         <div class="loader-search" style="display:flex">
-            <div class="text">Please wait a few seconds</div>
+            <div class="text">${LanguageValues.home.wait}</div>
             <div class="loader">
                 <div class="whole-loader"></div>
                 <div class="min-loader"></div>
@@ -277,7 +281,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                         ships: 0
                     },
                 ];
-                document.querySelector('.loader-search .text').innerHTML = "Sorting datas...";
+                document.querySelector('.loader-search .text').innerHTML = LanguageValues.home.displaying;
                 for (const [key, value] of Object.entries(database)) {
                     if (value.length > 0) {
                         value.forEach((item) => {
@@ -426,65 +430,15 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
 
                 await display_ui_by_file('results.html', display_result);
-                await display_ui_by_file('parameters.txt', display_result);
+                await display_ui_by_file('parameters.txt', display_result,document.querySelector('.header .header-search'));
 
                 ChangeFont(localStorage.getItem('theme'));
-                document.querySelector('.loader-search .text').innerHTML = "Displaying home...";
+                document.querySelector('.loader-search .text').innerHTML = LanguageValues.home.home_creation;
 
                 document.querySelector('.display-research').innerHTML += `
                     <div class="results">
                         <div class="infos">
-                            <div class="global">${LanguageValues.home.results} <span>${key_word}</span></div>
-                            <div class="metrics">
-                                <div class="metric" id="mods-metrics" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>
-                                    <span>${Metrics.mods}</span>
-                                </div>
-                                <div class="metric" id="users-metrics">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5T731-360q31 14 50 41t19 65v94H160Z"/></svg>
-                                    <span>${Metrics.users}</span>
-                                </div>
-                                <div class="metric" id="ships-metrics">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z"/></svg>
-                                <span>${Metrics.ships}</span>
-                                </div>
-
-                                <div class="metric" id="communities-metrics">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M0-240v-53q0-38.567 41.5-62.784Q83-380 150.376-380q12.165 0 23.395.5Q185-379 196-377.348q-8 17.348-12 35.165T180-305v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773-360 765-377.273q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960-293v53H780ZM149.567-410Q121-410 100.5-430.562 80-451.125 80-480q0-29 20.562-49.5Q121.125-550 150-550q29 0 49.5 20.5t20.5 49.933Q220-451 199.5-430.5T149.567-410Zm660 0Q781-410 760.5-430.562 740-451.125 740-480q0-29 20.562-49.5Q781.125-550 810-550q29 0 49.5 20.5t20.5 49.933Q880-451 859.5-430.5T809.567-410ZM480-480q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z"/></svg>
-                                <span>${Metrics.communities}</span>
-                                </div>
-                                <div class="metric" id="codes-metrics">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z"/></svg>
-                                <span>${Metrics.codes}</span>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="sort-type">
-                            <div class="class-sort">
-                                <div class="class-s" id="mods" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('mods') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>
-
-                                </div>
-                                <div class="class-s" id="users" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('users') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5T731-360q31 14 50 41t19 65v94H160Z"/></svg>
-
-                                </div>
-                                <div class="class-s" id="ships" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('ships') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z"/></svg>
-
-
-                                </div>
-                                <div class="class-s" id="communities" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('communities') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M0-240v-53q0-38.567 41.5-62.784Q83-380 150.376-380q12.165 0 23.395.5Q185-379 196-377.348q-8 17.348-12 35.165T180-305v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773-360 765-377.273q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960-293v53H780ZM149.567-410Q121-410 100.5-430.562 80-451.125 80-480q0-29 20.562-49.5Q121.125-550 150-550q29 0 49.5 20.5t20.5 49.933Q220-451 199.5-430.5T149.567-410Zm660 0Q781-410 760.5-430.562 740-451.125 740-480q0-29 20.562-49.5Q781.125-550 810-550q29 0 49.5 20.5t20.5 49.933Q880-451 859.5-430.5T809.567-410ZM480-480q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z"/></svg>
-
-                                </div>     
-                                <div class="class-s" id="codes" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('codes') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z"/></svg>
-
-                                </div>                        
-                            </div>
+                            <div class="global">${LanguageValues.home.results} <span>${key_word}</span></div> 
                         </div>
                     </div>
                     <div class="user-focus ${Display}-users-result">
@@ -492,6 +446,75 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     </div>
                     <div class="results-container ${Display}-display">
 
+                    </div>
+                `;
+                document.querySelector('.header .header-search').innerHTML += ` 
+                    <div class="metrics">
+                        <div class="sort-type">
+                            <div class="class-sort">
+                                <div class="class-s" id="mods" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('mods') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z"/></svg>
+                                <span>${Metrics.mods}</span>
+                                <div class="metric-info-box">
+                                    <div class="icon-view">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
+                                    </div>
+                                    <div class="info-box-name">
+                                        ${capitalizeFirstLetter(LanguageValues.categories.categories[0])}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="class-s" id="users" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('users') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5T731-360q31 14 50 41t19 65v94H160Z"/></svg>
+                                <span>${Metrics.users}</span>
+                                <div class="metric-info-box">
+                                    <div class="icon-view">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
+                                    </div>
+                                    <div class="info-box-name">
+                                    ${capitalizeFirstLetter(LanguageValues.categories.categories[1])}
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="class-s" id="ships" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('ships') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z"/></svg>
+                                <span>${Metrics.ships}</span>
+                                <div class="metric-info-box">
+                                    <div class="icon-view">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
+                                    </div>
+                                    <div class="info-box-name">
+                                    ${capitalizeFirstLetter(LanguageValues.categories.categories[2])}
+                                    </div>
+                                </div>
+
+                                </div>
+                                <div class="class-s" id="communities" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('communities') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M0-240v-53q0-38.567 41.5-62.784Q83-380 150.376-380q12.165 0 23.395.5Q185-379 196-377.348q-8 17.348-12 35.165T180-305v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773-360 765-377.273q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960-293v53H780ZM149.567-410Q121-410 100.5-430.562 80-451.125 80-480q0-29 20.562-49.5Q121.125-550 150-550q29 0 49.5 20.5t20.5 49.933Q220-451 199.5-430.5T149.567-410Zm660 0Q781-410 760.5-430.562 740-451.125 740-480q0-29 20.562-49.5Q781.125-550 810-550q29 0 49.5 20.5t20.5 49.933Q880-451 859.5-430.5T809.567-410ZM480-480q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z"/></svg>
+                                <span>${Metrics.communities}</span>
+                                <div class="metric-info-box">
+                                    <div class="icon-view">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
+                                    </div>
+                                    <div class="info-box-name">
+                                    ${capitalizeFirstLetter(LanguageValues.categories.categories[3])}
+                                    </div>
+                                </div>
+                                </div>     
+                                <div class="class-s" id="codes" onclick="ManageQuerySearch(this)" style="background-color: ${!trigger_search.includes('codes') ? "var(--backgrounds-lighter)" : "var(--backgrounds)"}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z"/></svg>
+                                <span>${Metrics.codes}</span>
+                                <div class="metric-info-box">
+                                    <div class="icon-view">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
+                                    </div>
+                                    <div class="info-box-name">
+                                    ${capitalizeFirstLetter(LanguageValues.categories.categories[4])}
+                                    </div>
+                                </div>
+                                </div>                        
+                            </div>
+                        </div>
                     </div>
                 `;
                 if (
@@ -550,7 +573,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     for (let DatasByKey of Object.values(Datas)) {
                         for (let data of DatasByKey) {
                             let content = data.content;
-                            document.querySelector('.loader-search .text').innerHTML = `Adding ${content.name}...`;
                             if (!section_diff[data.id] && !JSON.parse(data.sure)) {
                                 let swipe_content;
                                 let svg_key;
@@ -663,7 +685,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         <div class="name">${content.name}</div>
                                                         <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                            <span>Share</span>
+                                                            <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                         </div>
                                                     </div>
                                                     <div class="author">
@@ -711,7 +733,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         <div class="name">${content.name}</div>
                                                         <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                            <span>Share</span>
+                                                            <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                         </div>
                                                     </div>
                                                     <div class="author">
@@ -780,7 +802,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         ` : (
                                                             content.about.isModder ? `
                                                             <div class="mini-tag" id="modtag">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M686-132 444-376q-20 8-40.5 12t-43.5 4q-100 0-170-70t-70-170q0-36 10-68.5t28-61.5l146 146 72-72-146-146q29-18 61.5-28t68.5-10q100 0 170 70t70 170q0 23-4 43.5T584-516l244 242q12 12 12 29t-12 29l-84 84q-12 12-29 12t-29-12Z"/></svg>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M686-132 444-376q-20 8-40.5 12t-43.5 4q-100 0-170-70t-70-170q0-36 10-68.5t28-61.5l146 146 72-72-146-146q29-18 61.5-28t68.5-10q100 0 170 70t70 170q0 23-4 43.5T584-516l244 242q12 12 12 29t-12 29l-84 84q-12 12-29 12t-29-12Z"/></svg>
                                                             </div>
                                                             `: ''
                                                         )
@@ -803,7 +825,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                                     function generateLINKS(dataArray) {
                                         const divElements = dataArray.map(item => `
-                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `copyToClipboard('${item.src}','the Discord username of')`: `window.open('${item.src}')`}">
+                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `copyToClipboard('${item.src}','${LanguageValues.pop.discord_username}')`: `window.open('${item.src}')`}">
                                             <img src="${LogosSRC[item.id]}">
                                             <div class="content">
                                                 <div class="main">${item.id.replace(/\b\w/g, char => char.toUpperCase())}</div>
@@ -850,7 +872,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
                                                                     </div>
                                                                     <div class="info-box-name">
-                                                                        Official Staff
+                                                                    ${LanguageValues.categories.tags[0]}
                                                                     </div>
                                                                 </div>
                                                                 <svg id="icon-hover" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m436-356 228-228-42-41-183 183-101-101-44 44 142 143Zm44 275q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"/></svg></div>
@@ -864,7 +886,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
                                                                     </div>
                                                                     <div class="info-box-name">
-                                                                        Official Contributor
+                                                                    ${LanguageValues.categories.tags[1]}
                                                                     </div>
                                                                 </div>
                                                                     <svg id="icon-hover" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg></div>
@@ -878,7 +900,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
                                                                 </div>
                                                                 <div class="info-box-name">
-                                                                    Official Modder
+                                                                ${LanguageValues.categories.tags[2]}
                                                                 </div>
                                                             </div>
                                                             <svg id="icon-hover" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M705-128 447-388q-23 8-46 13t-47 5q-97 0-165-67.5T121-602q0-31 8-60.5t23-55.5l145 145 92-86-149-149q26-15 55-23.5t59-8.5q99 0 168.5 69.5T592-602q0 24-5 47t-13 46l259 258q11 11 11 26.5T833-198l-76 70q-11 11-26 11t-26-11Z"/></svg></div>
@@ -892,7 +914,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m280-400 200-201 200 201H280Z"/></svg>
                                                                     </div>
                                                                     <div class="info-box-name">
-                                                                        UCP User
+                                                                        ${LanguageValues.categories.tags[3]}
                                                                     </div>
                                                                 </div>
                                                             <svg   id="icon-hover"xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M280-880h400v333q0 23-11.5 42T637-474l-141 82 26 97h134l-109 81 42 134-109-81-110 81 42-134-109-81h135l25-97-140-82q-20-12-31.5-31T280-547v-333Zm174 60v350l30 16 30-16v-350h-60Z"/></svg></div>
@@ -909,7 +931,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     }
                                                         <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                            <span>Share</span>
+                                                            <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -956,7 +978,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <div class="communities-name">${content.name}</div>
                                                 <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                    <span>Share</span>
+                                                    <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                 </div>
                                             </div>
                                             <div class="owner">
@@ -1157,7 +1179,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h270v720H180Zm330 0v-361h330v301q0 24-18 42t-42 18H510Zm0-421v-299h270q24 0 42 18t18 42v239H510Z"/></svg>
                                                         </div>
                                                         <div class="value">
-                                                            ${statistics.bodies} bod${statistics.bodies>1?'ies':'y'}
+                                                            ${statistics.bodies} ${capitalizeFirstLetter(statistics.bodies<1?LanguageValues.ships.body[0]:LanguageValues.ships.body[1])}
                                                         </div>
                                                     </div>
                                                     <div class="global-content">
@@ -1165,7 +1187,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m320-80 40-280H160l360-520h80l-40 320h240L400-80h-80Z"/></svg>
                                                         </div>
                                                         <div class="value">
-                                                            ${lasers.length} laser${lasers.length>1?'s':''}
+                                                            ${lasers.length} ${capitalizeFirstLetter(lasers.bodies<1?LanguageValues.ships.laser[0]:LanguageValues.ships.laser[1])}
                                                         </div>
                                                     </div>
                                                     <div class="global-content">
@@ -1173,7 +1195,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M465-160q-54 0-85.5-28T348-273h68q0 26 11.5 39.5T465-220q27 0 38.5-12t11.5-41q0-29-11.5-42.5T465-329H80v-60h385q54 0 82 28t28 88q0 57-28 85t-82 28ZM80-568v-60h548q37 0 54-17.5t17-58.5q0-41-17-58.5T628-780q-38 0-55 20.5T556-708h-60q0-58 35-95t97-37q61 0 96 35.5T759-704q0 65-35 100.5T628-568H80Zm672 330v-60q35 0 51.5-19.5T820-374q0-38-18.5-55T748-446H80v-60h668q62 0 97 35t35 97q0 64-33 100t-95 36Z"/></svg>
                                                         </div>
                                                         <div class="value">
-                                                            ${statistics.wings} wing${statistics.wings>1?'s':''}
+                                                            ${statistics.wings} ${capitalizeFirstLetter(lasers.wings<1?LanguageValues.ships.wing[0]:LanguageValues.ships.wing[1])}
                                                         </div>
                                                     </div>
                                                     <div class="global-content">
@@ -1188,7 +1210,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <div class="body-specs">
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Shield
+                                                            ${capitalizeFirstLetter(LanguageValues.ships.shield)}
                                                         </div>
                                                         <div class="spec-content">
                                                             <div class="icon">
@@ -1225,7 +1247,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Generator
+                                                            ${capitalizeFirstLetter(LanguageValues.ships.generator)}
                                                         </div>
                                                         <div class="spec-content">
                                                             <div class="icon">
@@ -1261,7 +1283,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Laser damages
+                                                            ${capitalizeFirstLetter(LanguageValues.ships.damages)}
                                                         </div>
                                                         <div class="spec-content">
                                                         <div class="icon"></div>
@@ -1280,7 +1302,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Speed
+                                                        ${capitalizeFirstLetter(LanguageValues.ships.speed)}
                                                         </div>
                                                         <div class="spec-content">
                                                         <div class="icon"></div>
@@ -1299,7 +1321,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Acceleration
+                                                        ${capitalizeFirstLetter(LanguageValues.ships.acceleration)}
                                                         </div>
                                                         <div class="spec-content">
                                                         <div class="icon"></div>
@@ -1318,7 +1340,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="spec">
                                                         <div class="spec-name">
-                                                            Rotation
+                                                        ${capitalizeFirstLetter(LanguageValues.ships.rotation)}
                                                         </div>
                                                         <div class="spec-content">
                                                         <div class="icon"></div>
@@ -1352,7 +1374,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 }
                                                 <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                    <span>Share</span>
+                                                    <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                 </div>
                                                 <div class="important-download-advice">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m436-356 228-228-42-41-183 183-101-101-44 44 142 143Zm44 275q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"/></svg>
@@ -1362,7 +1384,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     `;
                                 setTimeout(() => {
                                     document.getElementById(`download-${content.name.replace(' ','-')}`).addEventListener('click', function() {
-                                        DisplayNotif(`Downloaded ${content.name}`,5);
+                                        DisplayNotif(`${LanguageValues.pop.downloaded} ${content.name}`,5);
                                         DownLoadCode(`let ${content.name} = '${JSON.stringify(content.code[0])}';`, content.name)
                                     })
                                 }, 500);
@@ -1521,6 +1543,12 @@ function Search(search_query = null, official_content = false, all = "", not_que
                             document.querySelector('.results-container').style.width = "90%";
                             document.querySelector('.results-container').style.paddingLeft = "0px";
                         }
+                        ManageArticle();
+                        if (localStorage.getItem('article_view') === true) {
+                            ArticleManagement(true,true)
+                        } else {
+                            ArticleManagement(false,true)
+                        }
                     };
 
                     ArticleAdd();
@@ -1552,8 +1580,3 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
 }
 
-function CopyText(text) {
-
-    navigator.clipboard.writeText(text);
-    DisplayNotif(`Copied ${text} to clipboard`,5)
-}

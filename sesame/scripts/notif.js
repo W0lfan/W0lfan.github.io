@@ -11,7 +11,7 @@ function DisplayNotif(message, seconds) {
         notifElement.style.display ="flex";
         notifElement.innerHTML = `
             <div class="header">
-                Sesame informs you
+                ${LanguageValues.pop.sesame_says}
             </div>
             <div class="message">
                 ${message}

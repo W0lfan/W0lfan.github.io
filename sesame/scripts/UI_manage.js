@@ -1,4 +1,7 @@
-async function display_ui_by_file(type, act_back) {
+async function display_ui_by_file(type, act_back,part) {
+    if (!part) {
+        part = document.body;
+    }
     const response = await fetch(`uis/${type}`);
     const text = await response.text();
     const parent = document.createElement('div');
@@ -8,7 +11,7 @@ async function display_ui_by_file(type, act_back) {
         act_back();
         console.log('The parent is fully loaded!');
     });
-    document.body.innerHTML += text;
+    part.innerHTML += text;
 }
 
 let check_ui_display = function() {
@@ -27,7 +30,7 @@ function ManageQuerySearch(element) {
         document.querySelectorAll(`.${id}-result`).forEach((el) => {
             el.style.display = 'flex';
         });
-        document.querySelector(`#${id}-metrics span`).innerHTML = Metrics[id];
+        document.querySelector(`#${id} span`).innerHTML = Metrics[id];
         document.querySelector(`${id}-swipe-scroll`).style.display = "flex";
     } else {
         trigger_search.push(id);
@@ -35,6 +38,7 @@ function ManageQuerySearch(element) {
         document.querySelectorAll(`.${id}-result`).forEach((el) => {
             el.style.display = 'none';
         });
+        document.querySelector(`#${id} span`).innerHTML ='0';
         document.querySelector(`#${id}-metrics span`).innerHTML = '0';
         document.querySelector(`${id}-swipe-scroll`).style.display = "none";
     }

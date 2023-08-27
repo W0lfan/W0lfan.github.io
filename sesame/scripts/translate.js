@@ -29,6 +29,7 @@ function GetAvailableLanguages() {
           L = { [keyToMove]: temp, ...L };
         }
         let i =0;
+        languagesNB = Object.keys(L).length;
         for (let [key,value] of Object.entries(L)) {
             const div = document.createElement('div');
             div.className = 'language';

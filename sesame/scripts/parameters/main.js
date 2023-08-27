@@ -1,7 +1,7 @@
 const fonts = {
     "--background-color-left": { black: "#232323", white: "#ffffff" },
     "--backgrounds": { black: "#181818", white: "#f0f0f0" },
-    "--backgrounds-lighter": { black: "#1F1F1F", white: "#c1c1c1" },
+    "--backgrounds-lighter": { black: "#1F1F1F", white: "#dbdbdb" },
     "--black-coloring": { black: "#181818b3", white: "#616161b3" },
     "--black-lighter": { black: "#ffffff1a", white: "#bdbdbd1a" },
     "--coloring": { black: "white", white: "rgb(46, 45, 45)" },
@@ -12,6 +12,7 @@ const fonts = {
   };
 
   let param_view = false;
+  let languagesNB;
   function TriggerParameterView() {
     let content = document.querySelector('.parameters-content');
     let parent = document.querySelector('.parameters');
@@ -24,6 +25,12 @@ const fonts = {
       setTimeout(() => {
         SyncParam()
         GetAvailableLanguages();
+        parent.querySelector('.menu').addEventListener('mouseover', () => {
+          parent.querySelector('.menu').style.height = languagesNB*30 + "px";
+        });
+        parent.querySelector('.menu').addEventListener('mouseout', () => {
+          parent.querySelector('.menu').style.height = 30 + "px";
+        });
     }, 200);
   }
   

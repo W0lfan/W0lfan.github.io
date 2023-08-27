@@ -11,7 +11,7 @@ function DisplayNotif(message, seconds) {
     notifElement.className = 'notification-information';
     notifElement.style.opacity = 0;
     notifElement.style.display = "flex";
-    notifElement.innerHTML = "\n            <div class=\"header\">\n                Sesame informs you\n            </div>\n            <div class=\"message\">\n                ".concat(message, "\n            </div>\n        ");
+    notifElement.innerHTML = "\n            <div class=\"header\">\n                ".concat(LanguageValues.pop.sesame_says, "\n            </div>\n            <div class=\"message\">\n                ").concat(message, "\n            </div>\n        ");
     document.body.appendChild(notifElement);
   }
 

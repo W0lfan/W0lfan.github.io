@@ -3,11 +3,13 @@
         "input_placeholder" : "Rechercher par mots-clés",
         "scroll_menu" : {
             "top" : "Recherche Globale",
-            "infos-items" : ["Modding","Communauté"],
+            "infos_items" : ["Modding","Communauté"],
             "click_query" : [
-                "Tous les Mods",
+                "Tous les codes",
+                "Tous les mods",
+                "Tous les vaisseaux",
                 "Mods Officiels",
-                "Tous les Clans",
+                "Toutes les communautés",
                 "Tous les utilisateurs",
                 "Contributeurs",
                 "Équipe Sesame"
@@ -18,8 +20,8 @@
         "404":"Essayez de rechercher autre chose"
     },
     "parameters" : {
-        "titles" : ["Theme","Articles","Langage"],
-        "descriptions" : ["Changer votre theme Sesame","Organiser l'affichage des Articles","Changer le langage du site"]
+        "titles" : ["Thème","Articles","Langage"],
+        "descriptions" : ["Changer votre thème Sesame","Organiser l'affichage des Articles","Changer le langage du site"]
     },
     "actions" : {
         "download" : "Télécharger",
@@ -27,13 +29,14 @@
         "documentation":"Documentation"
     },
     "categories" : {
-        "message" : "Aller à",
-        "categories" : ["mods","utilisateurs","vaisseaux","clans","codes"]
+        "message" : "Aller aux",
+        "return" : "Retourner aux",
+        "categories" : ["mods","utilisateurs","vaisseaux","communautés","codes"]
     },
     "user_informations" : {
         "user" : ["À Propos","Réseaux sociaux"],
         "content" : {
-            "no_content":"n'a pas publié de contenu",
+            "no_content":"L'utilisateur n'a pas de contenu publié",
             "content": "Ses créations sont affichés ci-dessous"
         }
     },
@@ -44,7 +47,7 @@
             "height": "540px",
             "container": [{
                 "title": "Acces Restreint",
-                "content": "L'accès aux ressources du modding Starblast requiert certaines exigences. Bien que la création de vaisseaux et l'utilisation du Ship Editor soient gratuits, l'hébergement de mods nécessite la possession d'un Elite Commander Pass (ECP) achetable directement depuis Starblast.io. Cet investissement vous donne l'accès au Mod Editor et vous permet de développer vos propres mods de jeu, ainsi que de participer à l'activité de la communauté des moddeurs de starblast."
+                "content": "Bien que la création de vaisseaux et l'utilisation du Ship Editor soient gratuits, l'hébergement de mods nécessite la possession d'un Elite Commander Pass (ECP) achetable directement depuis Starblast.io. Cet investissement vous donne accès au Mod Editor et vous permet de développer vos propres modes de jeu, ainsi que de contribuer dans la communauté des moddeurs de starblast."
             }, {
                 "title": "Grandes Ressources",
                 "content": "Le modding Starblast n'a d'autres limites que vos connaissances du code et votre imagination. Il permet de créer n'importe quel mod et de jouer les vaisseaux que vous avez créés. Certains mods ont été directement implantés dans le jeu et d'autres sont organisés en tant qu'événements ou joués par la communauté. Les mods peuvent être des modes de jeu simple mais aussi des parties au code complexe proposant des fonctionnalités de jeu uniques."
@@ -53,26 +56,26 @@
                 "resources": [{
                     "name": "Starblast Modding",
                     "src": "https://starblast.io/modding.html",
-                    "id": "lien"
+                    "id": "link"
                 }, {
                     "name": "Starblast Ship Editor",
                     "src": "https://starblast.io/shipeditor/",
-                    "id": "lien"
+                    "id": "link"
                 }, {
                     "name": "Documentation Modding",
                     "src": "https://starblast.fandom.com/wiki/Modding_Tutorial",
-                    "id": "lien"
+                    "id": "link"
     
                 }],
                 "actions": [{
                         "name": "Ajouter un Mod",
-                        "act": "function() {window.open('https://discord.gg/C5RRhPNH');}",
-                        "id": "Ajouter"
+                        "act": "window.open('https://discord.gg/C5RRhPNH');",
+                        "id": "add"
                     },
                     {
                         "name": "Mods Officiels",
-                        "act": "function() {Search('Official Mods', false, 'mods', [], 'official', [1, 2]);}",
-                        "id": "Rechercher"
+                        "act": "Search('Mods Officiels', false, 'mods', [], 'official', [1, 2]);",
+                        "id": "search"
                     }
                 ],
                 "banner": ""
