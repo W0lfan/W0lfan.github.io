@@ -8,7 +8,7 @@ const __LINKS__ = {
     mods: "mods.json",
     communities: "communities.json",
     ships: "ships.json"
-}; 
+};
 
 const LogosSRC = {
     "github": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
