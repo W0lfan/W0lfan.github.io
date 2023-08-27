@@ -1656,6 +1656,24 @@
     width: 20px !important;
     height: 20px !important;
 }
+.communities-result {
+    min-height: 140px;
+}
+.mods-result .share-content, .communities-result .share-content {
+    top:unset;
+    bottom:5px;
+    right:5px;
+    position:absolute;
+}
+.ships-result .actions {
+    position:unset;
+}
+.ships-result .share-content {
+    bottom:unset;
+    top:5px;
+    right:5px;
+    position:absolute;
+}
 
 .notification-information {
     position:fixed;
