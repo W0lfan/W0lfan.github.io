@@ -43,16 +43,16 @@ function waitForDisplay(element, callback) {
         requestAnimationFrame(() => waitForDisplay(element, callback));
     }
 }
-function copyToClipboard(content) {
+function copyToClipboard(content,name="link to") {
     const url = `https://w0lfan.github.io/sesame/#search?='${content}'`;
     navigator.clipboard.writeText(url)
         .then(() => {
-            console.log('URL copied to clipboard:', url);
-            DisplayNotif(`Copied link to ${capitalizeFirstLetter(content.replace(/-/g,' '))}`,5);
+            console.log('URL copied to clipboard:', url); 
+            DisplayNotif(`Copied ${name} ${capitalizeFirstLetter(content.replace(/-/g,' '))}`,5);
         })
         .catch(error => {
             console.error('Error copying URL to clipboard:', error);
-            DisplayNotif(`rror copying URL to clipboard`,5)
+            DisplayNotif(`rror copying ${name} to clipboard`,5)
         });
 }
 
@@ -689,7 +689,12 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     
                                         </div>
                             `;
+
                                 setTimeout(() => {
+                                    document.getElementById(`load-${content.name}`).addEventListener('click', function() {
+                                        DisplayNotif(`Downloaded ${content.name}`,5);
+                                        DownLoad(githubToRaw(content.link.url),`Sesame - ${content.name}`)
+                                    });
                                     document.getElementById(`open-${content.name}`).addEventListener('click', function() {
                                         window.open(content.link.url, "_blank");
                                     });
@@ -742,6 +747,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                setTimeout(() => {
                                     if (document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`)) {
                                         document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`).addEventListener('click', function() {
+                                            DisplayNotif(`Downloaded ${content.name}`,5);
                                             DownLoadCode(`${js_beautify(content.code, {indent_size: 2})}`, `${content.name}`);
                                         });
                                     }
@@ -794,7 +800,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                                     function generateLINKS(dataArray) {
                                         const divElements = dataArray.map(item => `
-                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `navigator.clipboard.writeText('${item.src}')`: `window.open('${item.src}')`}">
+                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `copyToClipboard('${item.src}','the Discord username of')`: `window.open('${item.src}')`}">
                                             <img src="${LogosSRC[item.id]}">
                                             <div class="content">
                                                 <div class="main">${item.id.replace(/\b\w/g, char => char.toUpperCase())}</div>
@@ -1353,6 +1359,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     `;
                                 setTimeout(() => {
                                     document.getElementById(`download-${content.name.replace(' ','-')}`).addEventListener('click', function() {
+                                        DisplayNotif(`Downloaded ${content.name}`,5);
                                         DownLoadCode(`let ${content.name} = '${JSON.stringify(content.code[0])}';`, content.name)
                                     })
                                 }, 500);
@@ -1545,4 +1552,5 @@ function Search(search_query = null, official_content = false, all = "", not_que
 function CopyText(text) {
 
     navigator.clipboard.writeText(text);
+    DisplayNotif(`Copied ${text} to clipboard`,5)
 }
