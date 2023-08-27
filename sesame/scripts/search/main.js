@@ -49,6 +49,7 @@ function copyToClipboard(content,name) {
     if (!name) {
         name = LanguageValues.pop.link_to;
     }
+    name = name.replace(/&apos/,"'");
     const url = `https://w0lfan.github.io/sesame/#search?='${content}'`;
     navigator.clipboard.writeText(url)
         .then(() => {
@@ -825,7 +826,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                                     function generateLINKS(dataArray) {
                                         const divElements = dataArray.map(item => `
-                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `copyToClipboard('${item.src}','${LanguageValues.pop.discord_username}')`: `window.open('${item.src}')`}">
+                                        <div id="${item.id}-${content.name}" class="user-link"  style="display:${(item.src != "" && item.src.toLowerCase() != "unknown") ? "flex" : "none"}" onclick="${item.id === "discord" ? `copyToClipboard('${item.src}','${LanguageValues.pop.discord_username.replace(/'/,'&apos')}')`: `window.open('${item.src}')`}">
                                             <img src="${LogosSRC[item.id]}">
                                             <div class="content">
                                                 <div class="main">${item.id.replace(/\b\w/g, char => char.toUpperCase())}</div>
