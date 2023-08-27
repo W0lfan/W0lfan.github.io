@@ -3,7 +3,7 @@
     Sesame Database API Dev Log
 
     📅 Created: Aug. 9, 2023
-    🔄 Last Update: Aug. 26, 2023
+    🔄 Last Update: Aug. 27, 2023
 
  */
     const __Path__ = "https://raw.githubusercontent.com/W0lfan/sesame/main/database/";
@@ -49,7 +49,7 @@
         try {
             const content = await fetchData(path);
     
-            console.log(`Sesame Database - ${directory}.json\nFound ${content.length} replies. Extracting datas.`);
+            console.log(`Sesame Database - Z${directory}.json\nFound ${content.length} replies. Extracting datas.`);
     
             if (gathering === 1) {
                 console.log(`Returning all datas from ${directory}.json.`);
@@ -59,9 +59,9 @@
                 const gathering_available = content.filter(item =>
                     gathering.some(gather =>
                         item.name.toLowerCase().includes(gather) ||
-                        (item.description && item.description.toLowerCase().includes(gather)) ||
-                        (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather)))) ||
-                        (item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather))
+                        (item.description && item.description.toLowerCase().includes(gather.toLowerCase())) ||
+                        (item.author && Array.isArray(item.author) && item.author.some(aut => aut && Array.isArray(aut.name) && aut.name.some(name => name.toLowerCase().includes(gather.toLowerCase())))) ||
+                        (item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather.toLowerCase()))
                     )
                 );
     

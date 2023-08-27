@@ -1623,3 +1623,58 @@
 #modtag {
     fill:rgb(255, 153, 0)
 }
+
+.share-content {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 15px !important;
+    font-family: "Lato" !important;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, fill 0.3s;
+    color:#E91E63;
+    fill:#E91E63;
+    font-weight: bold;
+    border:2px solid #E91E63;
+}
+.share-content:hover {
+    border: 2px solid rgba(0,0,0,0);
+    background-color: #E91E63;
+    fill:var(--backgrounds);
+    color:var(--backgrounds);
+}
+.share-content svg {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.notification-information {
+    position:fixed;
+    z-index: 100;
+    top: 10px;
+    background-color: var(--backgrounds);
+    opacity: 0;
+    flex-direction: column;
+    left:0;right:0;margin:auto;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    border:2px solid #E91E63;
+    box-shadow: 0px 0px 10px black;
+    justify-content: center;
+    font-family: "Poppins";
+    .header {
+        font-size: 13px;
+        color:var(--color-light)
+    }
+    .message {
+        font-size: 15px;
+    }
+}

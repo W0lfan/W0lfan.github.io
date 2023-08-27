@@ -43,6 +43,18 @@ function waitForDisplay(element, callback) {
         requestAnimationFrame(() => waitForDisplay(element, callback));
     }
 }
+function copyToClipboard(content) {
+    const url = `https://w0lfan.github.io/sesame/search?='${content}'`;
+    navigator.clipboard.writeText(url)
+        .then(() => {
+            console.log('URL copied to clipboard:', url);
+            DisplayNotif(`Copied link to ${capitalizeFirstLetter(content.replace(/-/g,' '))}`,5);
+        })
+        .catch(error => {
+            console.error('Error copying URL to clipboard:', error);
+            DisplayNotif(`rror copying URL to clipboard`,5)
+        });
+}
 
 function keyExistsWithValue(obj, targetKey, targetValue) {
     for (let key in obj) {
@@ -100,7 +112,6 @@ async function formatAuthors(authors, id) {
         return author;
     });
     authors = newAuthors;
-    console.log(authors,"authors")
     authors.forEach((U) => {
         if (!Array.isArray(U.name)) {
             U.name = [U.name];
@@ -135,10 +146,11 @@ async function formatAuthors(authors, id) {
 
 
 
-function Search(search_query = null, official_content = false, all = "", not_query = [], particular_query, particular_query_value) {
+
+
+function Search(search_query = null, official_content = false, all = "", not_query = [], particular_query, particular_query_value,redo = true) {
 
     let CAT = LanguageValues.categories.categories;
-    console.log(CAT,"CAT",LanguageValues)
     let hasSetNoGlobalUser = false;
     let key_word;
     let database = {};
@@ -151,7 +163,49 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
     param_view = false;
     const Display = localStorage.getItem('display');
-
+    
+    let official_queries  = {
+        "all codes" : {
+            act : function() {
+                Search('All Codes',false,'codes',[],null,null,false)
+            },
+        },
+        "all mods" : {
+            act : function() {
+                Search('All Mods',false,'mods',[],null,null,false)
+            }
+        },
+        "all ships" : {
+            act : function() {
+                Search('All Ships',false,'ships',[],null,null,false)
+            }
+        },
+        "official mods" : {
+            act : function() {
+                Search('Official Mods',false,'mods',[],'official',[1,2],false)
+            }
+        },
+        "all communities" : {
+            act : function() {
+                Search('All Communities',false,'communities',[],null,null,false)
+            }
+        },
+        "all users" : {
+            act : function() {
+                Search('All Users',false,'users',[],null,null,false)
+            }
+        },
+        "official contributors" : {
+            act : function() {
+                Search('Official Contributors',false,'users',[],'isContrib',[true],false)
+            }
+        },
+        "sesame team" : {
+            act : function() {
+                Search('Sesame Team',false,'users',[],'isSesame',[true],false)
+            }
+        }
+    }
     if (!search_query) {
         key_word = document.querySelector('#search-input').value;
     } else {
@@ -162,11 +216,19 @@ function Search(search_query = null, official_content = false, all = "", not_que
     }
     document.body.innerHTML = `
         <div class="loader-search" style="display:flex">
-            <div class="whole-loader"></div>
-            <div class="min-loader"></div>
+            <div class="text">Please wait a few seconds</div>
+            <div class="loader">
+                <div class="whole-loader"></div>
+                <div class="min-loader"></div>
+            </div>
         </div>
     `
-
+    console.log(key_word,"keyword", typeof key_word)
+    if (key_word && Object.keys(official_queries).includes(key_word.toLowerCase()) && redo) {
+        official_queries[key_word.toLowerCase()].act();
+        return;
+    }
+    UpdatePage(`search?='${key_word.toLowerCase().replace(/ /g,'-')}'`,`${key_word}`);
 
     fetch('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/api/building.js')
         .then(response => response.text())
@@ -186,7 +248,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                             if (all && particular_query) {
                                 let toPush = [];
                                 content.forEach((ct) => {
-                                    console.log(keyExistsWithValue(ct, `${particular_query}`, particular_query_value))
                                     if (keyExistsWithValue(ct, `${particular_query}`, particular_query_value)) {
                                         toPush.push(ct)
                                     }
@@ -216,7 +277,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                         ships: 0
                     },
                 ];
-
+                document.querySelector('.loader-search .text').innerHTML = "Sorting datas...";
                 for (const [key, value] of Object.entries(database)) {
                     if (value.length > 0) {
                         value.forEach((item) => {
@@ -245,12 +306,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     }
                 }
                 if (sureStatus === true) {
-                    console.log(sureStatus, "status")
 
                     Object.keys(result[0]).forEach(key => {
                         let content = result[0][key];
                         content.forEach((value) => {
-                            console.log(value, sureUserName, value.content.author || value.content.lead);
 
                             if (value.id != "users" && value.id != "ships") {
                                 if ((value.content.author || value.content.lead) && (Array.isArray(value.content.author) || Array.isArray(value.content.lead))) {
@@ -349,7 +408,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     if (ifKeyInReturn) {
                         section_diff[`${v.key}`] = false;
                         let cat = ["mods", "users", "ships", "communities", "codes"];
-                        console.log(CAT, cat.indexOf(v.key), v.key, "keys")
                         section_diff_lg.push(`${CAT[cat.indexOf(v.key)]}`);
                     }
                 });
@@ -368,6 +426,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                 await display_ui_by_file('parameters.txt', display_result);
 
                 ChangeFont(localStorage.getItem('theme'));
+                document.querySelector('.loader-search .text').innerHTML = "Displaying home...";
 
                 document.querySelector('.display-research').innerHTML += `
                     <div class="results">
@@ -456,7 +515,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                 let ships_by_mods = {};
                 for (let value of Object.values(Datas.ships)) {
-                    console.log(value, "value");
                     let modName = value.content.mod.toLowerCase();
                     if (!ships_by_mods[modName]) {
                         ships_by_mods[modName] = {
@@ -476,22 +534,20 @@ function Search(search_query = null, official_content = false, all = "", not_que
                 // Convert the sorted array back to an object
                 const sortedShipsByMods = Object.fromEntries(shipsByModsArray);
                 const sortedModNames = Object.keys(sortedShipsByMods);
-                console.log(sortedShipsByMods,sortedModNames,"sorted mods names")
 
                 const sortedShips = Datas.ships.sort((a, b) => {
                     const aModName = a.content.mod.toLowerCase();
                     const bModName = b.content.mod.toLowerCase();
-                    console.log(sortedModNames, aModName, bModName)
                     return sortedModNames.indexOf(aModName) - sortedModNames.indexOf(bModName);
                   });
                 Datas.ships = sortedShips;
-                console.log(ships_by_mods, "sorted by mods");
                 
 
                 setTimeout(() => {
                     for (let DatasByKey of Object.values(Datas)) {
                         for (let data of DatasByKey) {
                             let content = data.content;
+                            document.querySelector('.loader-search .text').innerHTML = `Adding ${content.name}...`;
                             if (!section_diff[data.id] && !JSON.parse(data.sure)) {
                                 let swipe_content;
                                 let svg_key;
@@ -506,7 +562,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 section.id = 'section-' + data.id;
                                 // Check if data.id is the last key
                                 const isLastKey = data.id === lastKey;
-                                console.log(section_diff_lg, section_diff, "FDSFSDF")
                                 // Set swipe_content and svg_key based on whether it's the last key or not
                                 if ((sureStatus && data.id == "users") || keys.length <= 1) {
                                     swipe_content,
@@ -576,9 +631,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 var resultsContainer = document.querySelector('.results-container');
                                 resultsContainer.appendChild(section);
                                 setTimeout(() => {
-                                    console.log('click set to ' + (isLastKey ? `section-${keys[0]}` : `section-${nextKey}`))
                                     document.getElementById(`${data.id}-swipe-scroll`).addEventListener('click', function() {
-                                        console.log('e clicke')
                                         const targetSectionId = isLastKey ? `section-${keys[0]}` : `section-${nextKey}`;
                                         const targetSection = document.getElementById(targetSectionId);
                                         if (targetSection) {
@@ -605,6 +658,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     <div class="title">
                                                         <div class="status">${content.official ? '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg>' : ''}</div>
                                                         <div class="name">${content.name}</div>
+                                                        <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                            <span>Share</span>
+                                                        </div>
                                                     </div>
                                                     <div class="author">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
@@ -644,6 +701,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <div class="header">
                                                     <div class="title">
                                                         <div class="name">${content.name}</div>
+                                                        <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                            <span>Share</span>
+                                                        </div>
                                                     </div>
                                                     <div class="author">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
@@ -837,6 +898,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         Sesame</div>
                                                         ` : ""
                                                     }
+                                                        <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                            <span>Share</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -880,6 +945,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                             <div class="infos-title">
                                                 <div class="communities-activity" style="background-color:${content.active ? "green" : "red"}"></div>
                                                 <div class="communities-name">${content.name}</div>
+                                                <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                    <span>Share</span>
+                                                </div>
                                             </div>
                                             <div class="owner">
                                                 <div class="content">
@@ -976,7 +1045,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     let nextIndex = key < keys.length - 1 ? key + 1 : 0;
                                     let nextKey = keys[nextIndex];
                                     isLastKey = (key === keys.length - 1);
-                                    console.log(nextIndex,keys, "index")
                                     let swipe_content, svg_key = "";
                                     if (keys.length > 1) {
                                         if (isLastKey) {
@@ -1008,7 +1076,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                                     setTimeout(() => {
                                         document.getElementById(`${content.mod.replace(/ /g, '-')}-swipe-scroll`).addEventListener('click',function() {
-                                            console.log('clicked', nextIndex)
                                             const targetSection = document.getElementById(`${keys[nextIndex].toLowerCase().replace(/ /g,'-')}-swipe-scroll-mod`);
                                             if (targetSection) {
                                                 const targetSectionTop = targetSection.offsetTop;
@@ -1043,7 +1110,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 }
                                 let lasersType = [0, 0];
                                 for (let x of lasers) {
-                                    console.log(lasersType, x)
                                     lasersType[0] += x.damage[0] * x.number;
                                     lasersType[1] += x.damage[1] * x.number;
                                 }
@@ -1275,6 +1341,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         </div>
                                                     ` : ``
                                                 }
+                                                <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                    <span>Share</span>
+                                                </div>
                                                 <div class="important-download-advice">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m436-356 228-228-42-41-183 183-101-101-44 44 142 143Zm44 275q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"/></svg>
                                                 </div>
@@ -1282,7 +1352,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                         </div>
                                     `;
                                 setTimeout(() => {
-                                    console.log(content.code[0])
                                     document.getElementById(`download-${content.name.replace(' ','-')}`).addEventListener('click', function() {
                                         DownLoadCode(`let ${content.name} = '${JSON.stringify(content.code[0])}';`, content.name)
                                     })

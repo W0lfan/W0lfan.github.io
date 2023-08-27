@@ -6,3 +6,8 @@ const __PRIOR__ = {
     3 : "Name"
 };
 
+function UpdatePage(url,title) {
+    document.title = title;
+    window.location.hash = url;
+
+}
