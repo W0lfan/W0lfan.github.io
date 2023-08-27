@@ -45,8 +45,6 @@ function waitForDisplay(element, callback) {
 }
 
 function keyExistsWithValue(obj, targetKey, targetValue) {
-    targetKey = targetKey.toLowerCase();
-    targetValue = targetValue.toLowerCase();
     for (let key in obj) {
         if (typeof obj[key] === 'object') {
             if (keyExistsWithValue(obj[key], targetKey, targetValue)) {
@@ -65,16 +63,44 @@ function keyExistsWithValue(obj, targetKey, targetValue) {
     return false;
 }
 
-
+async function formatMods(authors, id) {
+    const modsDatas = await fetchData('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/database/mods.json');
+    authors.forEach((U) => {
+        function TakeUser() {
+            for (let mod of modsDatas) {
+                if (mod.name && mod.name.toLowerCase() === U.toLowerCase()) {
+                        document.getElementById(id).innerHTML += `
+                        <div class="mod-popup" onclick="Search('${mod.name}')">
+                            ${
+                                mod.img ? `
+                                    <div class="mod-profile-picture">
+                                        <img src="${mod.img}">
+                                    </div>
+                                ` : ''
+                            }
+                            <div class="mod-profile-name">${mod.name}</div>
+                        </div>
+                    `;
+                    return;
+                }
+            }
+        }
+        TakeUser();
+    });
+}
 async function formatAuthors(authors, id) {
     const usersData = await fetchData('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/database/users.json');
-    const usersDataLowercaseKeys = Object.keys(usersData).reduce((acc, key) => {
-        acc[key.toLowerCase()] = usersData[key];
-        return acc;
-    }, {});
     if (!Array.isArray(authors)) {
-        authors = [{name:authors}]
+        authors = [authors]
     }
+    const newAuthors = authors.map((author) => {
+        if (!author.name) {
+            return { name: author };
+        }
+        return author;
+    });
+    authors = newAuthors;
+    console.log(authors,"authors")
     authors.forEach((U) => {
         if (!Array.isArray(U.name)) {
             U.name = [U.name];
@@ -113,7 +139,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
     let CAT = LanguageValues.categories.categories;
     console.log(CAT,"CAT",LanguageValues)
-
+    let hasSetNoGlobalUser = false;
     let key_word;
     let database = {};
     let userSet = 0;
@@ -426,8 +452,42 @@ function Search(search_query = null, official_content = false, all = "", not_que
                 if (sureStatus) {
                     section_diff_lg.splice(Object.keys(section_diff).indexOf("users"),1);
                     delete section_diff["users"];
-
                 }
+
+                let ships_by_mods = {};
+                for (let value of Object.values(Datas.ships)) {
+                    console.log(value, "value");
+                    let modName = value.content.mod.toLowerCase();
+                    if (!ships_by_mods[modName]) {
+                        ships_by_mods[modName] = {
+                            show: false,
+                            ships: []
+                        };
+                    }
+                    ships_by_mods[modName].ships.push(value);
+                }
+                
+                // Create an array of key-value pairs from ships_by_mods
+                const shipsByModsArray = Object.entries(ships_by_mods);
+                
+                // Sort the array based on the number of ships in each mod group
+                shipsByModsArray.sort((a, b) => b[1].ships.length - a[1].ships.length);
+                
+                // Convert the sorted array back to an object
+                const sortedShipsByMods = Object.fromEntries(shipsByModsArray);
+                const sortedModNames = Object.keys(sortedShipsByMods);
+                console.log(sortedShipsByMods,sortedModNames,"sorted mods names")
+
+                const sortedShips = Datas.ships.sort((a, b) => {
+                    const aModName = a.content.mod.toLowerCase();
+                    const bModName = b.content.mod.toLowerCase();
+                    console.log(sortedModNames, aModName, bModName)
+                    return sortedModNames.indexOf(aModName) - sortedModNames.indexOf(bModName);
+                  });
+                Datas.ships = sortedShips;
+                console.log(ships_by_mods, "sorted by mods");
+                
+
                 setTimeout(() => {
                     for (let DatasByKey of Object.values(Datas)) {
                         for (let data of DatasByKey) {
@@ -595,10 +655,22 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         ${content.description}
                                                     </div>
                                                     <div class="actions">
-                                                        <div class="action" id="${content.name.replace(/ /g, '-')}-code">
-                                                            <svg id ="load-${content.name}" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>
-                                                            <div class="text">${LanguageValues.actions.download}</div>
-                                                        </div>
+                                                        ${
+                                                            content.code ? `
+                                                            <div class="action" id="${content.name.replace(/ /g, '-')}-code">
+                                                                <svg id ="load-${content.name}" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>
+                                                                <div class="text">${LanguageValues.actions.download}</div>
+                                                            </div>
+                                                            ` : ''
+                                                        }
+                                                        ${
+                                                            content.open ? `
+                                                            <div class="action" id="${content.name.replace(/ /g, '-')}-code">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                                                                <div class="text">Open</div>
+                                                            </div>
+                                                            ` : ''
+                                                        }
                                                         <div class="important-download-advice">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m436-356 228-228-42-41-183 183-101-101-44 44 142 143Zm44 275q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"/></svg>
                                                         </div>
@@ -607,19 +679,46 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                             </div>
                                         </div>`;
                                setTimeout(() => {
-                                    document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`).addEventListener('click', function() {
-                                        DownLoadCode(`Use https://beautifier.io/ to display the code.\n${content.code}`, `${content.name}`);
-                                    });
+                                    if (document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`)) {
+                                        document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`).addEventListener('click', function() {
+                                            DownLoadCode(`${js_beautify(content.code, {indent_size: 2})}`, `${content.name}`);
+                                        });
+                                    }
                                }, 500);
                             } else if (data.id == "users") {
                                 if (JSON.parse(data.sure) != true && sureStatus != true) {
-                                    document.querySelector('.results-container').innerHTML += `
+                                    if (!hasSetNoGlobalUser) {
+                                        document.querySelector('.results-container').innerHTML+=`
+                                            <div class="results-container-lil-users"></div>
+                                        `;
+                                        hasSetNoGlobalUser = true;
+                                    }
+                                    document.querySelector('.results-container-lil-users').innerHTML += `
                                         <div class="${data.id}-result userInfos-hover" id="click-${content.name}" onclick="Search('${content.name}')">
                                             <div class="user_pfp">
-                                                <img src="${content.pfp != "unknown" ? content.pfp : "https://raw.githubusercontent.com/W0lfan/W0lfan.github.io/main/sesame/img/user.png"}">
+                                                <img src="${!content.pfp.includes('https://cdn.discordapp.com/avatars')  ? content.pfp : "https://raw.githubusercontent.com/W0lfan/SesameAPI/main/resource/user.png"}">
+                                                ${
+                                                    content.about.isSesame ? `
+                                                        <div class="mini-tag" id="sesametag">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-440q58 0 99-41t41-99q0-58-41-99t-99-41q-58 0-99 41t-41 99q0 58 41 99t99 41Zm0 360q-146-37-233-160t-87-276v-244l320-120 320 120v244q0 153-87 276T480-80Zm0-84q59-19 104.5-59.5T664-315q-43-22-89.5-33.5T480-360q-48 0-94.5 11.5T296-315q34 51 79.5 91.5T480-164Z"/></svg>
+                                                        </div>
+                                                    ` : (
+                                                        content.about.isUCP ? `
+                                                            <div class="mini-tag" id="ucptag">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M280-880h400v314q0 23-10 41t-28 29l-142 84 28 92h152l-124 88 48 152-124-94-124 94 48-152-124-88h152l28-92-142-84q-18-11-28-29t-10-41v-314Zm160 80v282l40 24 40-24v-282h-80Z"/></svg>
+                                                            </div>
+                                                        ` : (
+                                                            content.about.isModder ? `
+                                                            <div class="mini-tag" id="modtag">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M686-132 444-376q-20 8-40.5 12t-43.5 4q-100 0-170-70t-70-170q0-36 10-68.5t28-61.5l146 146 72-72-146-146q29-18 61.5-28t68.5-10q100 0 170 70t70 170q0 23-4 43.5T584-516l244 242q12 12 12 29t-12 29l-84 84q-12 12-29 12t-29-12Z"/></svg>
+                                                            </div>
+                                                            `: ''
+                                                        )
+                                                    )
+                                                }
                                             </div>
                                             <div class="user_name">
-                                                ${content.name}
+                                                <div class="name">${content.name}</div>
                                             </div>
                                         </div>
                                 `;
@@ -766,17 +865,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="all-works-here">
-                                        ${
-                                            (Metrics.mods > 0 || Metrics.communities > 0 || Metrics.ships > 0 || Metrics.codes > 0) ? `
-                                            ${LanguageValues.user_informations.content.content}
-                                            ` : `
-                                            ${LanguageValues.user_informations.content.no_content}
-                                            `
-                                        }
-                                        
-                                    </div>
-    
                                 `;
                                     userSet = true;
 
@@ -798,8 +886,19 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
                                                     <div class="vertical-sep"></div>
                                                     <div class="leaders user-profile-parents" id="user-profile-parents-${content.name}"></div>
-                                                    </div>
+                                                </div>
                                             </div>
+                                            ${
+                                                content.content ? `
+                                                    <div class="mod-linked-community">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M756-120 537-339l84-84 219 219-84 84Zm-552 0-84-84 276-276-68-68-28 28-51-51v82l-28 28-121-121 28-28h82l-50-50 142-142q20-20 43-29t47-9q24 0 47 9t43 29l-92 92 50 50-28 28 68 68 90-90q-4-11-6.5-23t-2.5-24q0-59 40.5-99.5T701-841q15 0 28.5 3t27.5 9l-99 99 72 72 99-99q7 14 9.5 27.5T841-701q0 59-40.5 99.5T701-561q-12 0-24-2t-23-7L204-120Z"/></svg>
+                                                        <div class="vertical-sep"></div>
+                                                        <div class="created-content" id="mods-profile-parents-${content.name}">
+
+                                                        </div>
+                                                    </div>
+                                                ` : ''
+                                            }
                                         </div>
                                         <div class="content-container">
                                         ${
@@ -813,16 +912,24 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                         }
                                             <div class="informatives-side">
                                                 <div class="recognition">
-                                                    <div class="region">
-                                                        ${LogosSRC[content.server]}
-                                                        <span>${content.server}</span>
-                                                    </div>
-                                                    <div class="tags">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M559-97q-18 18-43.5 18T472-97L97-472q-10-10-13.5-21T80-516v-304q0-26 17-43t43-17h304q12 0 24 3.5t22 13.5l373 373q19 19 19 44.5T863-401L559-97ZM245-664q21 0 36.5-15.5T297-716q0-21-15.5-36.5T245-768q-21 0-36.5 15.5T193-716q0 21 15.5 36.5T245-664Z"/></svg>
-                                                        <div class="tags-content">
-                                                            ${formatArray(content.tag)}
+                                                    ${
+                                                        content.server ? `
+                                                        <div class="region">
+                                                            ${LogosSRC[content.server]}
+                                                            <span>${content.server}</span>
                                                         </div>
-                                                    </div>
+                                                        ` : ''
+                                                    }
+                                                    ${
+                                                        content.tag.length > 0 ? `
+                                                        <div class="tags">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M559-97q-18 18-43.5 18T472-97L97-472q-10-10-13.5-21T80-516v-304q0-26 17-43t43-17h304q12 0 24 3.5t22 13.5l373 373q19 19 19 44.5T863-401L559-97ZM245-664q21 0 36.5-15.5T297-716q0-21-15.5-36.5T245-768q-21 0-36.5 15.5T193-716q0 21 15.5 36.5T245-664Z"/></svg>
+                                                            <div class="tags-content">
+                                                                ${formatArray(content.tag)}
+                                                            </div>
+                                                        </div>
+                                                        ` : ''
+                                                    }
                                                 </div>
                                                 <div class="links-informations">
                                                     ${
@@ -862,8 +969,59 @@ function Search(search_query = null, official_content = false, all = "", not_que
         
                             `;
                             } else if (data.id === "ships") {
-                                console.log("display ships")
+                                if (ships_by_mods[content.mod.toLowerCase()].show != true) {
+                                    
+                                    let keys = Object.keys(sortedShipsByMods);
+                                    let key = keys.indexOf(content.mod.toLowerCase());
+                                    let nextIndex = key < keys.length - 1 ? key + 1 : 0;
+                                    let nextKey = keys[nextIndex];
+                                    isLastKey = (key === keys.length - 1);
+                                    console.log(nextIndex,keys, "index")
+                                    let swipe_content, svg_key = "";
+                                    if (keys.length > 1) {
+                                        if (isLastKey) {
+                                            swipe_content = `${LanguageValues.categories.return} ${keys[0].toUpperCase()}`;
+                                            svg_key = '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-160v-526L202-438l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>';
+                                        } else {
+                                            swipe_content = nextKey ? `${LanguageValues.categories.message} ${keys[nextIndex].toUpperCase()}` : "No next key";
+                                            svg_key = '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M450-800v526L202-522l-42 42 320 320 320-320-42-42-248 248v-526h-60Z"/></svg>';
+                                        }
+                                    } else {
+                                        swipe_content = "";
+                                        svg_key = "";
+                                    }
 
+                                    document.querySelector('.results-container').innerHTML += `
+                                        <div class="section-lil-header" id="${content.mod.toLowerCase().replace(/ /g, '-')}-swipe-scroll-mod">
+                                            <div class="text">${content.mod}</div>
+                                            <div class="section-info" id="${content.mod.replace(/ /g, '-')}-swipe-scroll">
+                                                <div class="icon">
+                                                    ${svg_key}
+                                                </div>
+                                                
+                                                <span>${swipe_content}</span>
+
+                                            <div>
+                                        </div>
+                                    
+                                    `;
+
+                                    setTimeout(() => {
+                                        document.getElementById(`${content.mod.replace(/ /g, '-')}-swipe-scroll`).addEventListener('click',function() {
+                                            console.log('clicked', nextIndex)
+                                            const targetSection = document.getElementById(`${keys[nextIndex].toLowerCase().replace(/ /g,'-')}-swipe-scroll-mod`);
+                                            if (targetSection) {
+                                                const targetSectionTop = targetSection.offsetTop;
+                                                window.scrollTo({
+                                                    top: targetSectionTop - 80,
+                                                    behavior: "smooth"
+                                                });
+                                            }
+                                        });
+                                    }, 500);
+                                    
+                                    ships_by_mods[content.mod.toLowerCase()].show = true;
+                                }
                                 function removeLinkEnding(link) {
                                     const pngIndex = link.indexOf('.png/');
                                     if (pngIndex !== -1) {
@@ -1131,7 +1289,14 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                 }, 500);
                             }
                             async function ShowDisplay() {
-                                await formatAuthors(content.author, `user-profile-parents-${content.name}`);
+                                if (data.id != "communities" && data.id != "users") {
+                                    await formatAuthors(content.author, `user-profile-parents-${content.name}`);
+                                } else if (data.id != "users") {
+                                    await formatAuthors(content.lead, `user-profile-parents-${content.name}`);
+                                    if (content.content) {
+                                        await formatMods(content.content, `mods-profile-parents-${content.name}`);
+                                    }
+                                }
                             }
                             setTimeout(() => {
                                 ShowDisplay()

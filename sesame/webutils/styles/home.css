@@ -277,6 +277,9 @@
     background-color: var(--backgrounds) !important;
 }
 @media screen and (width < 500px) {
+    #viewuser .bio-container {
+        width: calc(100% - 40px);
+    }
     .metrics .metric {
         font-size: 10px !important;
         
@@ -433,6 +436,8 @@
         .description {
             margin-top: 60px;
             width: 100% !important;
+            justify-content: center !important;
+            align-items: center !important;
             .body-specs {
                 width: 100% !important;
                 display: flex !important;
@@ -456,7 +461,7 @@
             }
             .global {
                 .global-content {
-                    width: 68px !important;
+                    width: 60px !important;
                     .value {
                         width: 50px;
                         text-overflow: ellipsis;

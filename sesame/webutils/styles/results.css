@@ -338,6 +338,7 @@
                 align-items: center;
                 color:var(--color-light);
                 font-size: 13px;
+                padding-bottom: 0px;
                 font-family: "Robot", sans-serif;
             }
             .owner a {
@@ -863,11 +864,20 @@
     }
     .userInfos .user_name {
         font-size: 15px !important;
-
     }
 }
-.userInfos-hover{
+
+.results-container-lil-users {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.userInfos-hover {
     cursor: pointer;
+    max-width: 200px !important;
+    justify-content: center;
+    align-items: center;
 }
 .userInfos-hover:hover {
     background-color: var(--backgrounds-lighter) !important;
@@ -1310,8 +1320,8 @@
         z-index: 5;
         display: flex;
         flex-direction: row;
-        justify-content: center;
         gap: 20px;
+        margin-left:10px;
         .action {
             padding: 5px;
             border-radius: 5px;
@@ -1348,21 +1358,20 @@
         gap: 5px;
     }
     .ship-render {
-        width: 250px;
+        width: 20%;
         display: flex;
-        align-items: center;
         justify-content: center;
         position:absolute;
         left:20px;
-        top: 0;
+        top: 10px;
         bottom:0;
         margin:auto;
         z-index: 1;
     }
     .ship-render img {
         width: 100%;
+        height: fit-content;
         border-radius: 10px;
-        border:2px solid var(--backgrounds-lighter)
     }
     .description svg {
         width: 20px;
@@ -1372,8 +1381,10 @@
         font-size: 12px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: end;
+        justify-content: end;
+        width: calc(100% - 20px);
+        padding-right: 20px;
         gap: 5px;
         .icon {
             width: 20px;
@@ -1431,6 +1442,7 @@
             display: flex;
             flex-direction: row;
             gap: 5px;
+            margin-right: -5px;
             .global-content {
                 display: flex;
                 flex-direction: column;
@@ -1463,22 +1475,50 @@
         height: 20px;
     }
 }
-
-
-    .user-author-popup:hover {
+.mod-linked-community {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    fill:white;
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.mod-linked-community svg {
+    width: 17px;
+    height: 17px;
+}
+    .created-content {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 1px;
+        align-items: center;
+    }
+    .user-author-popup:hover,.mod-popup:hover {
         background-color: var(--color-lighter);
     }
-    .user-author-popup .user-profile-picture {
+    .user-author-popup .user-profile-picture,.mod-profile-picture {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .user-author-popup img {
+    .user-author-popup img  {
         width: 12px;
         border-radius: 50%;
         height: 12px;
     }
-    .user-author-popup {
+    .mod-profile-picture img {
+        border-radius: 5px;
+        height: 20px;
+    }
+    .mod-popup {
+        height: 20px !important;
+    }
+    .user-author-popup, .mod-popup {
         font-size: 13px;
         transition: background-color 0.3s;
         font-family: "Roboto",sans-serif;
@@ -1496,7 +1536,7 @@
     }
 
 
-.author .container {
+.user-profile-parents {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1504,4 +1544,82 @@
 }
 .mods-result .author .container {
     width: calc(100% - 230px);
+}
+
+.section-lil-header {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--backgrounds);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    align-items: center;
+    padding-left: 10px;
+    width: calc(100% - 5px);
+    font-family: "Poppins";
+    color:#E91E63;
+    .section-info {
+        display: flex;
+        flex-direction: row;
+        font-family: "Roboto";
+        gap: 5px;
+        fill:var(--coloring);
+        color:var(--coloring);
+        font-size: 13px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50px;
+        padding:5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: background-color 0.2s;
+    }
+    .section-info:hover {
+        background-color: var(--color-super-light);
+    }
+    .icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .section-info svg {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.mini-tag svg {
+    width: 20px;
+    height: 20px;
+}
+.user_pfp {
+    position:relative !important;
+}
+.mini-tag {
+    font-size: 10px !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border-radius: 50px;
+    fill: #B82828;
+    position:absolute;
+    bottom:-2px;
+    background-color: var(--backgrounds);
+    padding: 2px;
+    right:-2px;
+    .color {
+        display: none;
+    }
+}
+#sesametag {
+    fill:#B82828;
+}
+#ucptag {
+    fill:rgb(10, 167, 104)
+}
+#modtag {
+    fill:rgb(255, 153, 0)
 }
