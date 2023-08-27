@@ -44,7 +44,7 @@ function waitForDisplay(element, callback) {
     }
 }
 function copyToClipboard(content) {
-    const url = `https://w0lfan.github.io/sesame/search?='${content}'`;
+    const url = `https://w0lfan.github.io/sesame/#search?='${content}'`;
     navigator.clipboard.writeText(url)
         .then(() => {
             console.log('URL copied to clipboard:', url);
