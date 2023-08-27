@@ -280,6 +280,25 @@
     #viewuser .bio-container {
         width: calc(100% - 40px);
     }
+    .share-content span {display: none;}
+    .share-content {
+        border-radius: 10px !important;
+        padding: 5px !important;
+        position:absolute;
+        right:0px;top:0px;   
+        background-color: #E91E63;
+        fill:var(--backgrounds) !important;
+        border: 2px solid var(--backgrounds) !important; 
+        background-color: #E91E63 !important;
+    }
+    #viewuser .userInfos {
+        width: 85% !important;
+        .share-content {
+            position:absolute;
+            top:unset !important;
+            right:30px;bottom:30px;
+        }
+    }
     .metrics .metric {
         font-size: 10px !important;
         
