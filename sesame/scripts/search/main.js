@@ -306,7 +306,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                     }
                 }
                 if (sureStatus === true) {
-
                     Object.keys(result[0]).forEach(key => {
                         let content = result[0][key];
                         content.forEach((value) => {
@@ -345,10 +344,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                             }
                         });
                     });
-
-
-
-
                 }
                 Object.keys(result[0]).forEach(key => {
                     result[0][key].sort((a, b) => b.prior - a.prior);
@@ -361,6 +356,14 @@ function Search(search_query = null, official_content = false, all = "", not_que
                 Metrics = result[1];
                 let Datas = result[0];
 
+                if (sureStatus) {
+                    Datas.users.forEach((user) => {
+                        let index = Datas.users.indexOf(user);
+                        if (user.DNIF === true) {
+                            Datas.users.splice(index,1);
+                        }
+                    })
+                }
                 // Create an array of metric names in descending order
                 const metricNames = Object.keys(Metrics).sort((a, b) => Metrics[b] - Metrics[a]);
 

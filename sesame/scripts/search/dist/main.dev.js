@@ -458,7 +458,18 @@ function Search() {
               search_input = key_word;
               console.log('Results:\n', result);
               Metrics = result[1];
-              Datas = result[0]; // Create an array of metric names in descending order
+              Datas = result[0];
+
+              if (sureStatus) {
+                Datas.users.forEach(function (user) {
+                  var index = Datas.users.indexOf(user);
+
+                  if (user.DNIF === true) {
+                    Datas.users.splice(index, 1);
+                  }
+                });
+              } // Create an array of metric names in descending order
+
 
               metricNames = Object.keys(Metrics).sort(function (a, b) {
                 return Metrics[b] - Metrics[a];
@@ -524,20 +535,20 @@ function Search() {
                 console.log('e');
               };
 
-              _context5.next = 42;
+              _context5.next = 43;
               return regeneratorRuntime.awrap(display_ui_by_file('results.html', display_result));
 
-            case 42:
-              _context5.next = 44;
+            case 43:
+              _context5.next = 45;
               return regeneratorRuntime.awrap(display_ui_by_file('parameters.txt', display_result));
 
-            case 44:
+            case 45:
               ChangeFont(localStorage.getItem('theme'));
               document.querySelector('.loader-search .text').innerHTML = "Displaying home...";
               document.querySelector('.display-research').innerHTML += "\n                    <div class=\"results\">\n                        <div class=\"infos\">\n                            <div class=\"global\">".concat(LanguageValues.home.results, " <span>").concat(key_word, "</span></div>\n                            <div class=\"metrics\">\n                                <div class=\"metric\" id=\"mods-metrics\" >\n                                    <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z\"/></svg>\n                                    <span>").concat(Metrics.mods, "</span>\n                                </div>\n                                <div class=\"metric\" id=\"users-metrics\">\n                                    <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5T731-360q31 14 50 41t19 65v94H160Z\"/></svg>\n                                    <span>").concat(Metrics.users, "</span>\n                                </div>\n                                <div class=\"metric\" id=\"ships-metrics\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z\"/></svg>\n                                <span>").concat(Metrics.ships, "</span>\n                                </div>\n\n                                <div class=\"metric\" id=\"communities-metrics\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M0-240v-53q0-38.567 41.5-62.784Q83-380 150.376-380q12.165 0 23.395.5Q185-379 196-377.348q-8 17.348-12 35.165T180-305v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773-360 765-377.273q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960-293v53H780ZM149.567-410Q121-410 100.5-430.562 80-451.125 80-480q0-29 20.562-49.5Q121.125-550 150-550q29 0 49.5 20.5t20.5 49.933Q220-451 199.5-430.5T149.567-410Zm660 0Q781-410 760.5-430.562 740-451.125 740-480q0-29 20.562-49.5Q781.125-550 810-550q29 0 49.5 20.5t20.5 49.933Q880-451 859.5-430.5T809.567-410ZM480-480q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z\"/></svg>\n                                <span>").concat(Metrics.communities, "</span>\n                                </div>\n                                <div class=\"metric\" id=\"codes-metrics\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z\"/></svg>\n                                <span>").concat(Metrics.codes, "</span>\n                                </div>\n\n\n                            </div>\n                        </div>\n                        <div class=\"sort-type\">\n                            <div class=\"class-sort\">\n                                <div class=\"class-s\" id=\"mods\" onclick=\"ManageQuerySearch(this)\" style=\"background-color: ").concat(!trigger_search.includes('mods') ? "var(--backgrounds-lighter)" : "var(--backgrounds)", "\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M320-242 80-482l242-242 43 43-199 199 197 197-43 43Zm318 2-43-43 199-199-197-197 43-43 240 240-242 242Z\"/></svg>\n\n                                </div>\n                                <div class=\"class-s\" id=\"users\" onclick=\"ManageQuerySearch(this)\" style=\"background-color: ").concat(!trigger_search.includes('users') ? "var(--backgrounds-lighter)" : "var(--backgrounds)", "\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5T731-360q31 14 50 41t19 65v94H160Z\"/></svg>\n\n                                </div>\n                                <div class=\"class-s\" id=\"ships\" onclick=\"ManageQuerySearch(this)\" style=\"background-color: ").concat(!trigger_search.includes('ships') ? "var(--backgrounds-lighter)" : "var(--backgrounds)", "\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"m98-537 168-168q14-14 33-20t39-2l77 14q-55 62-89 117.5T263-466L98-537Zm202 89q27-73 68-137.5T461-702q88-88 201-131.5T873-860q17 98-26 211T716-448q-52 52-117 93t-138 68L300-448Zm286-125q20 20 49.5 20t49.5-20q20-20 20-49.5T685-672q-20-20-49.5-20T586-672q-20 20-20 49.5t20 49.5ZM551-85l-72-165q74-29 129.5-63T726-402l14 77q4 20-2 39.5T718-252L551-85ZM162-318q35-35 85-35.5t85 34.5q35 35 35 85t-35 85q-26 26-81 43T87-74q15-109 32-163.5t43-80.5Z\"/></svg>\n\n\n                                </div>\n                                <div class=\"class-s\" id=\"communities\" onclick=\"ManageQuerySearch(this)\" style=\"background-color: ").concat(!trigger_search.includes('communities') ? "var(--backgrounds-lighter)" : "var(--backgrounds)", "\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M0-240v-53q0-38.567 41.5-62.784Q83-380 150.376-380q12.165 0 23.395.5Q185-379 196-377.348q-8 17.348-12 35.165T180-305v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-19.861-3.5-37.431Q773-360 765-377.273q11-1.727 22.171-2.227 11.172-.5 22.829-.5 67.5 0 108.75 23.768T960-293v53H780ZM149.567-410Q121-410 100.5-430.562 80-451.125 80-480q0-29 20.562-49.5Q121.125-550 150-550q29 0 49.5 20.5t20.5 49.933Q220-451 199.5-430.5T149.567-410Zm660 0Q781-410 760.5-430.562 740-451.125 740-480q0-29 20.562-49.5Q781.125-550 810-550q29 0 49.5 20.5t20.5 49.933Q880-451 859.5-430.5T809.567-410ZM480-480q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Z\"/></svg>\n\n                                </div>     \n                                <div class=\"class-s\" id=\"codes\" onclick=\"ManageQuerySearch(this)\" style=\"background-color: ").concat(!trigger_search.includes('codes') ? "var(--backgrounds-lighter)" : "var(--backgrounds)", "\">\n                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" viewBox=\"0 -960 960 960\" width=\"48\"><path d=\"M274-360q-15 0-24.5-9.5T240-394v-66h48v52h84v-192h48v206q0 15-9.5 24.5T386-360H274Zm240 0q-15 0-24.5-9.5T480-394v-46h48v32h104v-53H514q-14 0-24-10t-10-24v-71q0-15 9.5-24.5T514-600h132q15 0 24.5 9.5T680-566v46h-48v-32H528v53h118q14 0 24 10t10 24v71q0 15-9.5 24.5T646-360H514Z\"/></svg>\n\n                                </div>                        \n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"user-focus ").concat(Display, "-users-result\">\n\n                    </div>\n                    <div class=\"results-container ").concat(Display, "-display\">\n\n                    </div>\n                ");
 
               if (!(Datas.codes.length === 0 && Datas.users.length === 0 && Datas.mods.length === 0 && Datas.communities.length === 0 && Datas.ships.length === 0)) {
-                _context5.next = 51;
+                _context5.next = 52;
                 break;
               }
 
@@ -545,7 +556,7 @@ function Search() {
               document.body.innerHTML += "\n                        <div class=\"no-result\">\n                            <div class=\"big-title\">".concat(LanguageValues.home.no_results, " <span>").concat(key_word, "</span></div>\n                            <div class=\"small-title\">").concat(LanguageValues.home["404"], "</div>\n                        </div>\n                    ");
               return _context5.abrupt("return");
 
-            case 51:
+            case 52:
               if (sureStatus) {
                 section_diff_lg.splice(Object.keys(section_diff).indexOf("users"), 1);
                 delete section_diff["users"];
@@ -1040,7 +1051,7 @@ function Search() {
                 ArticleAdd();
               }, 500);
 
-            case 61:
+            case 62:
             case "end":
               return _context5.stop();
           }
