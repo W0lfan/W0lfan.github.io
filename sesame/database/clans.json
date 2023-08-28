@@ -14,11 +14,11 @@
         "youtube" : "https://www.youtube.com/channel/UCr0gpbHDyZUr-tF5QmiSm1g"
       }
     },
-  {
+    {
       "name" : "Naflouille Creations",
       "lead": ["Naflouille"],
-      "tag" : [""],
-      "language" : [""], 
+      "tag" : [],
+      "language" : [], 
       "infos" : "All Naflouille Creations",
       "server" : "",
       "active" : true,
@@ -27,6 +27,22 @@
       "links" : {
         "join" : "https://discord.gg/Q5RTE3GF9Y", 
         "picture" : "https://media.discordapp.net/attachments/951567105596207169/1145310535387201536/Design_sans_titre_13.png?width=2407&height=1354",
+        "youtube" : "unknown"
+      }
+    },
+      {
+      "name" : "SAW Starblast",
+      "lead": ["LX","Megalodon"],
+      "tag" : [],
+      "language" : [], 
+      "infos" : "The Official Starblast Asteroid War Discord server.",
+      "server" : "",
+      "active" : true,
+      "birth" : "",
+      "content":["Asteroid War"],
+      "links" : {
+        "join" : "https://discord.gg/NZw52JGdU9", 
+        "picture" : "https://media.discordapp.net/attachments/951567105596207169/1145741630717038753/dcad31dcc24e78944ddf4a4aaf7da7c4.webp?width=540&height=540",
         "youtube" : "unknown"
       }
     },
@@ -76,36 +92,6 @@
       }
     },
     {
-      "name" : "Flammmable Violets (FV)",
-      "lead": ["Anchar", "Wanda"],
-      "tag" : ["✯F℣➛"], 
-      "language" : ["English"], 
-      "infos" : "International Anti-Cheat Clan",
-      "server" : "International",
-      "active" : true,
-      "birth" : "",
-      "links" : {
-        "join" : "",
-        "picture" : "https://github.com/rithyn/rithy-archive/blob/main/pictures/ucp/FVclan.gif?raw=true",
-        "youtube" : "unknown"
-      }
-    },
-    {
-      "name" : "End of Terror (EOT)",
-      "lead": ["Lord"],
-      "tag" : ["ɆØ₮⇝"], 
-      "language" : [""], 
-      "infos" : "Lack of information about this clan",
-      "server" : "EU",
-      "active" : true,
-      "birth" : "",
-      "links" : {
-        "join" : "",
-        "picture" : "https://github.com/rithyn/rithy-archive/blob/main/pictures/ucp/EOT.png?raw=true",
-        "youtube" : "unknown"
-      }
-    },
-    {
       "name" : "Delta",
       "lead": ["AGXXXX"],
       "tag" : ["[△]"], 
@@ -121,32 +107,17 @@
       }
     },
     {
-      "name" : "Asian Cosmic Warriors",
-      "lead" : ["Zard","Physic","Dynamite"],
-      "tag" : ["﻿﻿﻿ Λᴄᗯ | ☆  ﻿﻿﻿"],
-      "language" : ["English"], 
-     "infos" : "We are ACW, an Asian clan seeking to revive the Asia, Europe and America region of Starblast.﻿ Join our server to support us, it doesn't matter which region you are from! However, please behave in our server and do not be toxic or unfriendly!",
-    "server" : "Asia",
-      "active" : true,
-      "birth" : "10/10/2020",
-      "links" : {
-        "join" : "", 
-        "picture" : "https://github.com/Modraxis/background-pngs/blob/main/ACW.gif?raw=true",
-        "youtube" : "unknown"
-      }
-    },
-    {
-      "name" : "Neo Space Army",
+      "name" : "Pandemic Legion",
       "lead": ["Neo Space"],
-      "tag" : ["ƝSΛ ⯌"], 
-      "language" : ["English"], 
+      "tag" : ["╠⛒╣"], 
+      "language" : ["English", "Spanish"], 
       "infos" : "Clans is the successor to F4, and the leader is well-known youtuber Neo space.",
       "server" : "International",
       "active" : true,
       "birth" : "",
       "links" : {
         "join" : "https://discord.gg/GDzGmWEm25",
-        "picture" : "https://cdn.discordapp.com/icons/973585722227458068/a_4b7072d4bbf437e6f11cfbd93f917a0f.webp?",
+        "picture" : "",
         "youtube" : "https://www.youtube.com/@neospaceyt"
       }
     },

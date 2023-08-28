@@ -1,4 +1,11 @@
 {
+    "id":"Français",
+    "pop": {
+        "link_to": "Lien copié vers",
+        "sesame_says": "Sesame vous informe",
+        "discord_username": "Nom d'utilisateur Discord copié de",
+        "downloaded": "Téléchargé"
+    },
     "home" : {
         "input_placeholder" : "Rechercher par mots-clés",
         "scroll_menu" : {
@@ -17,8 +24,24 @@
         },
         "results" : "Résultats pour",
         "no_results" : "Aucun résultat pour",
-        "404":"Essayez de rechercher autre chose"
+        "404":"Essayez de rechercher autre chose",
+        "displaying" : "Affichage des données...",
+        "home_creation" : "Affichage de la page d'accueil...",
+        "wait": "Veuillez patienter quelques secondes..."
     },
+    "ships" : {
+        "body" : ["corps","corps"],
+        "wing" : ["aile","ailes"],
+        "laser" : ["laser","laser"],
+        "shield":"bouclier",
+        "generator":"générateur",
+        "damages" : "dommages des lasers",
+        "speed":"vitesse",
+        "acceleration":"accélération",
+        "rotation":"rotation"
+    },
+    "share":"partager",
+
     "parameters" : {
         "titles" : ["Thème","Articles","Langage"],
         "descriptions" : ["Changer votre thème Sesame","Organiser l'affichage des Articles","Changer le langage du site"]
@@ -31,7 +54,8 @@
     "categories" : {
         "message" : "Aller aux",
         "return" : "Retourner aux",
-        "categories" : ["mods","utilisateurs","vaisseaux","communautés","codes"]
+        "categories" : ["mods","utilisateurs","vaisseaux","communautés","codes"],
+        "tags": ["Staff officiel","Contributeur officiel","Moddeur officiel","Utilisateur UCP"]
     },
     "user_informations" : {
         "user" : ["À Propos","Réseaux sociaux"],

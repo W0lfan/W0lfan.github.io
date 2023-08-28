@@ -24,6 +24,7 @@ function DisplayNotif(message, seconds) {
         console.log('animate notif')
         document.querySelector('.message').innerHTML = message;
         document.querySelector('.notification-information').style.opacity = 1;
+        document.querySelector('.notification-information').style.zIndex = 100;
     }, 200);
 
     
@@ -35,5 +36,6 @@ function DisplayNotif(message, seconds) {
     notificationTimeout = setTimeout(() => {
         console.log('hiding notif');
         document.querySelector('.notification-information').style.opacity = 0;
+        document.querySelector('.notification-information').style.zIndex = -1;
     }, seconds * 1000);
 }

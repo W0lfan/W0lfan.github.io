@@ -218,11 +218,11 @@
 
 
 
-.sesame-creator {
+.sesame-creator, .sesame-server {
     padding: 5px;
-    border-radius: 50px;
+    border-radius: 5px;
     background-color: var(--backgrounds);
-    font-size: 12px;
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -236,9 +236,15 @@
     padding-left: 10px;
     padding-right: 20px;
     cursor: pointer;
+    transition: background-color 0.2s, border-radius 0.2s;
 }
-
-.sesame-creator img {
+.sesame-server {
+    right: 240px
+}
+.sesame-creator:hover,.sesame-server:hover {
+    border-radius: 50px;
+}
+.sesame-creator img, .sesame-server img {
     width: 40px;
 }
 .important-download-advice {
