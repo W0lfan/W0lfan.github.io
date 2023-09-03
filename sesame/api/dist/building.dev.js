@@ -5,7 +5,7 @@
     Sesame Database API Dev Log
 
     📅 Created: Aug. 9, 2023
-    🔄 Last Update: Aug. 27, 2023
+    🔄 Last Update: Sept. 2, 2023
 
  */
 var __Path__ = "https://raw.githubusercontent.com/W0lfan/sesame/main/database/";
@@ -71,6 +71,8 @@ function FetchDataFromDatabase(directory, gathering) {
                 return aut && Array.isArray(aut.name) && aut.name.some(function (name) {
                   return name.toLowerCase().includes(gather.toLowerCase());
                 });
+              }) || item.lead && Array.isArray(item.lead) && item.lead.some(function (lead) {
+                return lead.toLowerCase().includes(gather.toLowerCase());
               }) || item.author && !Array.isArray(item.author) && item.author.toLowerCase().includes(gather.toLowerCase());
             });
           });

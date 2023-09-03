@@ -60,26 +60,32 @@ function SyncParam() {
     }
 }
 function SetLanguageForHome() {
-    const header_suggested_search = document.getElementsByClassName('infos-type');
-    const suggested_search = document.getElementsByClassName('search-suggestion');
+    try {
+        const header_suggested_search = document.getElementsByClassName('infos-type');
+        const suggested_search = document.getElementsByClassName('search-suggestion');
 
-    
-    if (suggested_search) {
-        document.querySelector('.pick-a-type .top').innerHTML = LanguageValues.home.scroll_menu.top;
-        for (let i = 0; i < suggested_search.length; i++) {
-            suggested_search[i].innerHTML = LanguageValues.home.scroll_menu.click_query[i];
+        if (typeof LanguageValues !== 'undefined' && LanguageValues.home) {
+            if (suggested_search) {
+                document.querySelector('.pick-a-type .top').innerHTML = LanguageValues.home.scroll_menu.top;
+                for (let i = 0; i < suggested_search.length; i++) {
+                    suggested_search[i].innerHTML = LanguageValues.home.scroll_menu.click_query[i];
+                }
+            }
+            if (header_suggested_search) {
+                for (let i = 0; i < header_suggested_search.length; i++) {
+                    header_suggested_search[i].innerHTML = LanguageValues.home.scroll_menu.infos_items[i];
+                }
+            }
+
+            document.querySelector('.search-input input').setAttribute('placeholder', LanguageValues.home.input_placeholder);
+            DirectLink()
         }
+    } catch (error) {
+        console.error('An error occurred:', error);
+        SetLanguageForHome()
     }
-    if (header_suggested_search) {
-        for (let i = 0; i < header_suggested_search.length; i++) {
-            header_suggested_search[i].innerHTML = LanguageValues.home.scroll_menu.infos_items[i];
-        }
-    }
-
-    document.querySelector('.search-input input').setAttribute('placeholder', LanguageValues.home.input_placeholder);
-
-
 }
+
 function GetLanguage(id) {
     async function returnLanguage() {
         LanguageValues = await fetchData(`https://raw.githubusercontent.com/W0lfan/SesameAPI/main/translate/${id}.json`);   

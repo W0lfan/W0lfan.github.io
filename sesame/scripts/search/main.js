@@ -106,44 +106,46 @@ async function formatMods(authors, id) {
     });
 }
 async function formatAuthors(authors, id) {
-    const usersData = await fetchData('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/database/users.json');
-    if (!Array.isArray(authors)) {
-        authors = [authors]
-    }
-    const newAuthors = authors.map((author) => {
-        if (!author.name) {
-            return { name: author };
+    if (document.getElementById(id)) {
+        const usersData = await fetchData('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/database/users.json');
+        if (!Array.isArray(authors)) {
+            authors = [authors]
         }
-        return author;
-    });
-    authors = newAuthors;
-    authors.forEach((U) => {
-        if (!Array.isArray(U.name)) {
-            U.name = [U.name];
-        }
-
-        function TakeUser() {
-            for (let user of usersData) {
-                if (user.name && U.name[0] && user.name.toLowerCase() == U.name[0].toLowerCase()) {
-                        document.getElementById(id).innerHTML += `
-                        <div class="user-author-popup" onclick="Search('${user.name}')">
-                            <div class="user-profile-picture">
-                                <img src="${user.pfp}">
-                            </div>
-                            <div class="user-profile-name">${user.name}</div>
-                        </div>
-                    `;
-                    return;
-                }
+        const newAuthors = authors.map((author) => {
+            if (!author.name) {
+                return { name: author };
             }
-            document.getElementById(id).innerHTML += `
-                <div class="user-author-popup">
-                    <div class="user-profile-name">${U.name[0]}</div>
-                </div>
-            `;
-        }
-        TakeUser()
-    });
+            return author;
+        });
+        authors = newAuthors;
+        authors.forEach((U) => {
+            if (!Array.isArray(U.name)) {
+                U.name = [U.name];
+            }
+    
+            function TakeUser() {
+                for (let user of usersData) {
+                    if (user.name && U.name[0] && user.name.toLowerCase() == U.name[0].toLowerCase()) {
+                            document.getElementById(id).innerHTML += `
+                            <div class="user-author-popup" onclick="Search('${user.name}')">
+                                <div class="user-profile-picture">
+                                    <img src="${user.pfp}">
+                                </div>
+                                <div class="user-profile-name">${user.name}</div>
+                            </div>
+                        `;
+                        return;
+                    }
+                }
+                document.getElementById(id).innerHTML += `
+                    <div class="user-author-popup">
+                        <div class="user-profile-name">${U.name[0]}</div>
+                    </div>
+                `;
+            }
+            TakeUser()
+        });
+    }
 }
 
 
@@ -163,6 +165,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
     let sureStatus = false;
     let checkIfUser = false;
     let sureUserName;
+    let sureUser;
     Metrics;
     let section_diff = {};
 
@@ -305,6 +308,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                             if ((item.name.toLowerCase() === key_word.toLowerCase()) && key === "users") {
                                 sureStatus = true;
                                 sureUserName = item.name;
+                                sureUser = item;
                             }
                             result[1][key]++;
                         });
@@ -673,7 +677,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
 
                             }
                             if (data.id === "mods") {
-
                                 document.querySelector('.results-container').innerHTML += `
                                         <div class="mods-result result-${Display}">
                                             <div class="top-image">
@@ -682,7 +685,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                             <div class="container tohover">
                                                 <div class="header">
                                                     <div class="title">
-                                                        <div class="status">${content.official ? '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg>' : ''}</div>
+                                                        ${content.official  ? `
+                                                            <div class="status"><svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m346-60-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg></div>
+
+                                                        ` : ''}
                                                         <div class="name">${content.name}</div>
                                                         <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
                                                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
@@ -691,15 +697,15 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                     </div>
                                                     <div class="author">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
-                                                        <div class="vertical-sep"></div>
-                                                        <div class="container user-profile-parents" id="user-profile-parents-${content.name}"></div>
+                                                            <div class="vertical-sep"></div>
+                                                            <div class="container user-profile-parents" id="user-profile-parents-${content.name}"></div>
                                                         </div>
                                                     </div>
                                                     <div class="description">
                                                         ${content.description}
                                                     </div>
                                                     <div class="actions">
-                                                        <div style="display:${(content.link.type || !content.link.url.includes('.js')) ? 'none' : 'flex'}" " class="action" id="load-${content.name}">
+                                                        <div style="display:${(content.link.type || !content.link.url.toLowerCase().includes('.js')) ? 'none' : 'flex'}" " class="action" id="load-${content.name}">
                                                             <svg id ="load-${content.name}" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>
                                                             <div class="text">${LanguageValues.actions.download}</div>
                                                         </div>
@@ -737,12 +743,16 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                             <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="author">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
-                                                        <div class="vertical-sep"></div>
-                                                        <div class="container user-profile-parents" id="user-profile-parents-${content.name}"></div>
-                                                        </div>
-                                                    </div>
+                                                    ${
+                                                        !sureStatus ? `
+                                                            <div class="author">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
+                                                                <div class="vertical-sep"></div>
+                                                                    <div class="container user-profile-parents" id="user-profile-parents-${content.name}"></div>
+                                                                </div>
+                                                            </div>
+                                                        ` : ''
+                                                    }
                                                     <div class="description">
                                                         ${content.description}
                                                     </div>
@@ -858,6 +868,10 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                     document.querySelector('.user-focus').innerHTML = `
                                     <div class="user-result ${Display}-user" id="viewuser">
                                         <div class="userInfos" id="${content.name}">
+                                            <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
+                                                <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
+                                            </div>
                                             <div class="userheader">
                                                 <div class="user_pfp">
                                                     <img src="${content.pfp != "unknown" ? content.pfp : "https://raw.githubusercontent.com/W0lfan/W0lfan.github.io/main/sesame/img/user.png"}">
@@ -930,10 +944,6 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                         Sesame</div>
                                                         ` : ""
                                                     }
-                                                        <div class="share-content" onclick="copyToClipboard('${content.name.toLowerCase().replace(/ /g,'-')}')">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Z"/></svg>
-                                                            <span>${capitalizeFirstLetter(LanguageValues.share)}</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -986,7 +996,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <div class="content">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M38-160v-94q0-35 18-63.5t50-42.5q73-32 131.5-46T358-420q62 0 120 14t131 46q32 14 50.5 42.5T678-254v94H38Zm700 0v-94q0-63-32-103.5T622-423q69 8 130 23.5t99 35.5q33 19 52 47t19 63v94H738ZM358-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42Zm360-150q0 66-42 108t-108 42q-11 0-24.5-1.5T519-488q24-25 36.5-61.5T568-631q0-45-12.5-79.5T519-774q11-3 24.5-5t24.5-2q66 0 108 42t42 108Z"/></svg>
                                                     <div class="vertical-sep"></div>
-                                                    <div class="leaders user-profile-parents" id="user-profile-parents-${content.name}"></div>
+                                                       <div class="leaders user-profile-parents" id="user-profile-parents-${content.name}"></div>
                                                 </div>
                                             </div>
                                             ${
@@ -1171,7 +1181,12 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                 <div class="ship-name">
                                                     <b>${content.name}</b> in <b>${content.mod}</b>
                                                 </div>
-                                                <div class="user-profile-parents" id="user-profile-parents-${content.name}"></div>
+                                                ${
+                                                    sureStatus ? `` : 
+                                                    `
+                                                        <div class="user-profile-parents" id="user-profile-parents-${content.name}"></div>
+                                                    `
+                                                }
                                             </div>
                                             <div class="description">
                                                 <div class="global">

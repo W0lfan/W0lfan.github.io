@@ -1,5 +1,21 @@
 "use strict";
 
+function DirectLink() {
+  var link = location.href;
+
+  if (link.includes('sesame/index.html#search?=') || link.includes('sesame/#search?=')) {
+    var searchParams = new URLSearchParams(link.split('?')[1]);
+    var content = searchParams.get(""); // Remove leading and trailing whitespace
+
+    content = content.trim(); // Remove single quotes from both ends of the string (if present)
+
+    content = content.replace(/^'|'$/g, '');
+    content = content.replace(/-/g, ' ');
+    console.log(content);
+    Search(content);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   localStorage.setItem('display', 'line');
 
@@ -45,20 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
   DisplayParameters();
   setTimeout(function () {
     SetLanguageForHome();
-    console.log(location.href + "link");
-    var link = location.href;
-
-    if (link.includes('sesame/index.html#search?=') || link.includes('sesame/#search?=')) {
-      var searchParams = new URLSearchParams(link.split('?')[1]);
-      var content = searchParams.get(""); // Remove leading and trailing whitespace
-
-      content = content.trim(); // Remove single quotes from both ends of the string (if present)
-
-      content = content.replace(/^'|'$/g, '');
-      content = content.replace(/-/g, ' ');
-      console.log(content);
-      Search(content);
-    }
   }, 500);
   document.querySelector('.search-button').addEventListener('click', function () {
     Search();

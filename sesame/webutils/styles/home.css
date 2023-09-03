@@ -81,10 +81,6 @@
             animation:show-search-input;
             animation-duration: 1s;
         }
-        .search-input:focus-within,
-        .search-input:hover {
-            border: 2px solid #B82828 !important;
-        }
         .search-input {
             border: 2px solid rgba(0,0,0,0);
             transition:border 0.4s;
@@ -170,9 +166,8 @@
         align-items: center;
         flex-direction: row;
         gap: 10px;
-        border-radius: 0px !important;
+        border-radius: 5px !important;
         padding: 5px;
-        background-color: var(--backgrounds);
         transition: transform 0.4s;
         cursor: pointer;
         width: 275px;
@@ -282,16 +277,56 @@
     width: fit-content !important;
     background-color: var(--backgrounds) !important;
 }
-@media screen and (width < 500px) {
+.search-input:focus-within,
+.search-input:hover {
+    border: 2px solid #B82828 !important;
+}
+@media screen and (width <= 500px) {
+    .loader-research {
+        max-width: 90% !important;
+        .loader {
+            width: 200px !important;
+        }
+    }
+    .header-search {
+        gap:0px !important;
+    }
+    .parameters {
+        top: 10px !important;
+        .parameters-container {
+            .icon {
+                background-color: var(--color-super-light) !important;
+            }
+        }
+    }
+    #link-open span {
+        display:none !important;
+        padding:0px !important;
+    }
+    #link-open {
+        width: fit-content !important;
+        padding: 5px !important;
+        border-radius: 10px !important;
+    }
+    .sesame-creator {
+        right: 10px !important;
+    }
+    .sesame-server {
+        right: 70px !important;
+    }
     .sort-type {
-        top: 55px !important;
-        padding-left: 0px !important;
+        top: 15px !important;
+        padding-left: 90px !important;
+        height: 40px !important;
+    }
+    .class-sort {
+        height: 100% !important;
     }
     .class-s {
         padding: 0px !important;
         height: 25px !important;
         width: 10px !important;
-        height: 30px !important;
+        height: 100% !important;
     }
     .class-s svg {
         width: 40px !important ;
@@ -309,19 +344,20 @@
         border-radius: 10px !important;
         padding: 5px !important;
         position:absolute;
-        right:0px;top:0px;   
+        right:0px !important;bottom:0px !important;   
+        top:unset !important;
         background-color: #E91E63;
         fill:var(--backgrounds) !important;
         border: 2px solid var(--backgrounds) !important; 
         background-color: #E91E63 !important;
     }
+    #viewuser .share-content {
+        position:absolute;
+        top:unset !important;
+        right:30px !important;top:10px !important; bottom:unset !important;
+    }
     #viewuser .userInfos {
         width: 85% !important;
-        .share-content {
-            position:absolute;
-            top:unset !important;
-            right:30px;bottom:30px;
-        }
     }
     .metrics .metric {
         font-size: 10px !important;
@@ -341,20 +377,20 @@
     #search-from-home .search-input {
         width: 85% !important;
     }
-    #search-input:focus,#search-input:focus-within,#search-input:hover {
-        border: 2px solid rgba(0,0,0,0) !important;
-    }
     .search-input  {
-        width: 20% !important;
-        height: 30px !important;
+        width: calc(20% + 10px) !important;
+        height: 35px !important;
+        border-radius: 10px !important;
+        padding: 0.5px;
     }
     .search-input input {
-        height: 30px !important;
+        height: 100% !important;
         background-color: unset !important;
         width: calc(100%) !important;
+        border-radius: 10px !important;
     }
     #search-input {
-        width: calc(100% - 20px) !important;
+        width: calc(100% - 10px) !important;
     }
 
     
@@ -371,11 +407,19 @@
         min-height: 150px;
         .recognition .region, .tags {
             padding: 5px !important;
+            background-color: var(--backgrounds) !important;
+            border: unset !important;
+            border-radius: 5px !important;
         }
         .recognition {
-            bottom: 10px !important;
-            right:10px !important;
-            top:unset !important;
+            top: 5px !important;
+            right:5px !important;
+        }
+        .communities-logo {
+            top: 50px !important;
+        }
+        .user-profile-parents {
+            width: calc(100% - 150px) !important;
         }
         .content-container {
             gap: 10px !important;
@@ -428,7 +472,7 @@
             .name {
                 white-space: nowrap;
                 overflow: hidden;
-                width: calc(100% - 220px);
+                width: calc(100% - 130px);
                 text-overflow: ellipsis;
             }
         }
@@ -506,10 +550,18 @@
                     }
                 }
             }
-            .actions {
-                align-items: center !important;
-                justify-content: center !important;
-            }
         }
+    }
+    .actions {
+        position:relative !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: fit-content;
+        margin-top:30px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .main-container .search .search-input:focus-within, .search-input:hover {
+        border: 2px solid rgba(0,0,0,0) !important;
     }
 }
