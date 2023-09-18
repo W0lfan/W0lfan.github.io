@@ -53,7 +53,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
     SVGDiv.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>';
     informationDiv.innerHTML = "\n            <a href=\"".concat(company.src.website, "\">").concat(company.name, "</a> datas gathering is not affiliated with Linkel\n        ");
+    var div = document.createElement('div');
+    div.className = "back-to-website";
+    div.innerHTML = "Go back to ".concat(company.name);
+    div.addEventListener('click', function () {
+      window.location = company.src.website;
+    });
     datasGatheringDiv.appendChild(pick);
+    datasGatheringDiv.appendChild(div);
     datasGatheringDiv.appendChild(informationDiv);
     linkel.integration.appendChild(datasGatheringDiv);
   }

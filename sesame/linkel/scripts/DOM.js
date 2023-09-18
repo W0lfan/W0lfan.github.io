@@ -54,8 +54,18 @@ window.addEventListener('DOMContentLoaded', function() {
             <a href="${company.src.website}">${company.name}</a> datas gathering is not affiliated with Linkel
         `;
 
+        let div = document.createElement('div');
+        div.className = "back-to-website";
+        div.innerHTML = `Go back to ${company.name}`;
+        div.addEventListener('click',function() {
+            window.location = company.src.website;
+        });
+
+
         datasGatheringDiv.appendChild(pick);
+        datasGatheringDiv.appendChild(div);
         datasGatheringDiv.appendChild(informationDiv);
+
         linkel.integration.appendChild(datasGatheringDiv);
     }
 });
