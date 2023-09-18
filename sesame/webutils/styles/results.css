@@ -146,6 +146,7 @@
         font-size: 14px;
         justify-content: space-between;
         align-items: center;
+        justify-content: center;
         color:var(--color-light);
         height: 40px;
         .global span {
@@ -1281,18 +1282,19 @@
 .section:nth-child(1) {
     margin-top: 0px;
 }
+
 .section {
     margin-top: 10px;
     width: calc(100% - 10px);
     padding: 10px;
     background-color: var(--backgrounds);
     color : #B82828;
-    border-radius: 5px 5px 5px 5px;
     font-family: "Lato";
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-radius: 5px;
     .section-info svg {
         width: 15px;
         height: 15px;
@@ -1329,6 +1331,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: row;
+        font-weight: bold;
         gap: 5px;
     }
     .icon svg  {

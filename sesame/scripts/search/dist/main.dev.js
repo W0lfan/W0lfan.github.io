@@ -13,6 +13,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 var search_input;
 var article;
 var Metrics;
+var parameters = {
+  maxDisplay: 25
+};
 var __LINKS__ = {
   codes: "codes.json",
   users: "users.json",
@@ -25,6 +28,7 @@ var LogosSRC = {
   "discord": "https://images-eds-ssl.xboxlive.com/image?url=Q_rwcVSTCIytJ0KOzcjWTYl.n38D8jlKWXJx7NRJmQKBAEDCgtTAQ0JS02UoaiwRCHTTX1RAopljdoYpOaNfVf5nBNvbwGfyR5n4DAs0DsOwxSO9puiT_GgKqinHT8HsW8VYeiiuU1IG3jY69EhnsQ--&format=source",
   "youtube": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/YouTube_social_white_square_%282017%29.svg/1200px-YouTube_social_white_square_%282017%29.svg.png",
   "spotify": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png",
+  "reddit": "https://www.reddiquette.com/wp-content/uploads/2020/09/What-Is-The-Reddit-Logo-Called.png",
   "International": '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480.266-80q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80-397.681 80-480.5q0-82.819 31.5-155.659Q143-709 197.5-763t127.341-85.5Q397.681-880 480.5-880q82.819 0 155.659 31.5Q709-817 763-763t85.5 127Q880-563 880-480.266q0 82.734-31.5 155.5T763-197.684q-54 54.316-127 86Q563-80 480.266-80ZM480-140q142.375 0 241.188-99.5Q820-339 820-480v-13q-6 26-27.405 43.5Q771.189-432 742-432h-80q-33 0-56.5-23.5T582-512v-40H422v-80q0-33 23.5-56.5T502-712h40v-22q0-16 13.5-40t30.5-29q-25-8-51.357-12.5T480-820q-141 0-240.5 98.812Q140-622.375 140-480h150q66 0 113 47t47 113v40H330v105q34 17 71.7 26t78.3 9Z"/></svg>',
   "EU": '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M479.933-141Q499-141 517-143t35-6.263L501-226H353v-42.333q0-34.925 24.822-59.796Q402.644-353 437.5-353H522v-127h-84q-17 0-30-13t-13-30v-85h-18.818Q349-608 329.5-626.5 310-645 310-672.486q0-9.514 3-19.014t8-17.5l66-97q-107 30-176.5 119.439T141-480h42v-43q0-17 12.5-29.5T225-565h85q17 0 30 12.5t13 29.5v43q0 17-13 29.5T310-438v42.74q0 35.26-24.906 59.76t-59.88 24.5H186q45 77 122.328 123.5T479.933-141ZM802-376q8-25 12.5-50.941 4.5-25.941 4.5-53.471 0-118.588-71.967-209.27Q675.067-780.364 565-809v116.518q35 0 59.924 24.893 24.925 24.893 24.925 59.848V-523q20.151 0 36.651 5.5Q703-512 717-498l85 122ZM480.266-80q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80-397.681 80-480.5q0-82.819 31.5-155.659Q143-709 197.5-763t127.341-85.5Q397.681-880 480.5-880q82.819 0 155.659 31.5Q709-817 763-763t85.5 127Q880-563 880-480.266q0 82.734-31.5 155.5T763-197.684q-54 54.316-127 86Q563-80 480.266-80Z"/></svg>',
   "Asia": '<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M442-144q-35.062 0-60.031-24.5T357-228.044q0-35.045 24.969-60Q406.938-313 442-313l24.75-23.742Q475-345 486.156-350q11.156-5 22.844-5 25 0 42 17.5t17 42.225V-277q0 20 14.5 34.5T617-228q15.804 0 28.446-9.554 12.643-9.554 17.911-24.415L676-297q9-26 30.039-42.025 21.039-16.026 48.39-16.026Q766-384 772.5-416q6.5-32 6.5-65 0-94-46.5-170.5T610-773v39q0 34.65-24.675 59.325Q560.65-650 526-650h-42v85q0 17-12.5 29.5T442-523h-42v71.022Q400-429 384.135-413 368.269-397 345-397q-14 0-26.5-6.5T298-421l-67.077-102H189v41.69q0 32.31-21.5 55.81T115-398q28 109 118.749 181.5T442-144Zm84.459-253Q509-397 496.5-409.5T484-439q0-17 12.5-29.5t29.959-12.5h41.082Q585-481 597.5-468.5T610-439q0 17-12.5 29.5T567.541-397h-41.082Zm97.926-126Q604-523 591-539.5q-13-16.5-6.429-36.405L601-622q5-13 15.192-20.5 10.193-7.5 22.423-7.5Q659-650 672-633.5q13 16.5 6.429 36.405L662-551q-5 13-15.192 20.5-10.193 7.5-22.423 7.5ZM442.266-80q-82.734 0-155.5-31.5t-127.266-86Q105-252 73.5-324.841 42-397.681 42-480.5q0-82.819 31.5-155.659Q105-709 159.5-763t127.341-85.5Q359.681-880 442.5-880q82.819 0 155.659 31.5Q671-817 725-763t85.5 127Q842-563 842-480.266q0 82.734-31.5 155.5T725-197.684q-54 54.316-127 86Q525-80 442.266-80Z"/></svg>',
@@ -226,6 +230,7 @@ function Search() {
   var particular_query = arguments.length > 4 ? arguments[4] : undefined;
   var particular_query_value = arguments.length > 5 ? arguments[5] : undefined;
   var redo = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : true;
+  var dataPart = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0;
   var CAT = LanguageValues.categories.categories;
   var hasSetNoGlobalUser = false;
   var key_word;
@@ -234,7 +239,6 @@ function Search() {
   var sureStatus = false;
   var checkIfUser = false;
   var sureUserName;
-  var sureUser;
   Metrics;
   var section_diff = {};
   param_view = false;
@@ -646,25 +650,12 @@ function Search() {
 
 
                         sectionHeader = document.createElement('div');
-                        sectionHeader.classList.add('section-header'); // Create the icon element
-
-                        icon = document.createElement('div');
-                        icon.classList.add('icon');
-                        iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                        iconSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-                        iconSvg.setAttribute('height', '48');
-                        iconSvg.setAttribute('viewBox', '0 -960 960 960');
-                        iconSvg.setAttribute('width', '48');
-                        path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                        path.setAttribute('d', 'M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-60q142 0 241-99.5T820-480q0-142-99-241t-241-99q-141 0-240.5 99T140-480q0 141 99.5 240.5T480-140Zm0 0q-141 0-240.5-99.5T140-480q0-142 99.5-241T480-820q142 0 241 99t99 241q0 141-99 240.5T480-140Z');
-                        iconSvg.appendChild(path);
-                        icon.appendChild(iconSvg); // Create the text element for the section header
+                        sectionHeader.classList.add('section-header'); // Create the text element for the section header
 
                         text = document.createElement('div');
                         text.classList.add('text');
                         text.textContent = capitalizeFirstLetter(section_diff_lg[currentIndex]); // Append the icon and text elements to the section header
 
-                        sectionHeader.appendChild(icon);
                         sectionHeader.appendChild(text); // Create the section info
 
                         sectionInfo = document.createElement('div');
@@ -925,9 +916,6 @@ function Search() {
                     for (var _iterator3 = DatasByKey[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
                       var section;
                       var sectionHeader;
-                      var icon;
-                      var iconSvg;
-                      var path;
                       var text;
                       var sectionInfo;
                       var svgKeyContent;

@@ -166,7 +166,6 @@
         align-items: center;
         flex-direction: row;
         gap: 10px;
-        border-radius: 5px !important;
         padding: 5px;
         transition: transform 0.4s;
         cursor: pointer;
@@ -194,6 +193,12 @@
     }
 }
 
+.searches .search-suggestion:nth-child(1) {
+    border-radius: 50px 0px 0px 50px !important;
+}
+.searches .search-suggestion:nth-last-child(1) {
+    border-radius: 0px 50px 50px 0px !important;
+}
 .pick-a-type {
     transition: height 0.4s;
       .infos-type {
@@ -269,11 +274,10 @@
     gap: 2px;
     justify-content: center;
 }
-.search-suggestion{
+.search-suggestion {
     padding: 5px !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
-    border-radius: 5px !important;
     width: fit-content !important;
     background-color: var(--backgrounds) !important;
 }
@@ -281,6 +285,69 @@
 .search-input:hover {
     border: 2px solid #B82828 !important;
 }
+
+
+.info-linkel:hover .open {
+    opacity: 1;
+}
+.info-linkel:hover {
+    width: 286px;
+
+}
+.info-linkel {
+    position:absolute;
+    bottom:10px;
+    width: 230px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items:center ;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--backgrounds);
+    border-radius: 10px;
+    border:2px solid var(--black-lighter);
+    cursor: pointer;
+    .open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fill:#B82828;
+        opacity: 0;
+        position:absolute;
+        right:10px;
+        transition: 0.3s;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .title {
+            font-size: 16px;
+            font-family: "Poppins";
+        }
+        .low-header {
+            font-family: "Roboto";
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            align-items: center;
+            font-size: 12px;
+            color:var(--color-light);
+            .img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .img img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    }
+}
+
 @media screen and (width <= 500px) {
     .loader-research {
         max-width: 90% !important;
@@ -309,10 +376,11 @@
         border-radius: 10px !important;
     }
     .sesame-creator {
-        right: 10px !important;
+        right: 5px !important;
     }
     .sesame-server {
-        right: 70px !important;
+        left: 5px !important;
+        right:unset !important;
     }
     .sort-type {
         top: 15px !important;

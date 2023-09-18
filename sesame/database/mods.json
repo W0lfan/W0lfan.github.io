@@ -984,5 +984,133 @@
       }
     ],
     "official": 0
-  }
+  },
+  {
+      "name": "Overpowered Speedster",
+      "abvrt": "OP Speedster",
+      "version": "2.0.0",
+      "description": "For fun with Speedster",
+      "modes": "",
+      "img": "https://github.com/Modraxis/Overpowered-Speedster/assets/117416934/ed295f76-3752-4126-a8fe-b53de94509c5",
+      "link": {
+        "url": "https://github.com/Modraxis/Overpowered-Speedster/blob/main/Overpowered%20Speedster%20mod%20code.JS"
+      },
+      "author": [
+        {
+          "name": ["Basit","HELPER","ATTACK AS TEAM"],
+          "link": "https://github.com/Modraxis"
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Starblast Tag Mod",
+      "abvrt": "STM",
+      "version": "",
+      "description": "Tag Mode is a Team mode game but when you kill one player, that player when respawned will become your teammate, or will be 'tagged' by you, The game ends when one team 'tags' all the players in that server.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/Bhpsngum/StarblastTagMode/blob/master/StarblastTagMode.js"
+      },
+      "author": [
+        {
+          "name": ["Bhpsngum"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Starblast Insect Mod",
+      "abvrt": "",
+      "version": "",
+      "description": "Custom ships designed as insects.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/AlbieMorrison/Insect_Mod"
+      },
+      "author": [
+        {
+          "name": ["AlbieMorrison"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Starblast Mining Mod",
+      "abvrt": "",
+      "version": "",
+      "description": "Mining with custom UIs.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/W0lfan/Starblast-code-snippets/blob/main/mining_mod.js"
+      },
+      "author": [
+        {
+          "name": ["naflouille"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Quest Mod",
+      "abvrt": "",
+      "version": "",
+      "description": "Unfinished. Play Starblast by doing quests in order to win.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/W0lfan/Starblast-code-snippets/blob/main/stats_dueling_mod.js"
+      },
+      "author": [
+        {
+          "name": ["naflouille"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Taupe Mod",
+      "abvrt": "",
+      "version": "",
+      "description": "Unfinished. Find the mole in your team before it kills you.",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/W0lfan/Starblast-code-snippets/blob/main/taupe_v_0.0.1.js"
+      },
+      "author": [
+        {
+          "name": ["naflouille"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    },
+  {
+      "name": "Optimized Mining Mod",
+      "abvrt": "",
+      "version": "",
+      "description": "Betterfied Mining Mod",
+      "modes": "",
+      "img": "",
+      "link": {
+        "url": "https://github.com/W0lfan/Starblast-code-snippets/blob/main/opt%20mining%20mod.js"
+      },
+      "author": [
+        {
+          "name": ["__"],
+          "link": ""
+        }
+      ],
+      "official": 0
+    }
 ]
+
+
