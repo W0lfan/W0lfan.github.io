@@ -396,7 +396,7 @@ function Form(data) {
             }
             console.log(DATAS.code);
             let parsed = JSON.parse(DATAS.code);
-            DATAS.name = parsed.name;
+            DATAS.name = parsed.name; 
             DATAS.code = [parsed];
             
         }
