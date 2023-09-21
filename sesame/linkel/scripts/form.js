@@ -395,7 +395,9 @@ function Form(data) {
               DATAS.code = DATAS.code.substring(firstEqualsIndex + 1);
             }
             console.log(DATAS.code);
-            DATAS.code = [JSON.parse(DATAS.code)]
+            let parsed = JSON.parse(DATAS.code);
+            DATAS.name = parsed.name;
+            DATAS.code = [parsed];
             
         }
         DownLoadCode(`${js_beautify(JSON.stringify(DATAS), {indent_size: 2})}`, `Linkel - ${DATAS.name}`);
