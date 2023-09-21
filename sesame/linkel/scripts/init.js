@@ -10,17 +10,6 @@ let company = {
             description : "Format a Starblast ship",
             form : [
                 {
-                    name : "Name",
-                    description : "Ship name",
-                    need : true,
-                    id:"ships",
-                    link_database : true,
-                    same_result : true,
-                    inner_code : [
-                        "name"
-                    ]
-                },
-                {
                     name : "Author",
                     description : "Author name - sensitive to special fonts",
                     need : true,
