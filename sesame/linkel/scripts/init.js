@@ -9,7 +9,7 @@ let company = {
             icon : "",
             description : "Format a Starblast ship",
             form : [
-                {
+                { 
                     name : "Author",
                     description : "Author name - sensitive to special fonts",
                     need : true,
