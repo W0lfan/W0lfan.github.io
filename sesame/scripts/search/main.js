@@ -231,7 +231,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
     }
     UpdatePage(`search?='${key_word.toLowerCase().replace(/ /g,'-')}'`,`${key_word}`);
 
-    fetch('building.js')
+    fetch('https://raw.githubusercontent.com/W0lfan/SesameAPI/main/api/building.js')
         .then(response => response.text())
         .then(buildingCode => {
             // Execute the code from building.js using eval()
