@@ -59,7 +59,7 @@ const __CALENDAR__ = [
         date : 'Jan. 2024 - Feb. 2024',
         finished : false,
         title : 'SesMarTools update',
-        description : "Sesame Smart Tools, or the SesMarTools update, will bring to users and coders a whole new exerience, enhancing their naviguation through smart datas indexing systems",
+        description : "Sesame Smart Tools, or the SesMarTools update, will bring to users and coders a whole new experience, enhancing their naviguation through smart data indexing systems",
         content : [
              {
                 txt : {
