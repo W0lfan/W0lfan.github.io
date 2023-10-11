@@ -34,10 +34,10 @@ const __CALENDAR__ = [
         ]
     },
     {
-        date : 'Jan. 2024',
+        date : 'Dec. 2023',
         finished : false,
         title : 'Sesame 1.5.0',
-        description : "Sesame 1.5.0, bringing new features and more easy and understandable tools.",
+        description : "Bringing new features and more easy and understandable tools.",
         content : [
             {
                 txt :{
@@ -58,6 +58,28 @@ const __CALENDAR__ = [
                     description : "Introducing a various range of powerful tools for modders and users"
                 },
                 svg : '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M551-80 406-392 240-160v-720l560 440H516l144 309-109 51Z"/></svg>'
+            }
+        ]
+    },
+    {
+        date : 'Jan. 2024 - Feb. 2024',
+        finished : false,
+        title : 'SesMarTools update',
+        description : "Sesame Smart Tools, or the SesMarTools update, will bring to users and coders a whole new exerience, enhancing their naviguation through smart datas indexing systems.",
+        content : [
+             {
+                txt : {
+                    title : "Smart tools",
+                    description : "Introducing a various range of powerful tools for modders and users"
+                },
+                svg : '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M551-80 406-392 240-160v-720l560 440H516l144 309-109 51Z"/></svg>'
+            },
+            {
+                txt : {
+                    title : "Datas empowering",
+                    description : "Sesame database will grow stronger, allowing people to access a more powerful range of datas."
+                },
+                svg : '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q146 0 255.5 91.5T872-559h-82q-19-73-68.5-130.5T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h80v120h-40L168-552q-3 18-5.5 36t-2.5 36q0 131 92 225t228 95v80Zm364-20L716-228q-21 12-45 20t-51 8q-75 0-127.5-52.5T440-380q0-75 52.5-127.5T620-560q75 0 127.5 52.5T800-380q0 27-8 51t-20 45l128 128-56 56ZM620-280q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Z"/></svg>'
             }
         ]
     }
