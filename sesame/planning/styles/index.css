@@ -1,183 +1,206 @@
 body {
     background: #181818;
-    color:white;
+    color: white;
     font-family: "Roboto";
 }
 
 .planning {
     padding-top: 100px;
     padding-bottom: 50px;
-    .header {
-        height: 50px;
-        width:calc(100% - 50px);
-        background-color: #181818;
-        padding: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index:50;
-        flex-direction: column;
-        font-size: 20px;
-        font-family: "Poppins";
-        position:fixed;
-        top:0px;
-        .logo img {
-            height: 100px;
-        }
-    }
-    .calendar {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width:60%;
-        margin-left: auto;
-        margin-right: auto;
-        .next-step {
-            height: 40px;
-            fill:#ffdad8;
-            transform: rotate(90deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .next-step svg {
-            width: 40px;
-            height: 40px;
-        }
-        .update {
-            border: 2px solid #1F1F1F;
-            background-color: #1F1F1F;
-            border-radius: 30px;
-            fill:#ffdad8;
-
-            padding: 20px;
-            width: calc(100% - 40px);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            .tasks {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                .Task {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 5px;
-                    padding: 10px 15px 10px 15px;
-                    width: calc(100% - 30px);
-                    background-color: #292929;
-                    border-radius: 50px;
-                    .text {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 5px;
-                        align-items: center;
-                        justify-content: unset;
-                        width: calc(100% - 50px);
-                        .title {
-                            color:#ffdad8;
-                            font-size: 17px;
-                            display:flex;
-                            align-items: start;
-                        }
-                        .description {
-                            width: 100%;
-                            font-size: 14px;
-                            color:rgba(255,255,255,0.8);
-                            display:flex;
-                            align-items: start
-                        }
-                    }
-                    .icon {
-                        height: 100%;
-                        width: 50px;
-                        display:flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-                .info {
-                    font-size: 12px;
-                    color:rgba(255,255,255,0.7);
-                }
-            }
-            .title {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                gap: 5px;
-                .down-title {
-                    color:rgba(255,255,255,0.7);
-                    font-size:14px;
-                    width: 100%;
-                }
-                .mid-title {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap : 10px;
-                    font-size: 14px;
-                    width: 100%;
-                    color:rgba(255,255,255,0.7);
-                    fill:rgba(255,255,255,0.7);
-                    .icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    .icon svg {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
-                .up-title {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    align-items: center;
-                    width: 100%;
-                    fill:#35AB36;
-                    font-size: 20px;
-                    font-family: "Poppins";
-                    .icon-update-done {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    .icon-update-running {
-                        padding: 2px 10px 2px 10px;
-                        border-radius: 50px;
-                        background-color: #ffdad8;
-                        color:#181818;
-                        fill:#181818;
-                        display: flex;
-                        flex-direction: row;
-                        font-size: 12px;
-                        align-items: center;
-                        gap: 5px;
-                        .icon {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
-                        .icon svg {
-                            width: 15px;
-                            height: 15px;
-                        }
-                    }
-                }
-            }
-        }
-        .task-running {
-            border:2px solid #ffdad8;
-        }
-    }
 }
 
-@media screen and (width <= 500px) {
-    .calendar {
+.planning .header {
+    height: 50px;
+    width: calc(100% - 50px);
+    background-color: #181818;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: "Poppins";
+    position: fixed;
+    top: 0px;
+}
+
+.planning .header .logo img {
+    height: 100px;
+}
+
+.planning .calendar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.planning .calendar .next-step {
+    height: 40px;
+    fill: #ffdad8;
+    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning .calendar .next-step svg {
+    width: 40px;
+    height: 40px;
+}
+
+.planning .calendar .update {
+    border: 2px solid #1F1F1F;
+    background-color: #1F1F1F;
+    border-radius: 30px;
+    fill: #ffdad8;
+    padding: 20px;
+    width: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.planning .calendar .update .tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.planning .calendar .update .tasks .Task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px 10px 15px;
+    width: calc(100% - 30px);
+    background-color: #292929;
+    border-radius: 50px;
+}
+
+.planning .calendar .update .tasks .Task .text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: unset;
+    width: calc(100% - 50px);
+}
+
+.planning .calendar .update .tasks .Task .text .title {
+    color: #ffdad8;
+    font-size: 17px;
+    display: flex;
+    align-items: start;
+}
+
+.planning .calendar .update .tasks .Task .text .description {
+    width: 100%;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: start;
+}
+
+.planning .calendar .update .tasks .Task .icon {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning .calendar .update .tasks .info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.planning .calendar .update .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.planning .calendar .update .title .down-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    width: 100%;
+}
+
+.planning .calendar .update .title .mid-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    fill: rgba(255, 255, 255, 0.7);
+}
+
+.planning .calendar .update .title .mid-title .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning .calendar .update .title .mid-title .icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.planning .calendar .update .title .up-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    fill: #35AB36;
+    font-size: 20px;
+    font-family: "Poppins";
+}
+
+.planning .calendar .update .title .up-title .icon-update-done {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning .calendar .update .title .up-title .icon-update-running {
+    padding: 2px 10px 2px 10px;
+    border-radius: 50px;
+    background-color: #ffdad8;
+    color: #181818;
+    fill: #181818;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    align-items: center;
+    gap: 5px;
+}
+
+.planning .calendar .update .title .up-title .icon-update-running .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning .calendar .update .title .up-title .icon-update-running .icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.planning .calendar .task-running {
+    border: 2px solid #ffdad8;
+}
+
+@media screen and (max-width: 500px) {
+    .planning .calendar {
         width: 95% !important;
-    }    
+    }
 }
