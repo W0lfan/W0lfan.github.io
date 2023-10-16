@@ -666,7 +666,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                                             ${content.description}
                                                         </div>
                                                         <div class="actions">
-                                                            <div style="display:${(content.link.type || !content.link.url.toLowerCase().includes('.js')) ? 'none' : 'flex'}" " class="action" id="load-${content.name}">
+                                                            <div style="display:${(content.link && content.link.type || content.link && !content.link.url.toLowerCase().includes('.js')) ? 'none' : 'flex'}" " class="action" id="load-${content.name}">
                                                                 <svg id ="load-${content.name}" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>
                                                                 <div class="text">${LanguageValues.actions.download}</div>
                                                             </div>
