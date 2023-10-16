@@ -745,7 +745,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                         if (document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`)) {
                                             document.querySelector(`#${content.name.replace(/ /g, '-', '-')}-code`).addEventListener('click', function() {
                                                 DisplayNotif(`Downloaded ${content.name}`,5);
-                                                DownLoadCode(`${js_beautify(content.code, {indent_size: 2})}`, `${content.name}`);
+                                                DownLoadCode(`${js_beautify(JSON.parse(content.code), {indent_size: 2})}`, `${content.name}`);
                                             });
                                         }
                                    }, 500);
