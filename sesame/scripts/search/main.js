@@ -1102,7 +1102,7 @@ function Search(search_query = null, official_content = false, all = "", not_que
                                         console.log(link)
                                         return link.replace(/\.png\/.*/, '.png');
                                     }
-                                    let shipCode = content.code[0];
+                                    let shipCode = JSON.parse(content.code[0]);
                                     let lasers = [];
                                     for (let laser of shipCode.typespec.lasers) {
                                         lasers.push({
