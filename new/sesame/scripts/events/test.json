@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "Starblast Asteroid War - AOW",
+        "official" : 1,
+        "regions" : {
+            "america" : {
+                "date": 1698476400
+            },
+            "europe" : {
+                "date" :1698498000
+            },
+            "asia" : {
+                "date": 1698606000
+            }
+        },
+        "author" : [
+            {
+                "name" : "Megalodon"
+            },
+            {
+                "name" : "LX"
+            },
+            {
+                "name" : "Hazard"
+            }
+        ],
+        "content" : [
+            "SAW Starblast"
+        ],
+        "medias" : {
+            "poster" : "https://media.discordapp.net/attachments/1037725527567515648/1097333784204021881/SAW_Official_Banner_3.0_V2.png?width=924&height=516",
+            "more" : [
+                {
+                    "name": "New ship tree",
+                    "description" : "",
+                    "image" : "https://media.discordapp.net/attachments/1027558912058200155/1061632809053212723/SAW_shippath_3_color.png?width=762&height=682"
+                }
+            ]
+        },
+        "description" : ""
+    }
+]
