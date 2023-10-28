@@ -1,0 +1,230 @@
+
+.planning {
+    color:var(--sys-text-color);
+}
+
+
+
+
+.planning  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 80%;
+    margin-left: auto;
+    align-items:center ;
+    margin-right: auto;
+}
+
+.planning  .next-step {
+    height: 40px;
+    fill: var(--sys-colormetrics-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning  .next-step svg {
+    width: 40px;
+    height: 40px;
+}
+
+.planning  .update {
+    border: 2px solid var(--sys-background-color-video-override);
+    background-color: var(--sys-background-color-video-override);
+    border-radius: 30px;
+    fill: var(--sys-colormetrics-light);
+    padding: 20px;
+    width: calc(30% - 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 150px;    position:relative;
+
+}
+
+
+.planning  .update .tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.planning  .update .tasks .Task {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px 10px 15px;
+    width: calc(100% - 30px);
+    background-color: var(--sys-background-color-video-override-hover);
+    border-radius: 50px;
+    font-family: "Roboto";
+
+}
+
+.planning  .update .tasks .Task .text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: unset;
+    width: calc(100% - 50px);
+}
+
+.planning  .update .tasks .Task .text .title {
+    color: var(--sys-colormetrics-light);
+    font-size: 17px;
+    display: flex;
+    align-items: start;
+}
+
+.planning  .update .tasks .Task .text .description {
+    width: 100%;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: start;
+}
+
+.planning  .update .tasks .Task .icon {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning  .update .tasks .info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Roboto";
+}
+
+
+.planning-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 30px;
+}
+.planning-header .icon-learn-more {
+    position:absolute;
+    bottom:15px;
+    right:15px;
+    width: fit-content;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: auto;
+    padding: 5px 5px 5px 15px;
+    height: fit-content;
+    background-color: var(--sys-background-color-video-override);
+    align-items: center;
+    font-family: "Poppins";
+    border-radius: 50px;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--sys-element-transition);
+}
+
+.planning-header .icon-learn-more:hover {
+    background-color: var(--sys-background-color-video-override-hover);
+}
+
+.planning-header .icon-learn-more .icon {
+    display: flex;
+    align-items: center;justify-content: center;
+    fill:var(--sys-colormetrics-main )
+}
+
+.planning  .update .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100%);
+    gap: 5px;
+}
+
+.planning  .update .title .down-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    width: 100%;
+    font-family: "Roboto";
+}
+
+.planning  .update .title .mid-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    fill: rgba(255, 255, 255, 0.7);
+    font-family: "Roboto";
+}
+
+.planning  .update .title .mid-title .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning  .update .title .mid-title .icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.planning  .update .title .up-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    fill: #35AB36;
+    font-size: 20px;
+    font-family: "Poppins";
+}
+
+.planning  .update .title .up-title .icon-update-done {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning  .update .title .up-title .icon-update-running {
+    padding: 2px 10px 2px 10px;
+    border-radius: 50px;
+    background-color: var(--sys-colormetrics-light);
+    color: #181818;
+    fill: #181818;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    align-items: center;
+    gap: 5px;
+}
+
+.planning  .update .title .up-title .icon-update-running .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.planning  .update .title .up-title .icon-update-running .icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+.planning  .task-running {
+    border: 2px solid var(--sys-colormetrics-light);
+}
+
+@media screen and (max-width: 500px) {
+    .planning  {
+        width: 95% !important;
+    }
+}

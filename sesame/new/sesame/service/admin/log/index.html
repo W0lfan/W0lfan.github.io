@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <title>SesaAdmin</title>
+    <link rel="icon" href="/utils/img/ico/logo.ico" type="image/x-icon">
+
+    <script src="/sesame/scripts/init/parameters.js"></script>
+    <script type="module" src="/sesame/service/admin/init/index.js"></script>
+
+    <script type="module" src="/utils/NFC-modules/scripts/init/initializer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.13.5/js/lib/beautify.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/utils/styles/sesame/browser/home/index.css">
+    <link rel="stylesheet" type="text/css" href="/utils/styles/sesame/browser/results/minimal/index.css">
+    <link rel="stylesheet" type="text/css" href="/utils/styles/sesame/browser/results/net/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/utils/styles/sesame//sesadmin/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</html>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <div class="sesamod-infos">
+                <div class="sesame-logo">
+                    <img src="/utils/img/banner/sesameRow.png">
+                </div>
+                <div class="informations">
+                    Sesame Data Management and Admin Pannel
+                </div>
+            </div>
+            <div class="user-infos">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                </div>
+                <div class="text">
+                    You cannot log in if you do not have access to the database.
+                </div>
+            </div>
+        </div>
+        <div class="connect" >
+            <div class="fill">
+                <div class="input">
+                    <input type="text" id="UserName" autocomplete="off"/>
+                    <label for="UserName" class="placeholder">Github Username</label>
+                </div>
+            </div>
+            <div class="fill">
+                <div class="input">
+                    <input type="password" id="Token" autocomplete="off"/>
+                    <label for="Token" class="placeholder">Personnal Github Token</label>
+                </div>
+            </div>
+            <div class="check">
+                <div class="icon" id="keepLogIn">
+                    <div class="toggle"></div>
+                </div>
+                <div class="text">
+                    Keep me logged in
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="action" id="LogInSesame">
+                <div class="name">
+                    Log in
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,41 @@
+<div class="provider-informations">
+    <div class="service_provider">
+        <div class="logo">
+            <img src="/utils/img/logo/NFC.png">
+        </div>
+        <div class="content">
+            <div class="title">
+                Sesame by Naflouille Creations
+            </div>
+            This service is provided by <a href="../index.html">Naflouille Creations</a>. All rights reserved.
+            <br>
+            <a href="../legal/policy/index.html">Data policy</a> and 
+            <a href="../legal/guidelines/index.html">content guidelines</a> applies. 
+        </div>
+    </div>
+    <div class="service_linking">
+        <div class="service_contact service-list">
+            <div class="title">
+                Contact us
+            </div>
+            <div class="list">
+                <div class="item">
+                    <a href="https://discord.gg/wtvGdj43F7">Sesame Support</a>
+                </div>
+                <div class="item">
+                    <a href="https://discord.gg/E3zMKDDXzx">Naflouille Creations</a>
+                </div>
+            </div>
+        </div> <!-- Close the 'service_contact' div here -->
+        <div class="service_social service-list">
+            <div class="title">
+                Social
+            </div>
+            <div class="list">
+                <div class="item">
+                    <a href="https://www.instagram.com/naflouille.creations/">Instagram</a>
+                </div>
+            </div>
+        </div> <!-- Close the 'service_social' div here -->
+    </div>
+</div>

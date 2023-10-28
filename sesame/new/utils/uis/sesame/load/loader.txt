@@ -1,0 +1,6 @@
+<div class="loader">
+    <div class="state"></div>
+    <div class="load-bar">
+        <div class="bar"></div>
+    </div>
+</div>  
