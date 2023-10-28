@@ -1,0 +1,220 @@
+.sesame-news {
+    width: fit-content;
+    min-width: 60%;
+    transition: 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+    background:unset;
+}
+
+
+
+.sesame-news .event {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
+    width: calc(fit-content - 60px);
+    padding: 10px 30px 10px 50px;
+    background: var( --sys-background-color-chill-ligther);
+    border-radius: 30px;
+    transition: 0.3s;
+    margin-top: 0px;
+}
+
+.sesame-news .closePannel {
+    display: none;
+}
+.viewEvent {
+    background-color:rgba(25,25,25,1);
+    width: 90vh;
+    z-index: 90;
+    cursor: unset !important;
+    border-radius: 20px;
+    position:relative;
+    margin-top: 10px;
+}
+.viewEvent .event {
+    background-color: unset !important;
+}
+.viewEvent .closePannel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    padding: 10px;
+    background-color: var(--sys-background-color);
+    fill:var(--sys-colormetrics-light);
+    top:5px;
+    cursor: pointer;
+    right: 5px;
+    border-radius: 10px 20px 10px 10px;
+    transition: var(--sys-element-transition);
+}
+.viewEvent .closePannel:hover {
+    background-color: var(--sys-background-color-chill-ligther);
+}
+.sesame-news .event .event-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+}
+.sesame-news .event .event-header .sesame-header {
+    font-size: 20px;
+    color:var(--sys-colormetrics-light);
+    font-family: "Poppins";
+    width: fit-content;
+}
+.sesame-news .event .event-header .additional-informations {
+    font-size: 14px;
+    color:var(--sys-text-color-light);
+    font-family: "Roboto";
+}
+
+
+.sesame-news .event .posters-creations {
+    position:relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+.sesame-news .event .posters-creations .cover-poster {
+    position:absolute;
+    top:0;bottom:0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+.sesame-news .event .posters-creations  .moreInfos {
+    width: 60px;
+    background-color: var(--sys-background-color-chill-ligther);
+    padding: 10px 20px 10px 20px;
+    fill:var(--sys-colormetrics-light);
+    color:var(--sys-colormetrics-light);
+    display: flex;
+    font-size: 30px;
+    font-family: "Poppins";
+    border-radius: 5px;
+    justify-content: center;
+    border: 2px solid var(--sys-colormetrics-light);
+}
+.sesame-news .event .posters-creations .cover-poster img {
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid var(--sys-background-color);
+}
+
+
+.event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 15px 20px 15px;
+    width: calc(100% - 30px);
+    background-color: var(--sys-background-color);
+}
+.event-container .event-down {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.event-container .event-down .date-informations  {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border:1px solid rgba(0,0,0,0);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+}
+
+.event-container .event-down .region-for-user {
+    border:1px solid var(--sys-colormetrics-light)
+}
+.event-container .event-down .date-informations .region-name {
+    color:var(--sys-text-color);
+    font-family: "Poppins";
+}
+.event-container .event-down .date-informations .time {
+    font-size: 13px;
+    font-family: "Roboto";
+    color:var(--sys-text-color-light);
+}
+.event-container .event-down .date-informations .region-match .match {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    fill:var(--sys-colormetrics-light);
+    color:var(--sys-colormetrics-light);
+    font-family: "Poppins";
+    font-size: 12px;
+    position:absolute;
+    width: fit-content;
+    left:0;right:0;top:-12px;margin:auto;
+    background-color: var(--sys-background-color);
+    padding: 2px 7px 2px 7px;
+}
+.event-container .event-down .date-informations .region-match .match svg {
+    width: 10px;
+    height: 10px;
+}
+.event-container .event-top {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    height: 40%;
+    justify-content: space-between;
+
+}
+.event-container .event-top  .event-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: calc(100% - 40%);
+}
+
+.event-container .event-top  .event-header .event-content-important {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-family: "Poppins";
+    color:var(--sys-colormetrics-light);
+
+}
+.event-container .event-top  .event-header .author-information {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+}
+.event-container .event-top  .event-header .author-information .pops {
+    background-color: unset !important;
+    height: fit-content !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.event-container .event-top  .event-header .author-information .pops .informations {
+    color:var(--sys-text-color-light);
+    font-size: 13px;
+}
+.event-container .event-top  .event-header .event-content-important .event-certif {
+    padding: 2px 7px 2px 7px;
+    font-family: "Montserrat";
+    font-size: 13px;
+    background-color: var(--sys-colormetrics-light);
+    color:var(--sys-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+.event-container .event-top .event-poster img  {
+    height: 100px;
+    border-radius: 5px;
+}
