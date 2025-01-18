@@ -1,0 +1,252 @@
+@import '../../@styling/main.scss';
+
+#root {
+    display:flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 5vh 0;
+}
+
+
+.clear-storage {
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    background-color: map-get(
+        $colors,
+        app-primary
+    );
+    color: white;
+    border-radius: map-get(
+        $radiuses,
+        app-first-border-radius
+    );
+    border: none;
+    cursor: pointer;
+}
+
+.tiles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 20vh;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .stats-container, .working-session {
+        width:calc(
+            calc(40% ) * 2 + 20px
+        );
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: map-get(
+            $radiuses,
+            app-first-border-radius
+        );
+        border: 2px solid map-get(
+            $colors,
+            app-primary
+        );
+        .stats-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: map-get(
+                $colors,
+                app-primary
+            );
+        }
+        .stats-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            button {
+                border-radius: map-get(
+                    $radiuses,
+                    app-first-border-radius
+                );
+                width: 100%;
+                font-size: 20px;
+                height: 40px;
+                font-weight: bold;
+                border:none;
+            }
+        }
+        .stats-content {
+
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: space-between;
+            .stats-row {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                width: 70%;
+                .stats-row-title {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color:map-get(
+                        $colors,
+                        app-text-color-on-background-lighter
+                    );
+                }
+                .stats-row-content {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: map-get(
+                        $colors,
+                        app-primary
+                    );
+                }
+            }
+        }
+    }
+    .working-session {
+        flex-direction: row !important;
+        justify-content:space-between !important;
+        display:flex;
+        .buttons {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            gap: 5px;
+        }
+        .working-session-title {
+            font-size: 50px;
+            font-weight: bold;
+        }
+        button {
+            height: 100%;
+            font-size: 30px;
+            padding: 0 25px;
+            border-radius: map-get(
+                $radiuses,
+                app-second-border-radius
+            );
+            border:none;
+            background-color: map-get(
+                $colors,
+                app-primary
+            );
+            color: white;
+        }
+        
+    }
+    .tile {
+        width: calc(40% - 20px);
+        padding: 20px;
+        display:flex;
+        flex-direction: row-reverse;
+        gap: 20px;
+        justify-content: start;
+        border-radius: map-get(
+            $radiuses,
+            app-first-border-radius
+        );
+        align-items: center;
+        border: 2px solid map-get(
+            $colors,
+            app-primary
+        );
+        .tile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            .tile-title {
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .tile-content {
+    
+            }
+        }
+        .tile-percentage {
+            font-size: 30px;
+            font-weight: bold;
+            color: map-get(
+                $colors,
+                app-primary
+            );
+        }
+    }
+}
+
+.year {
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-between;
+    --month-width: calc(
+        10px * 6 + 26px * 7
+    );
+    .month {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .month-name {
+            width: 100%;
+            display:flex;
+            align-items: start;
+            font-size: 20px;
+            font-weight: bold;
+            &.current {
+                color : map-get(
+                    $colors,
+                    app-primary
+                );
+            }
+        }
+        .day, .day-name {
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            padding: 3px 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+        }
+        .days {
+            width: var(--month-width);
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            flex-wrap: wrap;
+            .day {
+                &.current {
+                    background-color: map-get(
+                        $colors,
+                        app-primary
+                    );
+                    color: white !important;
+                }
+                &.past {
+                    text-decoration:line-through;
+                    color: map-get(
+                        $colors,
+                        app-text-color-on-background-lighter
+                    );
+                }
+            }
+        }
+        .days-list {
+            width: var(--month-width);
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+    }
+}

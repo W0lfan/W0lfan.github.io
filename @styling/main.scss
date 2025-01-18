@@ -1,0 +1,31 @@
+@import './maps/colors.scss';
+@import './maps/gaps.scss';
+@import './maps/fonts.scss';
+@import './maps/lengths.scss';
+@import './maps/paddings.scss';
+@import './maps/radiuses.scss';
+@import './maps/times.scss';
+
+
+@function lighter($color, $amount: 20%) {
+  @return lighten($color, $amount);
+}
+
+@function darker($color, $amount: 20%) {
+  @return darken($color, $amount);
+}
+
+@function borderFromParent($parent) {
+  @return calc(map-get($radiuses, $parent) * 0.9);
+}
+
+
+
+
+
+
+
+
+
+
+

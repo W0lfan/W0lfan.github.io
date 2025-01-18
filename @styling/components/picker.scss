@@ -1,0 +1,143 @@
+@import "../main.scss";
+
+
+
+
+
+.menu-picker {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: map-get($gaps, app-first-gap);
+    .pick {
+        display: flex;
+        flex-direction: column;
+        gap: map-get($gaps, app-third-gap);
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}
+.picker {
+    width: 100%;
+}
+
+.picker {
+    width: calc(100% - 10px);
+    padding: map-get($paddings, app-selecter-padding);
+    height: fit-content;
+    position: relative;
+
+    .selector {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+
+        div .selection {
+            width: calc(100% - 20px);
+            cursor: pointer;
+            border-radius: map-get($radiuses, app-first-border-radius);
+            display: flex;
+            padding: 5px 10px;
+            flex-direction: row;
+            align-items: center;
+            z-index: 2;
+            justify-content: center;
+            transition: all 0.5s;
+            text-align: center;
+            cursor: pointer;
+            position:relative;
+            background-color: transparent;
+        }
+
+        div .selection.active {
+            color: white;
+            cursor: default;
+            background-color: map-get($colors, app-primary);
+            transition: all 0.5s;
+        }
+    }
+
+    &.line {
+        div .selection:before {
+            content: "";
+            position: absolute;
+            width: calc(100% - calc(map-get($paddings, app-selecter-padding) * 4));
+            height: 2px;
+            bottom: 0;
+            left: calc(map-get($paddings, app-selecter-padding) * 2);
+            background-color: map-get($colors, app-primary);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        div .selection.active{
+            background-color: unset;
+        }
+        div .selection.active:before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+    }
+
+
+    &.vertical {
+        .selector-display {
+            width: calc(100% - 10px);
+            height: 0;
+            overflow: hidden;
+        }
+
+        .selector {
+            flex-direction: column;
+            gap: 5px;
+
+            .selection {
+                width: calc(100% - 20px);
+            }
+        }
+    }
+
+    &.line {
+        position: relative !important;
+
+        .selector-display {
+            height: 2px !important;
+            margin-left: calc(map-get($paddings, app-selecter-padding)*2) !important;
+        }
+
+        .active {
+            color: map-get($colors, app-primary) !important;
+            font-weight: bold;
+        }
+    }
+}
+.menu-picker {
+    .selector-display {
+        background-color: map-get($colors, app-primary);
+        height: calc(100% - 10px);
+        border-radius: map-get($radiuses, app-first-border-radius);
+        z-index: 1;
+        transition: all 0.5s;
+        position: absolute;
+    }
+
+
+
+    &.vertical {
+        .selector-display {
+            width: calc(100% - 10px);
+            height: 0;
+        }
+    }
+
+    &.line {
+        .selector-display {
+            height: 2px !important;
+            margin-left: calc(map-get($paddings, app-selecter-padding)*2) !important;
+        }
+    }
+}

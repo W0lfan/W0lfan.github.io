@@ -1,0 +1,54 @@
+
+@function lighter($color, $amount: 20%) {
+    @return lighten($color, $amount);
+  }
+  
+  @function darker($color, $amount: 20%) {
+    @return darken($color, $amount);
+  }
+  
+  @function borderFromParent($parent) {
+    @return calc(map-get($radiuses, $parent) * 0.9);
+  }
+  
+
+
+
+$app-primary : #3E4DED;
+$app-secondary : #28b88d;
+
+$app-background-color : #ffffff;
+
+$app-text-color-on-primary : #ffffff;
+$app-text-color-on-background : #000000;
+
+$functional-error : #ED583E;
+$functional-warning : #ED9B3E;
+$functional-success : #2FB828;
+
+$colors: (
+    app-primary : $app-primary,
+    app-primary-darker : darker($app-primary, 4.5%),
+    app-primary-lighter : lighter($app-primary, 4.5%),
+
+    app-text-color-on-primary : $app-text-color-on-primary,
+    app-text-color-on-background : $app-text-color-on-background,
+    app-text-color-on-background-lighter : lighter($app-text-color-on-background, 30%),
+
+    app-background-color : $app-background-color,
+    app-background-color-lighter : lighter($app-background-color, 30%),
+    app-background-color-darker : darker($app-background-color, 4.5%),
+
+    app-secondary : $app-secondary,
+    app-secondary-darker : darker($app-secondary, 4.5%),
+    app-secondary-lighter : lighter($app-secondary, 4.5%),
+
+    functional-error : $functional-error,
+    functional-error-lighter : lighter($functional-error, 30%),
+
+    functional-success : $functional-success,
+    functional-success-lighter : lighter($functional-success, 30%),
+
+    functional-warning : $functional-warning,
+    functional-warning-lighter : lighter($functional-warning, 30%),
+);

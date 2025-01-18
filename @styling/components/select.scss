@@ -1,0 +1,81 @@
+@import '../main.scss';
+
+.select {
+    border: map-get($lengths, app-select-border-width) solid 
+        map-get($colors, app-primary);
+    border-radius: map-get($radiuses, app-first-border-radius);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    
+    transition: all map-get($times, app-transition-time);
+    * {transition: all map-get($times, app-transition-time);}
+    min-width: 150px;
+    color : map-get($colors, app-primary);
+    font-weight: map-get($fonts, special-weight);
+    position:relative;
+    * {
+        fill : map-get($colors, app-primary);
+    }
+    &.open {
+        border-radius: map-get($radiuses, app-second-border-radius) map-get($radiuses, app-second-border-radius) 0 0;
+        border-color: 
+            map-get($colors, app-primary)
+            map-get($colors, app-primary)
+            transparent
+            map-get($colors, app-primary);
+        .choice {
+            border-radius: map-get($radiuses, app-second-border-radius) map-get($radiuses, app-second-border-radius) 0 0;
+        }
+        .choices {
+            border-color: map-get($colors, app-primary);
+            z-index: 10;
+            transition: all map-get($times, app-transition-time-short);
+        }
+    }
+    .choice {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        justify-content: space-between;
+        width: calc(100% - 2 * (
+            map-get($paddings, app-sides-select-padding)
+        ));
+        padding:  
+        map-get($paddings, app-top-bottom-select-padding)
+        map-get($paddings, app-sides-select-padding);
+        height : 24px;
+        border-radius: map-get($radiuses, app-first-border-radius);
+
+        background-color: map-get(
+            $colors, app-background-color
+        );
+
+        user-select: none;
+        
+        
+    }
+    .choices {
+        overflow: hidden;
+        width: 100%;
+        left: calc(-1 * (
+            map-get($lengths, app-select-border-width)
+        ));
+        transition: all map-get($times, app-transition-time-short);
+        position:absolute;
+        top: 100%;
+        border-radius: map-get($radiuses, app-first-border-radius);
+        border: map-get($lengths, app-select-border-width) solid 
+        transparent;
+        border-style: none solid solid solid;
+        .choice:hover {
+            background-color: map-get($colors, app-background-color-darker);
+        }
+        &:last-child {
+            border-radius: 0 0 
+                map-get($radiuses, app-second-border-radius) 
+                map-get($radiuses, app-second-border-radius);
+        }
+    }
+}

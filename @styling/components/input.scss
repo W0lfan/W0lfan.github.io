@@ -1,0 +1,69 @@
+@import '../main.scss';
+
+
+.input {
+    position:relative;
+    width: fit-content;
+    * {
+        transition: all map-get($times, app-transition-time);
+    }
+    input {
+        padding: 
+            map-get($paddings, app-top-bottom-input-padding)
+            map-get($paddings, app-sides-input-padding);
+        border: map-get($lengths, app-select-border-width) solid 
+            map-get($colors, app-primary);
+        border-radius: map-get($radiuses, app-first-border-radius);
+        z-index: 10;
+        outline:none;
+        &:focus {
+            border-color: map-get($colors, app-primary-darker);
+        }
+    }
+    label {
+        position:absolute;
+        height: calc(100% - 2 * (
+            map-get($lengths, app-input-border-width)
+        ) - 2 * (
+            map-get($paddings, app-top-bottom-input-padding)
+        ) - 20px);
+        width: 0px;
+        border-radius: map-get($radiuses, app-first-border-radius);
+        left:  map-get($lengths, app-input-label-left);
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        z-index: 1;
+        top: -20px;
+        bottom: 0;
+        margin:auto;
+        white-space: nowrap;
+        color: map-get(
+            $colors, app-text-color-on-background-lighter
+        );
+    }
+    .warning {
+        color: map-get($colors, functional-error);
+        font-weight: bold;
+        font-size: 12px;
+        height: 21px;
+    }
+    &:hover, &:focus-within, &.in {
+        input {
+            z-index:  1
+        }
+        label {
+            background-color: map-get($colors, app-text-color-on-primary);
+            padding: 0 map-get(
+                $paddings, app-sides-input-label-padding
+            );
+            font-size: map-get($fonts, app-input-label-font-size);
+            transform: translate(0, calc(-100% - 2 * (
+                map-get($lengths, app-input-border-width)
+            )));
+            z-index: 2;
+            color : map-get($colors, app-primary);
+            width: fit-content;
+        }
+    }
+}

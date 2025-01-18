@@ -1,0 +1,42 @@
+@import '../main.scss';
+
+button {
+    padding:  
+        map-get($paddings, app-top-bottom-button-padding)
+        map-get($paddings, app-sides-button-padding);
+    border-radius: map-get($radiuses, app-first-border-radius);
+    cursor: pointer;
+    border: map-get($lengths, app-button-border-width) solid transparent;
+    transition: all map-get($times, app-transition-time);
+    font-weight: map-get($fonts, special-weight);
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: map-get($gaps, app-button-gap);
+    &.primary {
+        border-color: map-get($colors, app-primary);
+        background-color: map-get($colors, app-primary);
+        color: map-get($colors, app-text-color-on-primary);
+        &:hover {
+            background-color: map-get($colors, app-primary-darker);
+            border-color: map-get($colors, app-primary-darker);
+        }
+    }
+    &.secondary {
+        border-color: map-get($colors, app-primary);
+        color: map-get($colors, app-primary);
+        &:hover {
+            background-color: map-get($colors, app-primary-lighter);
+            border-color:map-get($colors, app-primary-lighter); ;
+            color: map-get($colors, app-text-color-on-primary);
+        }
+    }
+    &.tertiary {
+        color: map-get($colors, app-primary-lighter);
+        &:hover {
+            border-color:  map-get($colors, app-primary-lighter);
+        }
+    }
+}
